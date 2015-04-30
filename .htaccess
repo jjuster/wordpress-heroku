@@ -1,8 +1,13 @@
-# <IfModule mod_rewrite.c>
-# RewriteEngine On
-# RewriteBase /news/
-# RewriteRule ^index\.php$ - [L]
-# RewriteCond %{REQUEST_FILENAME} !-f
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteRule . /news/index.php [L]
-# </IfModule>
+Options +FollowSymLinks
+<Directory "${HEROKU_APP_DIR}">
+   AllowOverride Options
+</Directory>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /news/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /news/index.php [L]
+</IfModule>

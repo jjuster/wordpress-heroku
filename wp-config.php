@@ -36,7 +36,7 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
-define('WP_SITEURL', 'http://pradux-news.herokuapp.com/news');
+define('WP_SITEURL', 'http://pradux-news.herokuapp.com');
 define('WP_HOME', 'http://pradux-next.herokuapp.com/news');
 
 /**#@+

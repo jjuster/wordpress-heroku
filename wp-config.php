@@ -37,7 +37,7 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 define('WP_SITEURL', 'http://pradux-news.herokuapp.com');
-//define('WP_HOME', 'http://pradux-next.herokuapp.com/news');
+define('WP_HOME', 'http://pradux-next.herokuapp.com/news');
 
 /**#@+
  * Authentication Unique Keys and Salts.

@@ -1,6 +1,4 @@
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /news/
 </IfModule>
 # END WordPress

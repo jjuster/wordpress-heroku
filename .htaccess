@@ -1,5 +1,5 @@
 Options +FollowSymLinks
-<Directory "${HEROKU_APP_DIR}">
+<Directory /news>
    AllowOverride Options
 </Directory>
 

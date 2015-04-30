@@ -1,8 +1,5 @@
 Options +FollowSymLinks
-<Directory /news>
-   AllowOverride Options
-</Directory>
-
+   
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /news/

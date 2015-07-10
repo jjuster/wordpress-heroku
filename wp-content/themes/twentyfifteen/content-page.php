@@ -16,7 +16,8 @@
 
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+		<h3><?php get_the_category(); ?> | <?php the_date(); ?></h3>
+	</header>
 
 	<div class="entry-content">
 		<?php the_content(); ?>
@@ -32,6 +33,6 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
+	<?php // edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
 
-</article><!-- #post-## -->
+</article>

@@ -16,7 +16,7 @@
 
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		<h3><?php get_the_category(); ?> | <?php the_date(); ?></h3>
+		<h3><?php the_category(', '); ?> | <?php the_date(); ?></h3>
 	</header>
 
 	<div class="entry-content">

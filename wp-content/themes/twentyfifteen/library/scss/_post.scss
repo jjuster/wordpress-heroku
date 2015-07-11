@@ -3,6 +3,10 @@
   .site-content {
     background-color: $backgroundGrey;
 
+    .site-main {
+      padding-top: 0;
+    }
+
     .post {
       box-shadow: none;
       background-color: $backgroundGrey;
@@ -17,6 +21,10 @@
           font-size: 1.5em;
           text-transform: uppercase;
           margin-bottom: 4px;
+
+          a {
+            color: $textGrey;
+          }
         }
         .entry-meta {
           color: $textGrey;
@@ -31,8 +39,11 @@
         }
       }
 
-      .entry-content {
+      .entry-content, .entry-summary {
         color: $textGrey;
+        a {
+          color: $textGrey;
+        }
       }
 
       .entry-footer {

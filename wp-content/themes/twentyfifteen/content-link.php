@@ -10,6 +10,7 @@
  */
 ?>
 
+<!-- [content-link] -->
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php twentyfifteen_post_thumbnail(); ?>
 

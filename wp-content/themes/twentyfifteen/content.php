@@ -10,6 +10,8 @@
  */
 ?>
 
+<!-- [content] -->
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
 		// Post thumbnail.
@@ -20,14 +22,15 @@
 		<?php
 			if ( is_single() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
-				echo '<h3 class="entry-meta">';
+				echo '<div class="entry-meta">';
 				echo '	<span class="category">';
 									the_category(', ');
 				echo '  </span>';
+				echo ' | ';
 				echo '	<span class="date-posted">';
 									the_date();
 				echo '	</span>';
-				echo '</h3>';
+				echo '</div>';
 
 			else :
 				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );

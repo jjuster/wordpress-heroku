@@ -10,11 +10,29 @@
       padding-top: 0;
 
       .entry-header {
-        h1 {
+        margin-bottom: 30px;
+
+        .entry-title {
+          color: $textGrey;
+          font-size: 1.5em;
           text-transform: uppercase;
-          color: #A5A5A5;
-          font-size: 1.2em;
+          margin-bottom: 4px;
         }
+        .entry-meta {
+          color: $textGrey;
+          font-size: 1em;
+          text-transform: uppercase;
+
+          .category {
+            a {
+              color: $textGrey;
+            }
+          }
+        }
+      }
+
+      .entry-content {
+        color: $textGrey;
       }
 
       .entry-footer {

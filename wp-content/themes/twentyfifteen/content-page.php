@@ -16,8 +16,6 @@
 
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		<p>test1</p>
-		<!-- <h3><?php the_category(', '); ?> | <?php the_date(); ?></h3> -->
 	</header>
 
 	<div class="entry-content">

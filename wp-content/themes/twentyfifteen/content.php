@@ -20,12 +20,20 @@
 		<?php
 			if ( is_single() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
-				echo '<p>test2</p>';
+				echo '<h3 class="entry-meta">';
+				echo '	<span class="category">';
+									the_category(', ');
+				echo '  </span>';
+				echo '	<span class="date-posted">';
+									the_date();
+				echo '	</span>';
+				echo '</h3>';
+
 			else :
 				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 			endif;
 		?>
-	</header><!-- .entry-header -->
+	</header>
 
 	<div class="entry-content">
 		<?php
@@ -44,7 +52,7 @@
 				'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 		?>
-	</div><!-- .entry-content -->
+	</div>
 
 	<?php
 		// Author bio.
@@ -56,6 +64,6 @@
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta(); ?>
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .entry-footer -->
+	</footer>
 
-</article><!-- #post-## -->
+</article>

@@ -12,7 +12,7 @@
 
 	</div><!-- .site-content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<footer id="colophon" class="site-footer hidden" role="contentinfo">
 		<div class="site-info">
 			<?php
 				/**

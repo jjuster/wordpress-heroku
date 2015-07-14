@@ -1,0 +1,15 @@
+body {
+  &:before {
+    width: 0;
+    display:none;
+  }
+
+  #sidebar {
+    display: none !important;  
+  }
+
+  #content {
+    width: 100% important;
+    margin-left: 0 !important;
+  }
+}

@@ -3,6 +3,17 @@
   .site-content {
     background-color: $backgroundGrey;
 
+    .page-header {
+      padding-top: 9px;
+      background-color: $white;
+      border-left-color: $darkGrey;
+      margin: 20px 0 40px;
+
+      .page-title {
+        color: $darkGrey;
+      }
+    }
+
     .site-main {
       padding-top: 0;
     }

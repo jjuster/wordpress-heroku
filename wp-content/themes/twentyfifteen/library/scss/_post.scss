@@ -25,21 +25,24 @@
       padding-top: 0;
 
       .entry-header {
-        margin-bottom: 30px;
+        margin-bottom: $spacingMd;
 
         .entry-title {
           color: $textGrey;
-          font-size: 1.5em;
+          font-size: $fontSizeTitle;
           text-transform: uppercase;
-          margin-bottom: 4px;
+          margin-bottom: $spacingSm;
 
           a {
             color: $textGrey;
+            &:hover {
+              color: $textHover;
+            }
           }
         }
         .entry-meta {
           color: $textGrey;
-          font-size: 1em;
+          font-size: $fontSizeMeta;
           text-transform: uppercase;
 
           .category {
@@ -51,7 +54,14 @@
       }
 
       .entry-content, .entry-summary {
+        
         color: $textGrey;
+
+        p {
+          font-size: $fontSizeBody;
+          line-height: $entryLineHeight;
+          margin-bottom: $spacingMd;
+        }
         a {
           color: $textGrey;
         }

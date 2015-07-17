@@ -3,6 +3,21 @@
   .site-content {
     background-color: $backgroundGrey;
 
+    .blog-navigation {
+      width: 100%;
+      padding: 10px 64px 10px 64px;
+      color: $textGrey;
+      letter-spacing: $letterSpacing;
+      font-family: $fontFamily;
+
+      .back-btn {
+        text-transform: uppercase;
+        &:hover {
+          color: $textHover;
+        }
+      }
+    }
+
     .page-header {
       padding-top: 9px;
       background-color: $white;

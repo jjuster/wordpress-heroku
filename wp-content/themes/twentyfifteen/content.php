@@ -8,9 +8,34 @@
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */
+
+$opts = array(
+	'posts_per_page'   => 3,
+	'offset'           => 0,
+	'category'         => '',
+	'category_name'    => '',
+	'orderby'          => 'rand',
+	// 'order'            => 'DESC',
+	'include'          => '',
+	'exclude'          => '',
+	'meta_key'         => '',
+	'meta_value'       => '',
+	'post_type'        => 'post',
+	'post_mime_type'   => '',
+	'post_parent'      => '',
+	'author'	   => '',
+	'post_status'      => 'publish',
+	'suppress_filters' => true 
+);
+$related_posts = get_posts( $opts ); 
+
 ?>
 
 <!-- [content] -->
+
+<div class="blog-navigation">
+	<a class="back-btn" href="/news">&larr; Back</a>
+</div>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
@@ -68,5 +93,15 @@
 		<?php twentyfifteen_entry_meta(); ?>
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer>
+
+	<script>
+	<?php if (!empty($post)): ?>
+	var post = <?=json_encode($post)?>;
+	<?php endif; ?>
+
+	<?php if (!empty($related_posts)): ?>
+	var related_posts = <?=json_encode($related_posts)?>;
+	<?php endif; ?>
+	</script>
 
 </article>

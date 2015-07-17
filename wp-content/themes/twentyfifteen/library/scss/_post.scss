@@ -24,6 +24,10 @@
       margin-top: 0;
       padding-top: 0;
 
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+
       .entry-header {
         margin-bottom: $spacingMd;
 
@@ -33,6 +37,7 @@
           font-family: $fontFamily;
           text-transform: uppercase;
           margin-bottom: $spacingSm;
+          letter-spacing: $letterSpacing;
 
           a {
             color: $textGrey;
@@ -46,6 +51,7 @@
           font-size: $fontSizeMeta;
           text-transform: uppercase;
           font-family: $fontFamily;
+          letter-spacing: $letterSpacing;
 
           .category {
             a {
@@ -64,6 +70,7 @@
           font-size: $fontSizeBody;
           line-height: $entryLineHeight;
           margin-bottom: $spacingMd;
+          letter-spacing: $letterSpacing;
         }
         a {
           color: $textGrey;

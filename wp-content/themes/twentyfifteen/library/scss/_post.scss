@@ -12,8 +12,11 @@
 
       .back-btn {
         text-transform: uppercase;
+        color: $textGrey;
+        font-size: 12px;
         &:hover {
           color: $textHover;
+          text-decoration: none;
         }
       }
     }

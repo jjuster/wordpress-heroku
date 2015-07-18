@@ -9,7 +9,17 @@
  * @since Twenty Fifteen 1.0
  */
 
-$opts = array(
+$post_cats = get_the_category(); // can be an array
+if (!empty($post_cats)) {
+	$cat_ids = array();
+	foreach ($post_cats as $post_cat) {
+		$cat_ids[] = $post_cat->cat_ID;
+	}
+	$cat_ids_csv = implode(',', $cat_ids);
+
+}
+
+/* $opts = array(
 	'posts_per_page'   => 3,
 	// 'category'         => '',	// can be comma separated list of cat ids
 	// 'category_name'    => '',	// string, name of category
@@ -17,9 +27,9 @@ $opts = array(
 	// 'post_type'        => 'post',
 	'post_status'      => 'publish',
 	// 'suppress_filters' => true 
-);
+); */
 // $related_posts = get_posts( $opts ); 
-$related_posts = get_posts( 'orderby_rand&posts_per_page=3' ); 
+$related_posts = get_posts( 'orderby=rand&posts_per_page=3&post_status=publish' ); 
 
 
 $postlist = get_posts( 'sort_column=menu_order&sort_order=asc' );

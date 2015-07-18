@@ -14,11 +14,23 @@ $opts = array(
 	// 'category'         => '',	// can be comma separated list of cat ids
 	// 'category_name'    => '',	// string, name of category
 	'orderby'          => 'rand',
-	'post_type'        => 'post',
+	// 'post_type'        => 'post',
 	'post_status'      => 'publish',
 	// 'suppress_filters' => true 
 );
 $related_posts = get_posts( $opts ); 
+
+
+$postlist = get_posts( 'sort_column=menu_order&sort_order=asc' );
+$posts = array();
+foreach ( $postlist as $post ) {
+	$posts[] += $post->ID;
+}
+
+$current = array_search( get_the_ID(), $posts );
+$prevID = $posts[$current-1];
+$nextID = $posts[$current+1];
+
 
 ?>
 
@@ -94,6 +106,12 @@ $related_posts = get_posts( $opts );
 	<?php if (!empty($related_posts)): ?>
 	var related_posts = <?=json_encode($related_posts)?>;
 	<?php endif; ?>
+
+	var postlist = <?=json_encode($postlist)?>;
+
+	var prev_post_id = <?=json_encode($prevID)?>;
+	var next_post_id = <?=json_encode($nextID)?>;
+
 	</script>
 
 </article>

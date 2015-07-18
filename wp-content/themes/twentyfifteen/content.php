@@ -11,21 +11,12 @@
 
 $opts = array(
 	'posts_per_page'   => 3,
-	'offset'           => 0,
-	'category'         => '',
-	'category_name'    => '',
+	// 'category'         => '',	// can be comma separated list of cat ids
+	// 'category_name'    => '',	// string, name of category
 	'orderby'          => 'rand',
-	// 'order'            => 'DESC',
-	'include'          => '',
-	'exclude'          => '',
-	'meta_key'         => '',
-	'meta_value'       => '',
 	'post_type'        => 'post',
-	'post_mime_type'   => '',
-	'post_parent'      => '',
-	'author'	   => '',
 	'post_status'      => 'publish',
-	'suppress_filters' => true 
+	// 'suppress_filters' => true 
 );
 $related_posts = get_posts( $opts ); 
 
@@ -97,6 +88,7 @@ $related_posts = get_posts( $opts );
 	<script>
 	<?php if (!empty($post)): ?>
 	var post = <?=json_encode($post)?>;
+	var post_category = <?=json_encode(get_the_category())?>;
 	<?php endif; ?>
 
 	<?php if (!empty($related_posts)): ?>

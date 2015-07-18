@@ -3,5 +3,8 @@
 @import 'disable_sidebar';
 
 body {
-	background-color: $backgroundGrey !important;
+  background-color: $backgroundGrey !important;
+  letter-spacing: $letterSpacing;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
 }

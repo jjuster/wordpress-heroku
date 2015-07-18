@@ -29,7 +29,7 @@ if (!empty($post_cats)) {
 	// 'suppress_filters' => true 
 ); */
 // $related_posts = get_posts( $opts ); 
-$related_posts = get_posts( 'orderby=rand&posts_per_page=3&post_status=publish' ); 
+$related_posts = get_posts( 'orderby=rand&posts_per_page=3' ); 
 
 
 $postlist = get_posts( 'sort_column=menu_order&sort_order=asc' );

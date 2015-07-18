@@ -18,11 +18,12 @@ $opts = array(
 	'post_status'      => 'publish',
 	// 'suppress_filters' => true 
 );
-$related_posts = get_posts( $opts ); 
+// $related_posts = get_posts( $opts ); 
+$related_posts = get_posts( 'orderby_rand&posts_per_page=3' ); 
 
 
 $postlist = get_posts( 'sort_column=menu_order&sort_order=asc' );
-$posts = array();
+/* $posts = array();
 foreach ( $postlist as $post ) {
 	$posts[] += $post->ID;
 }
@@ -30,7 +31,7 @@ foreach ( $postlist as $post ) {
 $current = array_search( get_the_ID(), $posts );
 $prevID = $posts[$current-1];
 $nextID = $posts[$current+1];
-
+*/
 
 ?>
 

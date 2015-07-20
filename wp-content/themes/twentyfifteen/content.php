@@ -122,10 +122,10 @@ $nextID = $posts[$current+1];
 		<div class="related-posts-wrap">
 			
 			<?php foreach ($related_posts as $related_post): ?>
-			<a href="#" class="related-post" style="background-image:url(http://s3.amazonaws.com/news-media.pradux.com/wp-content/uploads/2015/04/post_1.jpg)">
+			<a href="<?=$related_post->permalink?>" class="related-post" style="background-image:url(http://s3.amazonaws.com/news-media.pradux.com/wp-content/uploads/2015/04/post_1.jpg)">
 				<div class="bottom-text">
 					<div class="category">
-						Trending
+						<?=htmlencode($related_post->category)?>
 					</div>
 					<div class="title">
 						<?=htmlencode($related_post->post_title)?>

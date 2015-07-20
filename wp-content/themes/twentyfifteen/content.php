@@ -35,6 +35,11 @@ if (!empty($post_cats)) {
 // $related_posts = get_posts( $opts ); 
 $related_posts = get_posts( 'posts_per_page=3&post_status=publish' );
 $num_related_posts = count($related_posts);
+if ($num_related_posts) {
+	for($i=0;$i<$num_related_posts;$i++) {
+		// $related_posts[$]->
+	}
+}
 // orderby=rand || not working
 
 
@@ -112,7 +117,7 @@ $nextID = $posts[$current+1];
 	<? if ($num_related_posts): ?>
 	<div class="related-posts">
 		<h4>Related Posts</h4>
-		
+
 		<div class="related-posts-wrap">
 			
 			<?php foreach ($related_posts as $related_post): ?>
@@ -126,7 +131,7 @@ $nextID = $posts[$current+1];
 					</div>
 				</div>
 			</a>
-			<?php endif; ?>
+			<?php endforeach; ?>
 
 		</div>
 	</div>

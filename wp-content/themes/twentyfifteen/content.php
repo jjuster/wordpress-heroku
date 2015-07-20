@@ -16,7 +16,7 @@ function extract_img_src($html) {
 	if (empty($html)) {
 		return '';
 	}
-	
+
 	$doc = new DOMDocument();
 	$doc->loadHTML($html);
 	$imgs = $doc->getElementsByTagName('img');
@@ -91,7 +91,6 @@ $nextID = $posts[$current+1];
 				echo '	<span class="category">';
 									the_category(', ');
 				echo '  </span>';
-				echo ' | ';
 				echo '	<span class="date-posted">';
 									the_date();
 				echo '	</span>';

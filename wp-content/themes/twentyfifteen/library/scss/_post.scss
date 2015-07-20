@@ -76,8 +76,9 @@
           letter-spacing: $letterSpacing;
 
           .category {
+            margin-right: 8px;
             a {
-              color: $textGrey;
+              color: $praduxBlue;
             }
           }
         }

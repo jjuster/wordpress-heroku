@@ -37,7 +37,8 @@ $related_posts = get_posts( 'posts_per_page=3&post_status=publish' );
 $num_related_posts = count($related_posts);
 if ($num_related_posts) {
 	for($i=0;$i<$num_related_posts;$i++) {
-		// $related_posts[$]->
+		$related_posts[$i]->permalink = get_permalink($related_posts[$i]->ID);
+		$related_posts[$i]->category = get_the_category($related_posts[$i]->ID);
 	}
 }
 // orderby=rand || not working

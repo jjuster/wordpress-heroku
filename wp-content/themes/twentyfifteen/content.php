@@ -38,7 +38,7 @@ $num_related_posts = count($related_posts);
 if ($num_related_posts) {
 	for($i=0;$i<$num_related_posts;$i++) {
 		$related_posts[$i]->permalink = get_permalink($related_posts[$i]->ID);
-		$related_posts[$i]->category = get_the_category($related_posts[$i]->ID);
+		$related_posts[$i]->category = get_the_category_list('/', '', $related_posts[$i]->ID);
 	}
 }
 // orderby=rand || not working

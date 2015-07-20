@@ -7,17 +7,22 @@
 	.related-posts-wrap {
 		.related-post {
 			display: inline-block;
-			width: 33.3%;
+			width: 32.8%;
 			height: 280px;
 			position: relative;
+			background-size: cover;
 
 			.bottom-text {
+				width: 100%;
 				position: absolute;
 				bottom: 0;
-				color: white;
-				text-align: center;
-				width: 100%;
 				text-transform: uppercase;
+				text-align: center;
+				padding: 4px 0;
+				color: white;
+				background-color: rgb(0,0,0);
+				background-color: rgba(0,0,0,0.6)
+
 				.category {
 					font-size: 0.9em;
 				}
@@ -25,6 +30,12 @@
 					font-weight: bold;
 				}
 			}
+		}
+	}
+
+	@media (max-width: $breakpoint-mobile-max) {
+		.related-post {
+			width: 100%;
 		}
 	}
 }

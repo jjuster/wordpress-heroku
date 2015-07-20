@@ -39,6 +39,7 @@ if ($num_related_posts) {
 	for($i=0;$i<$num_related_posts;$i++) {
 		$related_posts[$i]->permalink = get_permalink($related_posts[$i]->ID);
 		$related_posts[$i]->category = strip_tags( get_the_category_list('/', '', $related_posts[$i]->ID) );
+		$related_posts[$i]->featured_image = get_the_post_thumbnail($related_posts[$i]->ID);
 	}
 }
 // orderby=rand || not working
@@ -122,7 +123,7 @@ $nextID = $posts[$current+1];
 		<div class="related-posts-wrap">
 			
 			<?php foreach ($related_posts as $related_post): ?>
-			<a href="<?=$related_post->permalink?>" class="related-post" style="background-image:url(http://s3.amazonaws.com/news-media.pradux.com/wp-content/uploads/2015/04/post_1.jpg)">
+			<a href="<?=$related_post->permalink?>" class="related-post" style="background-image:url(<?=$related_post->featured_image?>)">
 				<div class="bottom-text">
 					<div class="category">
 						<?=htmlencode($related_post->category)?>

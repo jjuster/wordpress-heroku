@@ -12,6 +12,10 @@
 			position: relative;
 			background-size: cover;
 
+			@media (max-width: $breakpoint-mobile-max) {
+				width: 100%;
+			}
+
 			.bottom-text {
 				width: 100%;
 				position: absolute;
@@ -30,12 +34,6 @@
 					font-weight: bold;
 				}
 			}
-		}
-	}
-
-	@media (max-width: $breakpoint-mobile-max) {
-		.related-post {
-			width: 100%;
 		}
 	}
 }

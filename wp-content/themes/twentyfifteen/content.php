@@ -30,6 +30,7 @@ if (!empty($post_cats)) {
 ); */
 // $related_posts = get_posts( $opts ); 
 $related_posts = get_posts( 'posts_per_page=3&post_status=publish' ); 
+// orderby=rand || not working
 
 
 $postlist = get_posts( 'sort_column=menu_order&sort_order=asc' );
@@ -85,14 +86,14 @@ $nextID = $posts[$current+1];
 				the_title( '<span class="screen-reader-text">', '</span>', false )
 			) );
 
-			wp_link_pages( array(
+			/* wp_link_pages( array(
 				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
 				'after'       => '</div>',
 				'link_before' => '<span>',
 				'link_after'  => '</span>',
 				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
 				'separator'   => '<span class="screen-reader-text">, </span>',
-			) );
+			) ); */
 		?>
 	</div>
 
@@ -102,6 +103,46 @@ $nextID = $posts[$current+1];
 			get_template_part( 'author-bio' );
 		endif;
 	?>
+
+	<div class="related-posts">
+		<h4>Related Posts</h4>
+		<div class="related-posts-wrap">
+			
+			<a href="#" class="related-post" style="background-image:url(http://s3.amazonaws.com/news-media.pradux.com/wp-content/uploads/2015/04/post_1.jpg)">
+				<div class="bottom-text">
+					<div class="category">
+						Trending
+					</div>
+					<div class="title">
+						Byredo x Oliver Peoples
+					</div>
+				</div>
+			</a>
+
+			<a href="#" class="related-post" style="background-image:url(http://s3.amazonaws.com/news-media.pradux.com/wp-content/uploads/2015/04/post_1.jpg)">
+				<div class="bottom-text">
+					<div class="category">
+						Featured People
+					</div>
+					<div class="title">
+						Riccardo Tisci
+					</div>
+				</div>
+			</a>
+
+			<a href="#" class="related-post" style="background-image:url(http://s3.amazonaws.com/news-media.pradux.com/wp-content/uploads/2015/04/post_1.jpg)">
+				<div class="bottom-text">
+					<div class="category">
+						Trending
+					</div>
+					<div class="title">
+						Summer Fragrances
+					</div>
+				</div>
+			</a>
+
+		</div>
+	</div>
 
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta(); ?>

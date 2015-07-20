@@ -1,0 +1,30 @@
+.related-posts {
+	h4 {
+		text-transform: uppercase;
+		color: $textGrey;
+		font-size: $fontSizeBody;
+	}
+	.related-posts-wrap {
+		.related-post {
+			display: inline-block;
+			width: 33.3%;
+			height: 280px;
+			position: relative;
+
+			.bottom-text {
+				position: absolute;
+				bottom: 0;
+				color: white;
+				text-align: center;
+				width: 100%;
+				text-transform: uppercase;
+				.category {
+					font-size: 0.9em;
+				}
+				.title {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}

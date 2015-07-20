@@ -9,6 +9,10 @@
  * @since Twenty Fifteen 1.0
  */
 
+function htmlencode($str) {
+	return !empty($str) ? htmlspecialchars($str, ENT_QUOTES, 'UTF-8', false) : '';
+}
+
 $post_cats = get_the_category(); // can be an array
 if (!empty($post_cats)) {
 	$cat_ids = array();
@@ -29,7 +33,8 @@ if (!empty($post_cats)) {
 	// 'suppress_filters' => true 
 ); */
 // $related_posts = get_posts( $opts ); 
-$related_posts = get_posts( 'posts_per_page=3&post_status=publish' ); 
+$related_posts = get_posts( 'posts_per_page=3&post_status=publish' );
+$num_related_posts = count($related_posts);
 // orderby=rand || not working
 
 
@@ -104,45 +109,28 @@ $nextID = $posts[$current+1];
 		endif;
 	?>
 
+	<? if ($num_related_posts): ?>
 	<div class="related-posts">
 		<h4>Related Posts</h4>
+		
 		<div class="related-posts-wrap">
 			
+			<?php foreach ($related_posts as $related_post): ?>
 			<a href="#" class="related-post" style="background-image:url(http://s3.amazonaws.com/news-media.pradux.com/wp-content/uploads/2015/04/post_1.jpg)">
 				<div class="bottom-text">
 					<div class="category">
 						Trending
 					</div>
 					<div class="title">
-						Byredo x Oliver Peoples
+						<?=htmlencode($related_post->post_title)?>
 					</div>
 				</div>
 			</a>
-
-			<a href="#" class="related-post" style="background-image:url(http://s3.amazonaws.com/news-media.pradux.com/wp-content/uploads/2015/04/post_1.jpg)">
-				<div class="bottom-text">
-					<div class="category">
-						Featured People
-					</div>
-					<div class="title">
-						Riccardo Tisci
-					</div>
-				</div>
-			</a>
-
-			<a href="#" class="related-post" style="background-image:url(http://s3.amazonaws.com/news-media.pradux.com/wp-content/uploads/2015/04/post_1.jpg)">
-				<div class="bottom-text">
-					<div class="category">
-						Trending
-					</div>
-					<div class="title">
-						Summer Fragrances
-					</div>
-				</div>
-			</a>
+			<?php endif; ?>
 
 		</div>
 	</div>
+	<?php endif; ?>
 
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta(); ?>

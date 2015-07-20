@@ -12,6 +12,19 @@
 function htmlencode($str) {
 	return !empty($str) ? htmlspecialchars($str, ENT_QUOTES, 'UTF-8', false) : '';
 }
+function extract_img_src($html) {
+	if (empty($html)) {
+		return '';
+	}
+	
+	$doc = new DOMDocument();
+	$doc->loadHTML($html);
+	$imgs = $doc->getElementsByTagName('img');
+	foreach($imgs as $img) {
+		return $img->getAttribute('src');
+	}
+	return '';
+}
 
 $post_cats = get_the_category(); // can be an array
 if (!empty($post_cats)) {
@@ -39,7 +52,7 @@ if ($num_related_posts) {
 	for($i=0;$i<$num_related_posts;$i++) {
 		$related_posts[$i]->permalink = get_permalink($related_posts[$i]->ID);
 		$related_posts[$i]->category = strip_tags( get_the_category_list('/', '', $related_posts[$i]->ID) );
-		$related_posts[$i]->featured_image = get_the_post_thumbnail($related_posts[$i]->ID);
+		$related_posts[$i]->featured_image = extract_img_src( get_the_post_thumbnail($related_posts[$i]->ID) );
 	}
 }
 // orderby=rand || not working

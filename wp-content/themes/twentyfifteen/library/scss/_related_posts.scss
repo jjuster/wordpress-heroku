@@ -3,6 +3,11 @@
 	border-top: 1px solid #EDEDED;
   padding-top: 30px;
 
+  @media (max-width: $breakpoint-mobile-max) {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
 	h4 {
 		text-transform: uppercase;
 		color: $textGrey;

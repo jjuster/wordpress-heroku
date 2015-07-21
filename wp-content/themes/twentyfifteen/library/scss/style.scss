@@ -11,3 +11,11 @@ body {
   font-family: $fontFamily;
   $letterSpacing: 1.5px;
 }
+
+.entry-title, .entry-meta, .blog-navigation, .wp-caption-text {
+  font-family: $fontFamily;
+  $letterSpacing: 1.5px;
+  letter-spacing: $letterSpacing;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}

@@ -7,8 +7,6 @@
       width: 100%;
       padding: 10px 64px 10px 64px;
       color: $textGrey;
-      letter-spacing: $letterSpacing;
-      font-family: $fontFamily;
 
       .back-btn {
         text-transform: uppercase;
@@ -56,10 +54,8 @@
         .entry-title {
           color: $textGrey;
           font-size: $fontSizeTitle;
-          font-family: $fontFamily;
           text-transform: uppercase;
           margin-bottom: $spacingSm;
-          letter-spacing: $letterSpacing;
 
           a {
             color: $textGrey;
@@ -72,8 +68,6 @@
           color: $textGrey;
           font-size: $fontSizeMeta;
           text-transform: uppercase;
-          font-family: $fontFamily;
-          letter-spacing: $letterSpacing;
 
           .category {
             margin-right: 8px;

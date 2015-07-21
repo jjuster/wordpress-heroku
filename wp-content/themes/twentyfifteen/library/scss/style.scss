@@ -9,13 +9,12 @@ body {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   font-family: $fontFamily;
-  $letterSpacing: 1.5px;
 }
 
-.entry-title, .entry-meta, .blog-navigation, .wp-caption-text {
+.entry-title, .entry-meta, .entry-content, .entry-summary, .blog-navigation, .wp-caption-text {
   font-family: $fontFamily;
-  $letterSpacing: 1.5px;
   letter-spacing: $letterSpacing;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
+  color: $textGrey;
 }

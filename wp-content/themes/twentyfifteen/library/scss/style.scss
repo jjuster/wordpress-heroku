@@ -8,4 +8,6 @@ body {
   letter-spacing: $letterSpacing;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
+  font-family: $fontFamily;
+  $letterSpacing: 1.5px;
 }

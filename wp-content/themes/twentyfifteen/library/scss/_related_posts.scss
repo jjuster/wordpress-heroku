@@ -22,11 +22,11 @@
 			background-size: cover;
 			background-position: center top;
 
-			-webkit-transition: background-image 0.3s ease-in-out;
-			-moz-transition: background-image 0.3s ease-in-out;
-			transition: background-image 0.3s ease-in-out;
+			-webkit-transition: all 0.3s ease-in-out;
+			-moz-transition: all 0.3s ease-in-out;
+			transition: all 0.3s ease-in-out;
 			&:hover {
-				transform: scale(1.04);
+				transform: scale(1.02);
 			}
 
 			@media (max-width: $breakpoint-mobile-max) {

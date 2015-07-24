@@ -137,15 +137,15 @@ $nextID = $posts[$current+1];
 			<?php foreach ($related_posts as $related_post): ?>
 			<a href="<?=$related_post->permalink?>" class="related-post">
 				<span style="background-image:url(<?=$related_post->featured_image?>)">
-					<div class="bottom-text">
-						<div class="category">
-							<?=htmlencode($related_post->category)?>
-						</div>
-						<div class="title">
-							<?=htmlencode($related_post->post_title)?>
-						</div>
-					</div>
 				</span>
+				<div class="bottom-text">
+					<div class="category">
+						<?=htmlencode($related_post->category)?>
+					</div>
+					<div class="title">
+						<?=htmlencode($related_post->post_title)?>
+					</div>
+				</div>
 			</a>
 			<?php endforeach; ?>
 

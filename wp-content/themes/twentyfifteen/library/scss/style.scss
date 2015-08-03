@@ -9,6 +9,7 @@ body {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   font-family: $fontFamily;
+  padding-top: 62px;
 }
 
 .entry-title, .entry-meta, .entry-content, .entry-summary, .blog-navigation, .wp-caption-text {

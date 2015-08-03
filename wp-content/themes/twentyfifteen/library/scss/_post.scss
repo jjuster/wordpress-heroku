@@ -96,6 +96,10 @@
           font-size: 12px;
           padding-top: 15px;
           padding-bottom: 0;
+
+          & + .pradux-embed {
+            padding-top: 5px;
+          }
         }
         img {
           margin-left: auto;

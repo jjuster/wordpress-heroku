@@ -1,5 +1,9 @@
 .single-post, .search-results, .archive
 {
+  a {
+    text-decoration: none;
+    border-bottom: none;
+  }
   .site-content {
     background-color: $backgroundGrey;
 

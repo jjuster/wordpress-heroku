@@ -94,7 +94,7 @@
           // text-transform: uppercase;
           color: $textGrey;
           font-size: 12px;
-          padding-top: 15px;
+          padding-top: 0;
           padding-bottom: 0;
 
           // .pradux-embed ~ & {
@@ -103,8 +103,8 @@
         }
 
         .pradux-embed + .wp-caption-text {
-          padding-top: 5px !important;
-            // margin-top: -10px; 
+          // padding-top: 0px; // !important;
+          margin-top: -8px;
         }
 
         img {

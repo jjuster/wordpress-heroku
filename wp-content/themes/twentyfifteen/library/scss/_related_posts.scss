@@ -2,6 +2,9 @@
 	 
 	border-top: 1px solid #EDEDED;
   padding-top: 30px;
+  padding-left: 10%;
+  padding-right: 10%;
+  max-width: 1000px;
 
   @media (max-width: $breakpoint-mobile-max) {
 		padding-left: 16px;

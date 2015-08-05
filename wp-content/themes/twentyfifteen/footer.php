@@ -29,6 +29,8 @@
 </div><!-- .site -->
 
 <?php wp_footer(); ?>
+<script type="text/javascript" src="/wp-content/themes/twentyfifteen/js/social-share-kit.min.js"></script>
+
 
 </body>
 </html>

@@ -31,6 +31,9 @@
 <?php wp_footer(); ?>
 <script type="text/javascript" src="http://s3.amazonaws.com/cdn.pradux.com/lib/social-share-kit/js/social-share-kit.min.js"></script>
 
+<script type="text/javascript">
+	SocialShareKit.init();
+</script>
 
 </body>
 </html>

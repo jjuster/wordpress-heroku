@@ -165,9 +165,6 @@ $nextID = $posts[$current+1];
 		<a href="" class="ssk ssk-pinterest"></a>
 		<a href="" class="ssk ssk-tumblr"></a>
 	</div>
-	<script type="text/javascript">
-		SocialShareKit.init();
-	</script>
 
 	<script>
 	<?php if (!empty($post)): ?>

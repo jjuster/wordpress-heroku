@@ -158,6 +158,17 @@ $nextID = $posts[$current+1];
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer>
 
+	<!-- social share kit -->
+	<div class="ssk-sticky ssk-left ssk-center ssk-lg">
+		<a href="" class="ssk ssk-facebook"></a>
+		<a href="" class="ssk ssk-twitter"></a>
+		<a href="" class="ssk ssk-pinterest"></a>
+		<a href="" class="ssk ssk-tumblr"></a>
+	</div>
+	<script type="text/javascript">
+		SocialShareKit.init();
+	</script>
+
 	<script>
 	<?php if (!empty($post)): ?>
 	var post = <?=json_encode($post)?>;

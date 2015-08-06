@@ -147,8 +147,10 @@ $nextID = $posts[$current+1];
 		</div>
 	</div>
 
-	<div class="facebook-comments">
-
+	<div class="facebook-comments-container">
+		<div class="facebook-comments">
+		<div class="fb-comments" data-href="<?=get_permalink()?>" data-width="100%" data-numposts="5"></div>
+		</div>
 	</div>
 
 	<? if ($num_related_posts): ?>

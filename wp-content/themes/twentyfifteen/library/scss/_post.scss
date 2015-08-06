@@ -133,9 +133,6 @@
     max-width: 900px;
 
     .post-tags {
-      border-top: 1px solid #EDEDED;
-      padding-top: 40px;
-      padding-bottom: 40px;
 
       .tags-label {
         color: $textGrey;
@@ -152,8 +149,18 @@
   }
   
 
-  .facebook-comments {
-    // border-top: 1px solid #EDEDED;
+  .facebook-comments-container {
+    
+    padding-left: 10%;
+    padding-right: 10%;
+    max-width: 900px;
+
+    .facebook-comments {
+      border-top: 1px solid #EDEDED;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
   }
   
 }

@@ -125,5 +125,24 @@
       }
     }
   }
+
+  .post-tags {
+    border-top: 1px solid #EDEDED;
+    .tags-label {
+      color: $textGrey;
+      text-transform: uppercase;
+    }
+    .post-tag {
+      color: #000;
+      a {
+        text-transform: uppercase;
+        color: #000; 
+      }
+    }
+  }
+
+  .facebook-comments {
+    // border-top: 1px solid #EDEDED;
+  }
   
 }

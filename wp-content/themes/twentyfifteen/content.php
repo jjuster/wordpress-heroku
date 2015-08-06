@@ -133,6 +133,21 @@ $nextID = $posts[$current+1];
 		endif;
 	?>
 
+	<div class="post-tags">
+		<span class="tags-label">TAGS: </span>
+		<?php foreach ($post_tags as $i => $post_tag): ?>
+			<span class="post-tag">
+				<a href="<?=get_tag_link($post_tag->term_id)?>">
+					<?=htmlencode($post_tag->name)?>
+				</a>
+			</span>
+		<?php endforeach; ?>
+	</div>
+
+	<div class="facebook-comments">
+
+	</div>
+
 	<? if ($num_related_posts): ?>
 	<div class="related-posts">
 		<h4>Related Posts</h4>

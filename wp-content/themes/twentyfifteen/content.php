@@ -170,7 +170,7 @@ $nextID = $posts[$current+1];
 	<?php if (!empty($post)): ?>
 	var post = <?=json_encode($post)?>;
 	var post_category = <?=json_encode(get_the_category())?>;
-	var post_tags = <?=json_encode(get_the_tags())?>;
+	var post_tags = <?=json_encode((array)get_the_tags())?>;
 	<?php endif; ?>
 
 	<?php if (!empty($related_posts)): ?>

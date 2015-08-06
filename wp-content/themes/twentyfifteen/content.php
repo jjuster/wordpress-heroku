@@ -33,8 +33,13 @@ if (!empty($post_cats)) {
 		$cat_ids[] = $post_cat->cat_ID;
 	}
 	$cat_ids_csv = implode(',', $cat_ids);
-
 }
+
+$post_tags = array();
+foreach (get_the_tags() as $post_tag) {
+	$post_tags[] = $post_tag;
+}
+
 
 /* $opts = array(
 	'posts_per_page'   => 3,
@@ -170,12 +175,7 @@ $nextID = $posts[$current+1];
 	<?php if (!empty($post)): ?>
 	var post = <?=json_encode($post)?>;
 	var post_category = <?=json_encode(get_the_category())?>;
-	/* var post_tags = <?=json_encode(get_the_tags())?>; */
-	var post_tags = [];
-	<?php foreach (get_the_tags() as $tag): ?>
-	post_tags.push(<?=json_encode($tag)?>);
-	<?php endforeach; ?>
-
+	var post_tags = <?=json_encode($post_tags)?>;
 	<?php endif; ?>
 
 	<?php if (!empty($related_posts)): ?>
@@ -184,10 +184,8 @@ $nextID = $posts[$current+1];
 
 	var postlist = <?=json_encode($postlist)?>;
 
-
 	var prev_post_id = <?=json_encode($prevID)?>;
 	var next_post_id = <?=json_encode($nextID)?>;
-
 
 
 	</script>

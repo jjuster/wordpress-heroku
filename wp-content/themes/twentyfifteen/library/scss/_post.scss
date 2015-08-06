@@ -126,20 +126,31 @@
     }
   }
 
-  .post-tags {
-    border-top: 1px solid #EDEDED;
-    .tags-label {
-      color: $textGrey;
-      text-transform: uppercase;
-    }
-    .post-tag {
-      color: #000;
-      a {
+  .post-tags-container
+  {
+    padding-left: 10%;
+    padding-right: 10%;
+    max-width: 900px;
+
+    .post-tags {
+      border-top: 1px solid #EDEDED;
+      padding-top: 40px;
+      padding-bottom: 40px;
+
+      .tags-label {
+        color: $textGrey;
         text-transform: uppercase;
-        color: #000; 
+      }
+      .post-tag {
+        color: #000;
+        a {
+          text-transform: uppercase;
+          color: #000; 
+        }
       }
     }
   }
+  
 
   .facebook-comments {
     // border-top: 1px solid #EDEDED;

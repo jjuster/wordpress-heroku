@@ -39,6 +39,7 @@ $post_tags = array();
 foreach (get_the_tags() as $post_tag) {
 	$post_tags[] = $post_tag;
 }
+$num_post_tags = count($post_tags);
 
 
 /* $opts = array(
@@ -133,15 +134,17 @@ $nextID = $posts[$current+1];
 		endif;
 	?>
 
-	<div class="post-tags">
-		<span class="tags-label">TAGS: </span>
-		<?php foreach ($post_tags as $i => $post_tag): ?>
-			<span class="post-tag">
-				<a href="<?=get_tag_link($post_tag->term_id)?>">
-					<?=htmlencode($post_tag->name)?>
-				</a>
-			</span>
-		<?php endforeach; ?>
+	<div class="post-tags-container">
+		<div class="post-tags">
+			<span class="tags-label">TAGS: </span>
+			<?php foreach ($post_tags as $i => $post_tag): ?>
+				<span class="post-tag">
+					<a href="<?=get_tag_link($post_tag->term_id)?>">
+						<?=htmlencode($post_tag->name)?>
+					</a><?=$i+1 < $num_post_tags ? ', ' : ''?>
+				</span>
+			<?php endforeach; ?>
+		</div>
 	</div>
 
 	<div class="facebook-comments">
@@ -201,7 +204,6 @@ $nextID = $posts[$current+1];
 
 	var prev_post_id = <?=json_encode($prevID)?>;
 	var next_post_id = <?=json_encode($nextID)?>;
-
 
 	</script>
 

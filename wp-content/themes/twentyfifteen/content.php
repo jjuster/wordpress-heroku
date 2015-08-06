@@ -134,6 +134,7 @@ $nextID = $posts[$current+1];
 		endif;
 	?>
 
+	<?php if ($num_post_tags > 0): ?>
 	<div class="post-tags-container">
 		<div class="post-tags">
 			<span class="tags-label">TAGS: </span>
@@ -146,6 +147,7 @@ $nextID = $posts[$current+1];
 			<?php endforeach; ?>
 		</div>
 	</div>
+	<?php endif; ?>
 
 	<div class="facebook-comments-container">
 		<div class="facebook-comments">

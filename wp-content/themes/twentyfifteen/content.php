@@ -152,26 +152,28 @@ $nextID = $posts[$current+1];
 	</div>
 
 	<? if ($num_related_posts): ?>
-	<div class="related-posts">
-		<h4>Related Posts</h4>
+	<div class="related-posts-container">
+		<div class="related-posts">
+			<h4>Related Posts</h4>
 
-		<div class="related-posts-wrap">
-			
-			<?php foreach ($related_posts as $related_post): ?>
-			<a href="<?=$related_post->permalink?>" class="related-post">
-				<span style="background-image:url(<?=$related_post->featured_image?>)">
-				</span>
-				<div class="bottom-text">
-					<div class="category">
-						<?=htmlencode($related_post->category)?>
+			<div class="related-posts-wrap">
+				
+				<?php foreach ($related_posts as $related_post): ?>
+				<a href="<?=$related_post->permalink?>" class="related-post">
+					<span style="background-image:url(<?=$related_post->featured_image?>)">
+					</span>
+					<div class="bottom-text">
+						<div class="category">
+							<?=htmlencode($related_post->category)?>
+						</div>
+						<div class="title">
+							<?=htmlencode($related_post->post_title)?>
+						</div>
 					</div>
-					<div class="title">
-						<?=htmlencode($related_post->post_title)?>
-					</div>
-				</div>
-			</a>
-			<?php endforeach; ?>
+				</a>
+				<?php endforeach; ?>
 
+			</div>
 		</div>
 	</div>
 	<?php endif; ?>

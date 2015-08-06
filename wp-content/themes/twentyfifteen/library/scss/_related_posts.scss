@@ -1,74 +1,78 @@
-.related-posts {
-	 
-	border-top: 1px solid #EDEDED;
-  padding-top: 30px;
-  padding-left: 10%;
+.related-posts-container {
+
+	padding-left: 10%;
   padding-right: 10%;
   max-width: 900px;
 
-  @media (max-width: $breakpoint-mobile-max) {
-		padding-left: 16px;
-		padding-right: 16px;
-	}
+	.related-posts {
+		 
+		border-top: 1px solid #EDEDED;
+	  padding-top: 30px;
 
-	h4 {
-		text-transform: uppercase;
-		color: $textGrey;
-		font-size: $fontSizeBody;
-	}
-	.related-posts-wrap {
-		.related-post {
-			display: inline-block;
-			width: 32.8%;
-			height: 280px;
-			position: relative;
-			overflow: hidden;
+	  @media (max-width: $breakpoint-mobile-max) {
+			padding-left: 16px;
+			padding-right: 16px;
+		}
 
-			span {
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				background-position-x: 50%;
-				background-size: cover;
+		h4 {
+			text-transform: uppercase;
+			color: $textGrey;
+			font-size: $fontSizeBody;
+		}
+		.related-posts-wrap {
+			.related-post {
+				display: inline-block;
+				width: 32.8%;
+				height: 280px;
+				position: relative;
+				overflow: hidden;
 
-				-webkit-transition: all 0.3s ease-in-out;
-				-moz-transition: all 0.3s ease-in-out;
-				transition: all 0.3s ease-in-out;
-				&:hover {
-					transform: scale(1.04);
+				span {
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background-position-x: 50%;
+					background-size: cover;
+
+					-webkit-transition: all 0.3s ease-in-out;
+					-moz-transition: all 0.3s ease-in-out;
+					transition: all 0.3s ease-in-out;
+					&:hover {
+						transform: scale(1.04);
+					}
 				}
-			}
 
-			@media (max-width: $breakpoint-mobile-max) {
-				width: 100%;
-			}
-
-			.bottom-text {
-				width: 100%;
-				position: absolute;
-				bottom: 0;
-				text-transform: uppercase;
-				text-align: center;
-				padding: 10px 0;
-				color: white;
-				background-color: rgb(38,38,38);
-				background-color: rgba(38,38,38,0.5);
-				font-family: $fontFamily;
-
-				.category {
-					font-size: 0.9em;
-					color: #DDD;
+				@media (max-width: $breakpoint-mobile-max) {
+					width: 100%;
 				}
-				.title {
-					font-weight: bold;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					height: 1em;
-					font-size: 12px;
-					padding: 0 22px;
-					white-space: nowrap;
+
+				.bottom-text {
+					width: 100%;
+					position: absolute;
+					bottom: 0;
+					text-transform: uppercase;
+					text-align: center;
+					padding: 10px 0;
+					color: white;
+					background-color: rgb(38,38,38);
+					background-color: rgba(38,38,38,0.5);
+					font-family: $fontFamily;
+
+					.category {
+						font-size: 0.9em;
+						color: #DDD;
+					}
+					.title {
+						font-weight: bold;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						height: 1em;
+						font-size: 12px;
+						padding: 0 22px;
+						white-space: nowrap;
+					}
 				}
 			}
 		}

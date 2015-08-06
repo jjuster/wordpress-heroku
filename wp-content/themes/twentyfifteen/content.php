@@ -170,6 +170,7 @@ $nextID = $posts[$current+1];
 	<?php if (!empty($post)): ?>
 	var post = <?=json_encode($post)?>;
 	var post_category = <?=json_encode(get_the_category())?>;
+	var post_tags = <?=json_encode(get_the_tags())?>;
 	<?php endif; ?>
 
 	<?php if (!empty($related_posts)): ?>
@@ -180,6 +181,8 @@ $nextID = $posts[$current+1];
 
 	var prev_post_id = <?=json_encode($prevID)?>;
 	var next_post_id = <?=json_encode($nextID)?>;
+
+
 
 	</script>
 

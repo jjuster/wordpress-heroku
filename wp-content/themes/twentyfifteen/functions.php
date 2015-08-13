@@ -334,7 +334,7 @@ require get_template_directory() . '/inc/customizer.php';
 if (class_exists('MultiPostThumbnails')) {
     new MultiPostThumbnails(
         array(
-            'label' => 'Secondary Image',
+            'label' => 'Top Featured Image',
             'id' => 'secondary-image',
             'post_type' => 'post'
         )

@@ -89,6 +89,15 @@ $nextID = $posts[$current+1];
 		// twentyfifteen_post_thumbnail();
 	?>
 
+	<div class="top-featured-image">
+		<?php if (class_exists('MultiPostThumbnails')) :
+			MultiPostThumbnails::the_post_thumbnail(
+				get_post_type(),
+				'secondary-image'
+			);
+		endif; ?>
+	</div>
+
 	<header class="entry-header">
 		<?php
 			if ( is_single() ) :

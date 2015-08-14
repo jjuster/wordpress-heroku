@@ -3,8 +3,9 @@
   a {
     text-decoration: none;
     border-bottom: none;
-    color: $textGrey;
+    color: $textColor;
   }
+
   .site-content {
     background-color: $backgroundGrey;
 
@@ -20,10 +21,10 @@
 
       .back-btn {
         text-transform: uppercase;
-        color: $textGrey;
+        color: $textColor;
         font-size: 12px;
         &:hover {
-          color: $textHover;
+          color: $textColor;
           text-decoration: none;
         }
       }
@@ -67,9 +68,9 @@
           margin-bottom: 4px;
 
           a {
-            color: $textGrey;
+            color: $textColor;
             &:hover {
-              color: $textHover;
+              color: $textColor;
             }
           }
         }
@@ -80,8 +81,11 @@
           .category {
             margin-right: 8px;
             a {
-              color: $textGrey;
+              color: $textColor;
             }
+          }
+          .date-posted {
+            color: #b6b6b6;
           }
         }
       }
@@ -95,7 +99,7 @@
           letter-spacing: $letterSpacing;
         }
         a {
-          color: $textGrey;
+          color: $textColor;
         }
         .wp-caption-text {
           // text-transform: uppercase;
@@ -138,14 +142,14 @@
       padding-bottom: 40px;
 
       .tags-label {
-        color: $textGrey;
+        color: #b6b6b6;
         text-transform: uppercase;
       }
       .post-tag {
-        color: #000;
+        color: $textColor;
         a {
           text-transform: uppercase;
-          color: #000; 
+          color: $textColor; 
         }
       }
     }

@@ -12,7 +12,7 @@ body {
   padding-top: 62px;
 }
 
-.entry-title, .entry-meta, .entry-content, .entry-summary, .blog-navigation, .wp-caption-text {
+.entry-title, .entry-meta, .entry-content, .entry-summary, .blog-navigation, .wp-caption-text, h4 {
   font-family: $fontFamily;
   letter-spacing: $letterSpacing;
   text-rendering: optimizeLegibility !important;

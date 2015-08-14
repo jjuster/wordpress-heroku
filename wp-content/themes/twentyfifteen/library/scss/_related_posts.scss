@@ -16,8 +16,8 @@
 
 		h4 {
 			text-transform: uppercase;
-			color: $textGrey;
 			font-size: $fontSizeBody;
+			text-align: center;
 		}
 		.related-posts-wrap {
 			.related-post {
@@ -57,18 +57,18 @@
 					padding: 10px 0;
 					color: white;
 					background-color: rgb(38,38,38);
-					background-color: rgba(38,38,38,0.5);
+					background-color: rgba(38,38,38,0.75);
 					font-family: $fontFamily;
 
 					.category {
 						font-size: 0.9em;
-						color: #DDD;
+						color: #b6b6b6;
 					}
 					.title {
 						font-weight: bold;
 						overflow: hidden;
 						text-overflow: ellipsis;
-						height: 1em;
+						height: 14px;
 						font-size: 12px;
 						padding: 0 22px;
 						white-space: nowrap;

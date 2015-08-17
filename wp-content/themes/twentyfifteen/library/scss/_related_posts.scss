@@ -18,7 +18,7 @@
 			font-size: 16px;
 			text-align: center;
 			margin-top: 0;
-			margin-bottom: 20px;
+			margin-bottom: 40px;
 			font-family: $fontSub;
 		}
 		.related-posts-wrap {
@@ -59,19 +59,19 @@
 					padding: 10px 0;
 					color: white;
 					background-color: rgb(38,38,38);
-					background-color: rgba(38,38,38,0.75);
+					background-color: rgba(38,38,38,0.8);
 					font-family: $fontSub;
 
 					.category {
-						font-size: 0.9em;
+						font-size: 14px;
 						color: #b6b6b6;
 					}
 					.title {
 						font-weight: bold;
 						overflow: hidden;
 						text-overflow: ellipsis;
-						height: 17px;
-						font-size: 14px;
+						height: 19px;
+						font-size: 16px;
 						padding: 0 22px;
 						white-space: nowrap;
 					}

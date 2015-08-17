@@ -1,5 +1,11 @@
 .single-post, .search-results, .archive
 {
+
+  @media (max-width: $breakpoint-lg) {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  
   a {
     text-decoration: none;
     border-bottom: none;

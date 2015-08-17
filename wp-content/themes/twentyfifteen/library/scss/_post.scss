@@ -11,12 +11,8 @@
     background-color: $backgroundGrey;
 
     .blog-navigation {
-      width: 100%;
-      position: absolute;
-      left: 0;
-      
-      padding-top: 10px;
-      padding-left: 130px;
+
+      position: relative;
       /* @media (max-width: $breakpoint-navbar-max) {
         padding: 10px 16px 10px 16px;
       } */
@@ -25,6 +21,11 @@
         text-transform: uppercase;
         color: $textColor;
         font-size: 12px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        vertical-align: top;
+        
         &:hover {
           color: $textColor;
           text-decoration: none;

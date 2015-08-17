@@ -139,9 +139,9 @@
 
   .post-tags-container
   {
-    padding-left: 10%;
-    padding-right: 10%;
-    max-width: 900px;
+    max-width: $maxWidthContent;
+    margin-left: auto;
+    margin-right: auto;
 
     .post-tags {
 
@@ -165,18 +165,17 @@
   }
   
 
-  .facebook-comments-container {
-    
-    padding-left: 10%;
-    padding-right: 10%;
-    max-width: 900px;
+  .facebook-comments-container
+  {  
+    max-width: $maxWidthContent;
+    margin-left: auto;
+    margin-right: auto;
 
     .facebook-comments {
       border-top: 1px solid #EDEDED;
       padding-top: 40px;
       padding-bottom: 40px;
     }
-
   }
   
 }

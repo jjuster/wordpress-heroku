@@ -1,8 +1,8 @@
 .related-posts-container {
 
-	// padding-left: 10%;
-  // padding-right: 10%;
-  max-width: 1000px;
+  max-width: $maxWidthContainer;
+  margin-left: auto;
+  margin-right: auto;
 
 	.related-posts {
 		 
@@ -60,7 +60,7 @@
 					color: white;
 					background-color: rgb(38,38,38);
 					background-color: rgba(38,38,38,0.75);
-					font-family: $fontMain;
+					font-family: $fontSub;
 
 					.category {
 						font-size: 0.9em;

@@ -8,12 +8,12 @@ body {
   letter-spacing: $letterSpacing;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
-  font-family: $fontFamily;
+  font-family: $fontMain;
   padding-top: 62px;
 }
 
 .entry-title, .entry-meta, .entry-content, .entry-summary, .blog-navigation, .wp-caption-text, h4 {
-  font-family: $fontFamily;
+  font-family: $fontMain;
   letter-spacing: $letterSpacing;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
@@ -30,4 +30,12 @@ span.pradux-nested {
 
 .ssk {
   color: white !important;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid black;
 }

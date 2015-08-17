@@ -80,7 +80,7 @@ $nextID = $posts[$current+1];
 <!-- [content] -->
 
 <div class="blog-navigation">
-	<a class="back-btn" href="/news">&larr; Back</a>
+	<a class="back-btn" href="/news"><div class="arrow-left"></div> Back</a>
 </div>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

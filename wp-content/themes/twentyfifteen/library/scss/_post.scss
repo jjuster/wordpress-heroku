@@ -20,15 +20,20 @@
       .back-btn {
         text-transform: uppercase;
         color: $textColor;
-        font-size: 12px;
+        font-family: $fontSub;
+        font-size: 16px;
         position: absolute;
         left: 0;
         top: 0;
         vertical-align: top;
-        
+
         &:hover {
           color: $textColor;
           text-decoration: none;
+        }
+
+        .arrow-left {
+          margin-right: 10px;
         }
       }
     }

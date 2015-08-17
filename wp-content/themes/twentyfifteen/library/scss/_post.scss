@@ -71,7 +71,7 @@
       margin-right: auto;
 
       .entry-header {
-        margin-bottom: $spacingMd;
+        margin-bottom: 40px;
         padding-left: 0;
         padding-right: 0;
 
@@ -82,9 +82,10 @@
         }
         .entry-title {
           font-size: $fontSizeTitle;
-          margin-bottom: 20px;
 
           max-width: $maxWidthContent;
+          margin-top: 40px;
+          margin-bottom: 40px;
           margin-left: auto;
           margin-right: auto;
         }

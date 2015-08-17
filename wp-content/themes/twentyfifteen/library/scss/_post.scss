@@ -13,11 +13,14 @@
     .blog-navigation {
 
       position: relative;
+      display: none;
+
       /* @media (max-width: $breakpoint-navbar-max) {
         padding: 10px 16px 10px 16px;
       } */
 
       .back-btn {
+
         text-transform: uppercase;
         color: $textColor;
         font-family: $fontSub;
@@ -69,6 +72,8 @@
 
       .entry-header {
         margin-bottom: $spacingMd;
+        padding-left: 0;
+        padding-right: 0;
 
         .top-featured-image {
           img {

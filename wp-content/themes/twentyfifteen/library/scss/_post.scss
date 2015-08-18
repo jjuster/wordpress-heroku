@@ -84,12 +84,19 @@
         }
         .entry-title {
           font-size: $fontSizeTitle;
-
           max-width: $maxWidthContent;
           margin-top: 40px;
           margin-bottom: 40px;
           margin-left: auto;
           margin-right: auto;
+
+          @media(max-width: $breakpoint-mobile-max) {
+            font-size: 0.8em;
+          }
+          @media(max-width: $breakpoint-tablet-max) {
+            font-size: 0.9em;
+          }
+
         }
         .entry-meta {
           font-size: $fontSizeMeta;

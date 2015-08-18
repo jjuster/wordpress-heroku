@@ -90,11 +90,11 @@
           margin-left: auto;
           margin-right: auto;
 
-          @media(max-width: $breakpoint-mobile-max) {
-            font-size: 0.8em;
-          }
           @media(max-width: $breakpoint-tablet-max) {
-            font-size: 0.9em;
+            font-size: $fontSizeTitle - 8px;
+          }
+          @media(max-width: $breakpoint-mobile-max) {
+            font-size: $fontSizeTitle - 16px;
           }
 
         }

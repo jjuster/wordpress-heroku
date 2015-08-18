@@ -92,10 +92,10 @@
           margin-right: auto;
 
           @media(max-width: $breakpoint-tablet-max) {
-            font-size: $fontSizeTitle - 10px;
+            font-size: $fontSizeTitle - 8px;
           }
           @media(max-width: $breakpoint-mobile-max) {
-            font-size: $fontSizeTitle - 20px;
+            font-size: $fontSizeTitle - 16px;
           }
 
         }

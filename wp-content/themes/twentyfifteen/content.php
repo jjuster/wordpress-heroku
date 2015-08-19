@@ -198,7 +198,7 @@ $nextID = $posts[$current+1];
 	</footer>
 
 	<!-- social share kit -->
-	<div class="ssk-sticky ssk-left ssk-center ssk-lg">
+	<div class="ssk-sticky ssk-left ssk-center">
 		<a href="" class="ssk ssk-facebook"></a>
 		<a href="" class="ssk ssk-twitter"></a>
 		<a href="" class="ssk ssk-pinterest"></a>

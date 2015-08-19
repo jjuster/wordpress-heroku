@@ -236,7 +236,7 @@ HTML;
 		var $window = $(window),
 				$ssk = $(".ssk-sticky"),
 				ssk_y = $(".entry-title").offset().top,
-				top_padding = 20;
+				top_padding = 60;
 
 		$window.scroll(function() {
 			if ($window.scrollTop() > ssk_y) {

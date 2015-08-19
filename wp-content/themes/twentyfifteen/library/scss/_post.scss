@@ -164,6 +164,7 @@
     max-width: $maxWidthContent;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 
     .post-tags {
 
@@ -184,6 +185,7 @@
           font-family: $fontSub;
           text-transform: uppercase;
           color: $textColor; 
+          font-size: 12px;
         }
       }
     }

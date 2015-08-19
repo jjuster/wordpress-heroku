@@ -102,7 +102,7 @@ $nextID = $posts[$current+1];
 		
 		<?php
 			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
+				
 echo <<<HTML
 <div class="ssk-wrapper">
 	<div class="ssk-sticky ssk-left">
@@ -116,6 +116,8 @@ echo <<<HTML
 	</div>
 </div>
 HTML;
+				the_title( '<h1 class="entry-title">', '</h1>' );
+
 				echo '<div class="entry-meta">';
 				echo '	<span class="category">';
 									the_category(', ');
@@ -229,6 +231,29 @@ HTML;
 	</script>
 
 	<script>
+
+	$(function() {
+		var $window = $(window),
+				$ssk = $(".ssk-sticky"),
+				ssk_y = $(".entry-title").offset().top,
+				top_padding = 20;
+
+		$window.scroll(function() {
+			if ($window.scrollTop() > ssk_y) {
+				$ssk.stop().animate({
+					marginTop: $window.scrollTop() - ssk_y + top_padding
+				});
+			}
+			else
+			{
+				$ssk.stop().animate({
+					marginTop: 0
+				});
+			}
+		});
+
+	});
+
 	$(".ssk-comment").on("click", function(e) {
 		e.preventDefault();
 		$('html,body').animate({

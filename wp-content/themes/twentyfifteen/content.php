@@ -103,6 +103,19 @@ $nextID = $posts[$current+1];
 		<?php
 			if ( is_single() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
+echo <<<HTML
+<div class="ssk-wrapper">
+	<div class="ssk-sticky ssk-left ssk-center">
+		<a href="" class="ssk ssk-facebook"></a>
+		<a href="" class="ssk ssk-twitter"></a>
+		<a href="" class="ssk ssk-pinterest"></a>
+		<a href="" class="ssk ssk-tumblr"></a>
+		<a href="" class="ssk ssk-comment">
+			<span class="fa fa-comment-o"></span>
+		</a>
+	</div>
+</div>
+HTML;
 				echo '<div class="entry-meta">';
 				echo '	<span class="category">';
 									the_category(', ');
@@ -196,17 +209,6 @@ $nextID = $posts[$current+1];
 		<?php twentyfifteen_entry_meta(); ?>
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer>
-
-	<!-- social share kit -->
-	<div class="ssk-sticky ssk-left ssk-center">
-		<a href="" class="ssk ssk-facebook"></a>
-		<a href="" class="ssk ssk-twitter"></a>
-		<a href="" class="ssk ssk-pinterest"></a>
-		<a href="" class="ssk ssk-tumblr"></a>
-		<a href="" class="ssk ssk-comment">
-			<span class="fa fa-comment-o"></span>
-		</a>
-	</div>
 
 	<script>
 	<?php if (!empty($post)): ?>

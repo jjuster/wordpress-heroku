@@ -226,4 +226,13 @@ $nextID = $posts[$current+1];
 
 	</script>
 
+	<script>
+	$(".ssk-comment").on("click", function(e) {
+		e.preventDefault();
+		$('html,body').animate({
+			scrollTop: $(".facebook-comments-container").offset().top
+		});
+	});
+	</script>
+
 </article>

@@ -45,6 +45,15 @@ span.pradux-nested {
   &.ssk-tumblr {
     padding: 15px 16px 15px 14px;
   }
+  &.ssk-comment {
+    background-color: white;
+    .fa {
+      color: #20b7ff;
+    }
+    &:hover {
+      background-color: #d3e5ec;
+    }
+  }
 }
 
 .arrow-left {

@@ -239,16 +239,11 @@ HTML;
 				top_padding = 60;
 
 		$window.scroll(function() {
-			if ($window.scrollTop() > ssk_y - 30) {
-				$ssk.stop().animate({
-					marginTop: $window.scrollTop() - ssk_y + top_padding
-				});
+			if ($window.scrollTop() > ssk_y - 60) {
+				$ssk.css("margin-top", ($window.scrollTop() - ssk_y + top_padding) + "px");
 			}
-			else
-			{
-				$ssk.stop().animate({
-					marginTop: 0
-				});
+			else {
+				$ssk.css("margin-top", 0);
 			}
 		});
 

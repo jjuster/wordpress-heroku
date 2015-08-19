@@ -34,7 +34,11 @@ span.pradux-nested {
 
 .ssk {
   color: white !important;
-  padding: 12px;
+  padding: 15px;
+  &:before {
+    font-size: 15px;
+  }
+
   &.ssk-facebook {
     // padding: 9px 12px 9px 6px;
   }

@@ -168,7 +168,7 @@ $nextID = $posts[$current+1];
 	<? if ($num_related_posts): ?>
 	<div class="related-posts-container">
 		<div class="related-posts">
-			<h4>Related Posts</h4>
+			<h4>Related Stories</h4>
 
 			<div class="related-posts-wrap">
 				

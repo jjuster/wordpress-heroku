@@ -105,7 +105,7 @@ $nextID = $posts[$current+1];
 				the_title( '<h1 class="entry-title">', '</h1>' );
 echo <<<HTML
 <div class="ssk-wrapper">
-	<div class="ssk-sticky ssk-left ssk-center">
+	<div class="ssk-sticky ssk-left">
 		<a href="" class="ssk ssk-facebook"></a>
 		<a href="" class="ssk ssk-twitter"></a>
 		<a href="" class="ssk ssk-pinterest"></a>

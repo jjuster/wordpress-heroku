@@ -32,6 +32,15 @@ span.pradux-nested {
   width: 100%;
 }
 
+.ssk-wrapper {
+  position: relative;
+  margin-top: 40px;
+  .ssk-sticky {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
 .ssk {
   color: white !important;
   padding: 15px;

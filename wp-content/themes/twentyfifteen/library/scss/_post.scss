@@ -174,12 +174,15 @@
       border-top: 1px solid #EDEDED;
 
       .tags-label {
+        font-family: $fontMain;
         color: #b6b6b6;
         text-transform: uppercase;
       }
       .post-tag {
         color: $textColor;
         a {
+          font-weight: normal;
+          font-family: $fontSub;
           text-transform: uppercase;
           color: $textColor; 
         }

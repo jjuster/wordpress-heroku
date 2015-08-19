@@ -147,7 +147,7 @@ $nextID = $posts[$current+1];
 	<?php if ($num_post_tags > 0): ?>
 	<div class="post-tags-container">
 		<div class="post-tags">
-			<span class="tags-label">TAGS: </span>
+			<span class="tags-label">In This Story: </span>
 			<?php foreach ($post_tags as $i => $post_tag): ?>
 				<span class="post-tag">
 					<a href="<?=get_tag_link($post_tag->term_id)?>">

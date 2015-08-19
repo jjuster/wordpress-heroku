@@ -203,6 +203,9 @@ $nextID = $posts[$current+1];
 		<a href="" class="ssk ssk-twitter"></a>
 		<a href="" class="ssk ssk-pinterest"></a>
 		<a href="" class="ssk ssk-tumblr"></a>
+		<a href="" class="ssk ssk-comment">
+			<span class="fa fa-comment-o"></span>
+		</a>
 	</div>
 
 	<script>

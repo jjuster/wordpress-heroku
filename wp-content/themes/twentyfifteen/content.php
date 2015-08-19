@@ -232,6 +232,8 @@ HTML;
 
 	<script>
 
+	var animate_duration = 50;
+
 	$(function() {
 		var $window = $(window),
 				$ssk = $(".ssk-sticky"),
@@ -240,10 +242,15 @@ HTML;
 
 		$window.scroll(function() {
 			if ($window.scrollTop() > ssk_y - 60) {
-				$ssk.css("margin-top", ($window.scrollTop() - ssk_y + top_padding) + "px");
+				$ssk.stop().animate({
+					marginTop: $window.scrollTop() - ssk_y + top_padding
+				}, animate_duration);
 			}
-			else {
-				$ssk.css("margin-top", 0);
+			else
+			{
+				$ssk.stop().animate({
+					marginTop: 0
+				}, animate_duration);
 			}
 		});
 

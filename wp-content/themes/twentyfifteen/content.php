@@ -239,7 +239,7 @@ HTML;
 				top_padding = 60;
 
 		$window.scroll(function() {
-			if ($window.scrollTop() > ssk_y) {
+			if ($window.scrollTop() > ssk_y - 30) {
 				$ssk.stop().animate({
 					marginTop: $window.scrollTop() - ssk_y + top_padding
 				});

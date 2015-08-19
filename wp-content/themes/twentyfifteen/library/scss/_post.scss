@@ -141,6 +141,7 @@
           font-size: 12px;
           padding-top: 2px;
           padding-bottom: 0;
+          font-family: $fontSub;
         }
 
         .pradux-embed + .wp-caption-text {
@@ -175,12 +176,12 @@
       padding-top: 40px;
       padding-bottom: 40px;
       font-family: $fontSub;
-      font-size: 14px;
+      font-size: 13px;
       border-top: 1px solid #EDEDED;
 
       .tags-label {
         font-family: $fontMain;
-        color: #b6b6b6;
+        color: #20b7ff;
       }
       .post-tag {
         color: $textColor;

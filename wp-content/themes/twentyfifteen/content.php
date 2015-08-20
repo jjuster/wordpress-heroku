@@ -174,11 +174,13 @@ HTML;
 	</div>
 	<?php endif; ?>
 
+	<?php if (is_single()): ?>
 	<div class="facebook-comments-container">
 		<div class="facebook-comments">
 		<div class="fb-comments" data-href="<?=get_permalink()?>" data-width="100%" data-numposts="5"></div>
 		</div>
 	</div>
+	<?php endif; ?>
 
 	<? if ($num_related_posts): ?>
 	<div class="related-posts-container">

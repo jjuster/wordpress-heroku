@@ -232,7 +232,7 @@ HTML;
 
 	<script>
 
-	var animate_duration = 50;
+	var animate_duration = 200;
 
 	$(function() {
 		var $window = $(window),

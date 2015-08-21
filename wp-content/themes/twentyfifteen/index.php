@@ -14,7 +14,7 @@
  * @since Twenty Fifteen 1.0
  */
 
-get_header(); ?>
+ ?>
 
 	<!-- [index] -->
 	<div id="primary" class="content-area">

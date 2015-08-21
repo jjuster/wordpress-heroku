@@ -32,6 +32,8 @@ function extract_img_src($html) {
 }
 
 $posts = new WP_Query('posts_per_page=10');
+$featured_posts = array($posts[4], $posts[7], $posts[9]);
+
 $post_ids = array();
 $post_debug = array();
 
@@ -43,11 +45,42 @@ get_header(); ?>
 
 			<div class="featured-post-container">
 
-				<?php if ( $posts->have_posts() ) : ?>
-					
+				<?php if ( $featured_posts->have_posts() ) : 
 
-					<?php
-					// Start the loop.
+					while ( $featured_posts->have_posts() ) : $featured_posts->the_post();
+
+						$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
+						$post->permalink = get_permalink($post->ID);
+						$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
+						$post->title = htmlencode($post->post_title);
+						$post_ids[] = $post->ID;
+						$post_debug[] = $post;
+
+						echo <<<HTML
+<a class="homepage-post" href="{$post->permalink}">
+	<span style="background-image:url({$post->featured_image})"></span>
+	<div class="bottom-text">
+		<div class="category">{$post->category}</div>
+		<div class="title">{$post->title}</div>
+	</div>
+</a>
+HTML;
+
+					endwhile; 
+				endif; ?>
+				
+
+			</div>
+
+			<div class="separator-wrap">
+				<hr>
+			</div>
+
+			<!-- Recent Posts -->
+			<div class="recent-posts-container featured-post-container">
+
+				<?php if ( $posts->have_posts() ) : 
+
 					while ( $posts->have_posts() ) : $posts->the_post();
 
 						$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
@@ -67,16 +100,8 @@ get_header(); ?>
 </a>
 HTML;
 
-					endwhile;
-
-
-
-				// If no content, include the "No posts found" template.
-				else :
-					get_template_part( 'content', 'none' );
-
-				?>
-				<?php endif; ?>
+					endwhile; 
+				endif; ?>
 
 			</div>
 

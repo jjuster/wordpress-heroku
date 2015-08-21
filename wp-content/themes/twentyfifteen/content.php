@@ -78,10 +78,11 @@ $nextID = $posts[$current+1];
 ?>
 
 <!-- [content] -->
-
-<div class="blog-navigation">
+<?php if ( is_single() ): ?>
+<div class="blog-navigation ">
 	<a class="back-btn" href="/news"><div class="arrow-left"></div> Back</a>
 </div>
+<?php endif; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
@@ -159,7 +160,7 @@ HTML;
 		endif;
 	?>
 
-	<?php if ($num_post_tags > 0): ?>
+	<?php if ($num_post_tags > 0 && is_single()): ?>
 	<div class="post-tags-container">
 		<div class="post-tags">
 			<span class="tags-label">In This Story: </span>
@@ -182,7 +183,7 @@ HTML;
 	</div>
 	<?php endif; ?>
 
-	<? if ($num_related_posts): ?>
+	<? if ($num_related_posts && is_single()): ?>
 	<div class="related-posts-container">
 		<div class="related-posts">
 			<h4>Related Stories</h4>

@@ -14,6 +14,20 @@
  * @since Twenty Fifteen 1.0
  */
 
+function extract_img_src($html) {
+	if (empty($html)) {
+		return '';
+	}
+
+	$doc = new DOMDocument();
+	$doc->loadHTML($html);
+	$imgs = $doc->getElementsByTagName('img');
+	foreach($imgs as $img) {
+		return $img->getAttribute('src');
+	}
+	return '';
+}
+
 $posts = new WP_Query('posts_per_page=10');
 $post_ids = array();
 $post_debug = array();
@@ -25,15 +39,21 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 		<?php if ( $posts->have_posts() ) : ?>
-
 			
 
 			<?php
 			// Start the loop.
 			while ( $posts->have_posts() ) : $posts->the_post();
 
+				$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
 				$post_ids[] = $post->ID;
 				$post_debug[] = $post;
+
+				echo <<<HTML
+<div class="homepage-post">
+	<img src="{$post->featured_image}">
+</div>
+HTML;
 
 			endwhile;
 

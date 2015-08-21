@@ -1,0 +1,48 @@
+.homepage-content {
+	.featured-post-container {
+		.homepage-post {
+			width: 32.8%;
+			display: inline-block;
+			height: 240px;
+			overflow: hidden;
+			position: relative;
+
+			span {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-position-x: 50%;
+				background-size: cover;
+			}
+			.bottom-text {
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				text-transform: uppercase;
+				text-align: center;
+				padding: 10px 0;
+				color: white;
+				background-color: rgb(38,38,38);
+				background-color: rgba(38,38,38,0.8);
+				// font-family: $fontSub;
+
+				.category {
+					font-size: 13px;
+					color: #b6b6b6;
+					font-weight: normal;
+				}
+				.title {
+					font-weight: normal;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					height: 16px;
+					font-size: 13px;
+					padding: 0 22px;
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+}

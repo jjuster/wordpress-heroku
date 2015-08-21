@@ -14,6 +14,9 @@
  * @since Twenty Fifteen 1.0
  */
 
+function htmlencode($str) {
+	return !empty($str) ? htmlspecialchars($str, ENT_QUOTES, 'UTF-8', false) : '';
+}
 function extract_img_src($html) {
 	if (empty($html)) {
 		return '';
@@ -35,36 +38,47 @@ $post_debug = array();
 get_header(); ?>
 
 	<!-- [index] -->
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area homepage-content">
 		<main id="main" class="site-main" role="main">
 
-		<?php if ( $posts->have_posts() ) : ?>
-			
+			<div class="featured-post-container">
 
-			<?php
-			// Start the loop.
-			while ( $posts->have_posts() ) : $posts->the_post();
+				<?php if ( $posts->have_posts() ) : ?>
+					
 
-				$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
-				$post_ids[] = $post->ID;
-				$post_debug[] = $post;
+					<?php
+					// Start the loop.
+					while ( $posts->have_posts() ) : $posts->the_post();
 
-				echo <<<HTML
-<div class="homepage-post">
-	<img src="{$post->featured_image}">
-</div>
+						$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
+						$post->permalink = get_permalink($post->ID);
+						$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
+						$post->title = htmlencode($post->post_title);
+						$post_ids[] = $post->ID;
+						$post_debug[] = $post;
+
+						echo <<<HTML
+<a class="homepage-post" href="{$post->permalink}">
+	<span style="background-image:url({$post->featured_image})"></span>
+	<div class="bottom-text">
+		<div class="category">{$post->category}</div>
+		<div class="title">{$post->title}</div>
+	</div>
+</a>
 HTML;
 
-			endwhile;
+					endwhile;
 
 
 
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'content', 'none' );
+				// If no content, include the "No posts found" template.
+				else :
+					get_template_part( 'content', 'none' );
 
-		endif;
-		?>
+				?>
+				<?php endif; ?>
+
+			</div>
 
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->

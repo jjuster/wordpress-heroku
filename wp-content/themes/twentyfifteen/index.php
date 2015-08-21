@@ -31,8 +31,27 @@ function extract_img_src($html) {
 	return '';
 }
 
-$posts = new WP_Query('posts_per_page=10');
-$featured_posts = array($posts[4], $posts[7], $posts[9]);
+function grabExtraPostData(&$post)
+{
+	$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
+	$post->permalink = get_permalink($post->ID);
+	$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
+	$post->title = htmlencode($post->post_title);
+}
+
+$recent_posts = new WP_Query('posts_per_page=24');
+if ($recent_posts->have_posts()) {
+	while ($recent_posts->have_posts()) {
+		$recent_posts->the_post();
+		grabExtraPostData($post);
+		
+		$post_ids[] = $post->ID;
+		$post_debug[] = $post;
+	}
+}
+
+
+// $featured_posts = array($posts[4], $posts[7], $posts[9]);
 
 $post_ids = array();
 $post_debug = array();
@@ -45,16 +64,16 @@ get_header(); ?>
 
 			<div class="featured-post-container">
 
-				<?php if ( $featured_posts->have_posts() ) : 
+				<?php if ( $recent_posts->have_posts() ) : 
 
-					while ( $featured_posts->have_posts() ) : $featured_posts->the_post();
+					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
 
-						$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
-						$post->permalink = get_permalink($post->ID);
-						$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
-						$post->title = htmlencode($post->post_title);
-						$post_ids[] = $post->ID;
-						$post_debug[] = $post;
+						// $post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
+						// $post->permalink = get_permalink($post->ID);
+						// $post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
+						// $post->title = htmlencode($post->post_title);
+						// $post_ids[] = $post->ID;
+						// $post_debug[] = $post;
 
 						echo <<<HTML
 <a class="homepage-post" href="{$post->permalink}">
@@ -79,16 +98,16 @@ HTML;
 			<!-- Recent Posts -->
 			<div class="recent-posts-container featured-post-container">
 
-				<?php if ( $posts->have_posts() ) : 
+				<?php if ( $recent_posts->have_posts() ) : 
 
-					while ( $posts->have_posts() ) : $posts->the_post();
+					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
 
-						$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
-						$post->permalink = get_permalink($post->ID);
-						$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
-						$post->title = htmlencode($post->post_title);
-						$post_ids[] = $post->ID;
-						$post_debug[] = $post;
+						// $post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
+						// $post->permalink = get_permalink($post->ID);
+						// $post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
+						// $post->title = htmlencode($post->post_title);
+						// $post_ids[] = $post->ID;
+						// $post_debug[] = $post;
 
 						echo <<<HTML
 <a class="homepage-post" href="{$post->permalink}">

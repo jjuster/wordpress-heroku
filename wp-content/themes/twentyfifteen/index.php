@@ -147,9 +147,9 @@ function enable_masonry()
 		itemSelector: '.homepage-post.masonry'
 	});
 
-	$grid.imagesLoaded().progress( function() {
-		$grid.masonry('layout');
-	});
+	// $grid.imagesLoaded().progress( function() {
+	// 	$grid.masonry('layout');
+	// });
 }
 
 // enable_masonry();

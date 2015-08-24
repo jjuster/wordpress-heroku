@@ -115,12 +115,9 @@ HTML;
 
 					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
 
-						// $post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
-						// $post->permalink = get_permalink($post->ID);
-						// $post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
-						// $post->title = htmlencode($post->post_title);
-						// $post_ids[] = $post->ID;
-						// $post_debug[] = $post;
+						if (empty($post->featured_image)) {
+							continue;
+						}
 
 						echo <<<HTML
 

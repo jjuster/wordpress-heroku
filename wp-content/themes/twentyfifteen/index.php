@@ -139,15 +139,20 @@ var post_debug = <?=json_encode($post_debug)?>;
 </script>
 
 <script>
-var $grid = $('.recent-posts-container').masonry({
-	percentPosition: true,
-	columnWidth: '.grid-sizer',
-	itemSelector: '.homepage-post'
-});
+function enable_masonry()
+{
+	var $grid = $('.recent-posts-container').masonry({
+		percentPosition: true,
+		columnWidth: '.grid-sizer',
+		itemSelector: '.homepage-post'
+	});
 
-$grid.imagesLoaded().progress( function() {
-	$grid.masonry('layout');
-});
+	$grid.imagesLoaded().progress( function() {
+		$grid.masonry('layout');
+	});
+}
+
+// enable_masonry();
 </script>
 
 <?php get_footer(); ?>

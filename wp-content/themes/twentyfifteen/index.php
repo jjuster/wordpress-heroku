@@ -77,7 +77,7 @@ get_header(); ?>
 
 						echo <<<HTML
 <a class="homepage-post featured" href="{$post->permalink}">
-	<span style="background-image:url({$post->featured_image})"></span>
+	<span class="post-image" style="background-image:url({$post->featured_image})"></span>
 	<div class="bottom-text">
 		<div class="category">{$post->category}</div>
 		<div class="title">{$post->title}</div>
@@ -113,7 +113,7 @@ HTML;
 
 <div class="homepage-post">
 	<a href="{$post->permalink}">
-		<span style="background-image:url({$post->featured_image})"></span>
+		<img style="background-image:url({$post->featured_image})" />
 	</a>
 	<div class="bottom-text">
 		<a href="{$post->permalink}" class="category">{$post->category}</a>

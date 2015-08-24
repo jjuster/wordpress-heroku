@@ -39,6 +39,17 @@ function grabExtraPostData(&$post)
 	$post->title = htmlencode($post->post_title);
 }
 
+$featured_posts = new WP_Query('posts_per_page=3');
+if ($featured_posts->have_posts()) {
+	while ($featured_posts->have_posts()) {
+		$featured_posts->the_post();
+		grabExtraPostData($post);
+		
+		$post_ids[] = $post->ID;
+		$post_debug[] = $post;
+	}
+}
+
 $recent_posts = new WP_Query('posts_per_page=24');
 if ($recent_posts->have_posts()) {
 	while ($recent_posts->have_posts()) {
@@ -64,9 +75,9 @@ get_header(); ?>
 
 			<div class="featured-post-container">
 
-				<?php if ( $recent_posts->have_posts() ) : 
+				<?php if ( $featured_posts->have_posts() ) : 
 
-					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
+					while ( $featured_posts->have_posts() ) : $featured_posts->the_post();
 
 						// $post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
 						// $post->permalink = get_permalink($post->ID);

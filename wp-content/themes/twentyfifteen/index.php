@@ -96,7 +96,8 @@ HTML;
 			</div>
 
 			<!-- Recent Posts -->
-			<div class="recent-posts-container">
+			<div class="recent-posts-container js-masonry" 
+				data-masonry-options='{"itemSelector": ".homepage-post"}'>
 
 				<?php if ( $recent_posts->have_posts() ) : 
 
@@ -111,7 +112,7 @@ HTML;
 
 						echo <<<HTML
 
-<div class="homepage-post masonry">
+<div class="homepage-post">
 	<a href="{$post->permalink}">
 		<img src="{$post->featured_image}" data-pradux-ignore="true">
 	</a>

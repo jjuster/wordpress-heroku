@@ -113,7 +113,7 @@ HTML;
 
 <div class="homepage-post">
 	<a href="{$post->permalink}">
-		<img style="background-image:url({$post->featured_image})" />
+		<img src="{$post->featured_image}">
 	</a>
 	<div class="bottom-text">
 		<a href="{$post->permalink}" class="category">{$post->category}</a>

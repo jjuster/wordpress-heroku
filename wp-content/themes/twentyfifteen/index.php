@@ -39,6 +39,7 @@ function grabExtraPostData(&$post)
 	$post->title = htmlencode($post->post_title);
 }
 
+// load top 3 featured posts
 $featured_post_opts = array(
 	'posts_per_page' => 3,
 	'post__in' => array(1, 232, 247)
@@ -55,7 +56,13 @@ if ($featured_posts->have_posts()) {
 	}
 }
 
-$recent_posts = new WP_Query('posts_per_page=24');
+// load rest of posts
+$recent_post_opts = array(
+	'cat' => '-1',
+	'posts_per_page' => 24
+);
+
+$recent_posts = new WP_Query( $recent_post_opts );
 if ($recent_posts->have_posts()) {
 	while ($recent_posts->have_posts()) {
 		$recent_posts->the_post();

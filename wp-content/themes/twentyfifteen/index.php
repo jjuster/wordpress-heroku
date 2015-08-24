@@ -111,7 +111,7 @@ HTML;
 
 						echo <<<HTML
 
-<div class="homepage-post">
+<div class="homepage-post masonry">
 	<a href="{$post->permalink}">
 		<img src="{$post->featured_image}" data-pradux-ignore="true">
 	</a>
@@ -144,7 +144,7 @@ function enable_masonry()
 	var $grid = $('.recent-posts-container').masonry({
 		percentPosition: true,
 		columnWidth: '.grid-sizer',
-		itemSelector: '.homepage-post'
+		itemSelector: '.homepage-post.masonry'
 	});
 
 	$grid.imagesLoaded().progress( function() {

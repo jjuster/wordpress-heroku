@@ -107,6 +107,7 @@ HTML;
 			</div>
 
 			<!-- Recent Posts -->
+			<h4>Most Recent Posts</h4>
 			<div class="recent-posts-container js-masonry" 
 				data-masonry-options='{"itemSelector": ".homepage-post"}'>
 

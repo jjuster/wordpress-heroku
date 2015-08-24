@@ -1,4 +1,5 @@
-$column-width: 32.8%;
+$column-width-featured: 32.8%;
+$column-width-recent: 33%;
 
 .homepage-content {
 
@@ -10,14 +11,15 @@ $column-width: 32.8%;
 			}
 		}
 
-		.grid-sizer {
-			width: $column-width;
-		}
+		// .grid-sizer {
+		// 	width: $column-width;
+		// }
 
 		.homepage-post {
-			width: $column-width;
+			width: $column-width-recent;
 			display: inline-block;
 			margin: 0 0 12px 0px;
+			padding:	4px;
 
 			a {
 				display: block;
@@ -52,11 +54,12 @@ $column-width: 32.8%;
 			}
 
 			&.featured {
-
+				width: $column-width-featured;
 				position: relative;
 				height: 240px;
 				overflow: hidden;
 				margin: 0 3px;
+				padding: 0;
 
 				span.post-image {
 					width: 100%;

@@ -2,6 +2,14 @@ $column-width: 32.8%;
 
 .homepage-content {
 
+		.recent-posts-container {
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+		}
+
 		.grid-sizer {
 			width: $column-width;
 		}

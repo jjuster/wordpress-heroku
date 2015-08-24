@@ -5,14 +5,17 @@ $column-width: 32.8%;
 		.grid-sizer {
 			width: $column-width;
 		}
-		
+
 		.homepage-post {
 			width: $column-width;
 			display: inline-block;
-			margin: 0 3px;
+			margin: 0 3px 12px 3px;
 
-			img {
-				max-width: 100%;
+			a {
+				display: block;
+				img {
+					max-width: 100%;
+				}
 			}
 
 			.bottom-text {
@@ -45,6 +48,7 @@ $column-width: 32.8%;
 				position: relative;
 				height: 240px;
 				overflow: hidden;
+				margin: 0 3px;
 
 				span.post-image {
 					width: 100%;

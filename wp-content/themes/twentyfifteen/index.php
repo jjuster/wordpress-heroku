@@ -130,6 +130,9 @@ HTML;
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+
 <script>
 var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;

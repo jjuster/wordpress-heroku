@@ -39,7 +39,12 @@ function grabExtraPostData(&$post)
 	$post->title = htmlencode($post->post_title);
 }
 
-$featured_posts = new WP_Query('posts_per_page=3');
+$featured_post_opts = array(
+	'posts_per_page' => 3,
+	'post__in' => array(1, 232, 247)
+);
+
+$featured_posts = new WP_Query( $featured_post_opts );
 if ($featured_posts->have_posts()) {
 	while ($featured_posts->have_posts()) {
 		$featured_posts->the_post();

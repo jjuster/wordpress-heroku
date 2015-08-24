@@ -18,23 +18,19 @@
 				background-size: cover;
 			}
 			.bottom-text {
+
 				width: 100%;
-				position: absolute;
-				bottom: 0;
 				text-transform: uppercase;
 				text-align: center;
 				padding: 10px 0;
-				color: white;
-				background-color: rgb(38,38,38);
-				background-color: rgba(38,38,38,0.8);
-				// font-family: $fontSub;
 
 				.category {
 					font-size: 13px;
-					color: #b6b6b6;
+					color: $textGrey;
 					font-weight: normal;
 				}
 				.title {
+					color: black;
 					font-weight: normal;
 					overflow: hidden;
 					text-overflow: ellipsis;
@@ -42,6 +38,20 @@
 					font-size: 13px;
 					padding: 0 22px;
 					white-space: nowrap;
+				}
+			}
+
+			&.featured {
+				.bottom-text {
+					position: absolute;
+					bottom: 0;
+					color: white;
+					background-color: rgb(38,38,38);
+					background-color: rgba(38,38,38,0.8);
+
+					.title {
+						color: white;
+					}
 				}
 			}
 		}

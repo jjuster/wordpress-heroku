@@ -76,7 +76,7 @@ get_header(); ?>
 						// $post_debug[] = $post;
 
 						echo <<<HTML
-<a class="homepage-post" href="{$post->permalink}">
+<a class="homepage-post featured" href="{$post->permalink}">
 	<span style="background-image:url({$post->featured_image})"></span>
 	<div class="bottom-text">
 		<div class="category">{$post->category}</div>
@@ -110,13 +110,16 @@ HTML;
 						// $post_debug[] = $post;
 
 						echo <<<HTML
-<a class="homepage-post" href="{$post->permalink}">
-	<span style="background-image:url({$post->featured_image})"></span>
+
+<div class="homepage-post">
+	<a href="{$post->permalink}">
+		<span style="background-image:url({$post->featured_image})"></span>
+	</a>
 	<div class="bottom-text">
-		<div class="category">{$post->category}</div>
-		<div class="title">{$post->title}</div>
+		<a href="{$post->permalink}" class="category">{$post->category}</a>
+		<a href="{$post->permalink}" class="title">{$post->title}</a>
 	</div>
-</a>
+</div>
 HTML;
 
 					endwhile; 

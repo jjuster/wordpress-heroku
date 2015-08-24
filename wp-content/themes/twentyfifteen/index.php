@@ -121,7 +121,7 @@ HTML;
 					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
 
 						if (empty($post->featured_image)) {
-							continue;
+							// continue;
 						}
 
 						echo <<<HTML

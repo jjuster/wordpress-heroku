@@ -96,7 +96,7 @@ HTML;
 			</div>
 
 			<!-- Recent Posts -->
-			<div class="recent-posts-container featured-post-container">
+			<div class="recent-posts-container">
 
 				<?php if ( $recent_posts->have_posts() ) : 
 
@@ -131,8 +131,20 @@ HTML;
 	</div><!-- .content-area -->
 
 <script>
-	var post_ids = <?=json_encode($post_ids)?>;
-	var post_debug = <?=json_encode($post_debug)?>;
+var post_ids = <?=json_encode($post_ids)?>;
+var post_debug = <?=json_encode($post_debug)?>;
+</script>
+
+<script>
+var $grid = $('.recent-posts-container').masonry({
+	percentPosition: true,
+	columnWidth: '.grid-sizer',
+	itemSelector: '.homepage-post'
+});
+
+$grid.imagesLoaded().progress( function() {
+	$grid.masonry('layout');
+});
 </script>
 
 <?php get_footer(); ?>

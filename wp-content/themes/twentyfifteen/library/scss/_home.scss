@@ -1,7 +1,13 @@
+$column-width: 32.8%;
+
 .homepage-content {
 
+		.grid-sizer {
+			width: $column-width;
+		}
+		
 		.homepage-post {
-			width: 32.8%;
+			width: $column-width;
 			display: inline-block;
 			margin: 0 3px;
 
@@ -30,6 +36,7 @@
 					font-size: 13px;
 					padding: 0 22px;
 					white-space: nowrap;
+					display: block;
 				}
 			}
 

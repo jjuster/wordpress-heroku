@@ -28,6 +28,9 @@
 	<script src="//use.typekit.net/iwp3tnm.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
+
 	<?php wp_head(); ?>
 </head>
 

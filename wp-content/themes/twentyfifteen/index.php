@@ -54,6 +54,7 @@ $recent_post_opts = array(
 if (!empty($_GET['xhr'])) {
 
 	$recent_post_opts['offset'] = (int)$_GET['offset'];
+	$recent_post_opts['posts_per_page'] = 9;
 	$posts_query = new WP_Query($recent_post_opts);
 	$posts = array();
 
@@ -236,10 +237,12 @@ function load_more()
 			});
 
 			$(".recent-posts-container").append($newposts);
-			$newposts.imagesLoaded(function() {
+
+			$(".masonry-new").imagesLoaded(function() {
 				$grid.masonry('appended', $(".masonry-new"));
 			});
-			
+
+			num_posts_loaded += posts.length;
 
 			// $(".homepage-post").removeClass("masonry-new")
 		}

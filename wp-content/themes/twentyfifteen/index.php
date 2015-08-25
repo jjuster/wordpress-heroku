@@ -217,6 +217,7 @@ function load_more()
 			console.log("got response: ", response);
 
 			var posts = response.posts;
+			var $posts = [];
 			
 			$.each(posts, function(i, post) {
 
@@ -229,11 +230,15 @@ function load_more()
 					}
 				});
 
+				$posts.push($post);
+
 				// $(".recent-posts-container").append($post);
 				// $(".recent-posts-container").append($post).masonry('appended', $post);
-				$(".recent-posts-container").masonry('appended', $post);
+				// $(".recent-posts-container").masonry('appended', $post);
 
 			});
+
+			$(".recent-posts-container").append($posts);
 		}
 	});
 }

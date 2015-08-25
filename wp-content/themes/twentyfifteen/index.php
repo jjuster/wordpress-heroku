@@ -222,14 +222,14 @@ function load_more()
 			
 			$.each(posts, function(i, post) {
 
-				var $post = post_template({
+				var $post = $(post_template({
 					post: {
 						permalink: post.permalink,
 						featured_image: post.featured_image,
 						category: post.category,
 						title: post.title
 					}
-				});
+				}));
 
 				$newposts.push($post);
 
@@ -249,7 +249,7 @@ function load_more()
 			// $(".recent-posts-container").masonry('appended', $posts);
 			// $(".recent-posts-container").masonry('appended', $(".recent-posts-container .homepage-post"));
 
-			
+
 		}
 	});
 }

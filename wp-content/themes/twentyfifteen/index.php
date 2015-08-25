@@ -236,7 +236,10 @@ function load_more()
 			});
 
 			$(".recent-posts-container").append($newposts);
-			$grid.masonry('appended', $(".masonry-new"));
+			$newposts.imagesLoaded(function() {
+				$grid.masonry('appended', $(".masonry-new"));
+			});
+			
 
 			// $(".homepage-post").removeClass("masonry-new")
 		}

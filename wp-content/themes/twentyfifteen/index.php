@@ -201,6 +201,7 @@ var post_debug = <?=json_encode($post_debug)?>;
 var recent_post_opts = <?=json_encode($recent_post_opts)?>;
 var num_posts_loaded = <?=$posts_loaded?>;
 var post_template = _.template( $("#tmpl-post").html() );
+var $grid;
 </script>
 
 <script>
@@ -230,7 +231,7 @@ function load_more()
 						title: post.title
 					}
 				}));
-
+				$post.addClass("masonry-new");
 				$newposts.push($post);
 
 				// $(".recent-posts-container").append($post);
@@ -257,10 +258,8 @@ function load_more()
 
 <script>
 function enable_masonry()
-{
-	// data-masonry-options='{"itemSelector": ".homepage-post"}'
-	
-	window.masonry = $('.recent-posts-container').masonry({
+{	
+	$grid = $('.recent-posts-container').masonry({
 		itemSelector: '.homepage-post'
 	});
 

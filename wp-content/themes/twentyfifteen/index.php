@@ -218,7 +218,7 @@ function load_more()
 
 			var posts = response.posts;
 			
-			$.each(posts, function(post) {
+			$.each(posts, function(i, post) {
 				
 				console.log("post:",post);
 

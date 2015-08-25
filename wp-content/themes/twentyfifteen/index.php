@@ -186,7 +186,7 @@ HTML;
 <script type="text/x-underscore" id="tmpl-post">
 <div class="homepage-post">
 	<a href="<%= post.permalink %>">
-		<img src="<%= post.featured_image =>" data-pradux-ignore="true">
+		<img src="<%= post.featured_image %>" data-pradux-ignore="true">
 	</a>
 	<div class="bottom-text">
 		<a href="<%= post.permalink %>" class="category"><%= post.category %></a>

@@ -148,8 +148,8 @@ HTML;
 
 			<!-- Recent Posts -->
 			<h4>Most Recent Posts</h4>
-			<div class="recent-posts-container js-masonry" 
-				data-masonry-options='{"itemSelector": ".homepage-post"}'>
+			<!-- <div class="recent-posts-container js-masonry" data-masonry-options='{"itemSelector": ".homepage-post"}'> -->
+			<div class="recent-posts-container">
 
 				<?php if ( $recent_posts->have_posts() ) : 
 
@@ -258,11 +258,17 @@ function load_more()
 <script>
 function enable_masonry()
 {
-	var $grid = $('.recent-posts-container').masonry({
+	// data-masonry-options='{"itemSelector": ".homepage-post"}'
+	
+	window.masonry = $('.recent-posts-container').masonry({
+		itemSelector: '.homepage-post'
+	});
+
+	/* var $grid = $('.recent-posts-container').masonry({
 		percentPosition: true,
 		columnWidth: '.grid-sizer',
 		itemSelector: '.homepage-post.masonry'
-	});
+	}); */
 
 	// $grid.imagesLoaded().progress( function() {
 	// 	$grid.masonry('layout');

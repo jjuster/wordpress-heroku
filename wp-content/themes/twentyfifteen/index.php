@@ -217,7 +217,6 @@ function load_more()
 		},
 		dataType: "json",
 		success: function(response) {
-			console.log("got response: ", response);
 
 			var posts = response.posts;
 			$newposts = [];
@@ -234,7 +233,6 @@ function load_more()
 				}));
 				$post.addClass("masonry-new");
 				$newposts.push($post);
-
 			});
 
 			$(".recent-posts-container").append($newposts);

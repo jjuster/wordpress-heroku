@@ -188,6 +188,7 @@ var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;
 var recent_post_opts = <?=json_encode($recent_post_opts)?>;
 var num_posts_loaded = <?=$posts_loaded?>;
+var post_template = $("#tmpl-post").html();
 </script>
 
 <script>
@@ -204,9 +205,9 @@ function load_more()
 			console.log("got response: ", response);
 
 			var posts = response.posts;
-			var template = $("#tmpl-post").html();
+			
 			$.each(posts, function(post) {
-				$(".recent-posts-container").append(_.template({post: post}));
+				$(".recent-posts-container").append(_.template(post_template, {post: post}));
 			});
 		}
 	});

@@ -254,7 +254,7 @@ function enable_masonry()
 	});
 }
 
-$grid.imagesLoaded(function() {
+$('.recent-posts-container').imagesLoaded(function() {
 	enable_masonry();
 });
 </script>

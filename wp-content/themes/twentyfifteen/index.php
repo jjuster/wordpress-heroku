@@ -204,6 +204,7 @@ var post_template = _.template( $("#tmpl-post").html() );
 </script>
 
 <script>
+var $newposts = [];
 function load_more()
 {
 	$.ajax({
@@ -217,7 +218,7 @@ function load_more()
 			console.log("got response: ", response);
 
 			var posts = response.posts;
-			var $posts = [];
+			// var $posts = [];
 			
 			$.each(posts, function(i, post) {
 
@@ -230,22 +231,25 @@ function load_more()
 					}
 				});
 
-				$posts.push($post);
+				$newposts.push($post);
 
 				// $(".recent-posts-container").append($post);
 				// $(".recent-posts-container").append($post).masonry('appended', $post);
 				// $(".recent-posts-container").masonry('appended', $post);
 
 			});
-			$(".recent-posts-container").append($posts).imagesLoaded(function() {
+			/* $(".recent-posts-container").append($posts).imagesLoaded(function() {
 				$(".recent-posts-container").masonry('appended', $posts);
-			});
+			}); */
+
 			/* $posts.imagesLoaded(function() {
 				$(".recent-posts-container").append($posts).masonry('appended', $posts);
 			}); */
 			
 			// $(".recent-posts-container").masonry('appended', $posts);
 			// $(".recent-posts-container").masonry('appended', $(".recent-posts-container .homepage-post"));
+
+			
 		}
 	});
 }

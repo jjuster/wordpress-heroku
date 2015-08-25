@@ -39,6 +39,18 @@ function grabExtraPostData(&$post)
 	$post->title = htmlencode($post->post_title);
 }
 
+if (!empty($_GET['xhr'])) {
+	$response = array(
+		'success' => 1,
+		'posts' => array(
+			(object)array('id' => 1, 'title' => 'post title')
+		)
+	);
+
+	echo json_encode($response);
+	die;
+}
+
 // load top 3 featured posts
 $featured_post_opts = array(
 	'posts_per_page' => 3,
@@ -158,6 +170,22 @@ HTML;
 <script>
 var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;
+</script>
+
+<script>
+function load_more()
+{
+	$.ajax({
+		url: document.location.toString(),
+		data: {
+			xhr: 1
+		},
+		dataType: "json",
+		success: function(response) {
+			console.log("got response: ", response);
+		}
+	});
+}
 </script>
 
 <script>

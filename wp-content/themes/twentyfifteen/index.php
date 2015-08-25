@@ -183,6 +183,18 @@ HTML;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
 
+<script type="text/x-underscore" id="tmpl-post">
+<div class="homepage-post">
+	<a href="<%= post.permalink %>">
+		<img src="<%= post.featured_image =>" data-pradux-ignore="true">
+	</a>
+	<div class="bottom-text">
+		<a href="<%= post.permalink %>" class="category"><%= post.category %></a>
+		<a href="<%= post.permalink %>" class="title"><%= post.title %></a>
+	</div>
+</div>
+</script>
+
 <script>
 var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;
@@ -231,16 +243,6 @@ function enable_masonry()
 // enable_masonry();
 </script>
 
-<script type="text/x-underscore" id="tmpl-post">
-<div class="homepage-post">
-	<a href="<%= post.permalink %>">
-		<img src="<%= post.featured_image =>" data-pradux-ignore="true">
-	</a>
-	<div class="bottom-text">
-		<a href="<%= post.permalink %>" class="category"><%= post.category %></a>
-		<a href="<%= post.permalink %>" class="title"><%= post.title %></a>
-	</div>
-</div>
-</script>
+
 
 <?php get_footer(); ?>

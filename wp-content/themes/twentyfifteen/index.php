@@ -219,8 +219,6 @@ function load_more()
 			var posts = response.posts;
 			
 			$.each(posts, function(i, post) {
-				
-				console.log("post:",post);
 
 				var $post = post_template({
 					post: {
@@ -232,7 +230,8 @@ function load_more()
 				});
 
 				// $(".recent-posts-container").append($post);
-				$(".recent-posts-container").append($post).masonry('appended', $post);
+				// $(".recent-posts-container").append($post).masonry('appended', $post);
+				$(".recent-posts-container").masonry('appended', $post);
 
 			});
 		}

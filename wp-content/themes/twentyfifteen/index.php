@@ -222,14 +222,18 @@ function load_more()
 				
 				console.log("post:",post);
 
-				$(".recent-posts-container").append(post_template({
+				var $post = post_template({
 					post: {
 						permalink: post.permalink,
 						featured_image: post.featured_image,
 						category: post.category,
 						title: post.title
 					}
-				}));
+				});
+
+				// $(".recent-posts-container").append($post);
+				$(".recent-posts-container").append($post).masonry('appended', $post);
+
 			});
 		}
 	});

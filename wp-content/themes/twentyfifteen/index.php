@@ -219,7 +219,12 @@ function load_more()
 			var posts = response.posts;
 			
 			$.each(posts, function(post) {
-				$(".recent-posts-container").append(_.template(post_template, {post: post}));
+				$(".recent-posts-container").append(_.template(post_template, {
+					permalink: post.permalink,
+					featured_image: post.featured_image,
+					category: post.category,
+					title: post.title
+				}));
 			});
 		}
 	});

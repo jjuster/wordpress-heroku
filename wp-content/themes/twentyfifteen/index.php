@@ -220,6 +220,7 @@ function load_more()
 			
 			$.each(posts, function(post) {
 				
+				console.log("post:",post);
 
 				$(".recent-posts-container").append(post_template({
 					post: {

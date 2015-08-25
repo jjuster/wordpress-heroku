@@ -28,6 +28,8 @@
 	<script src="//use.typekit.net/iwp3tnm.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
 	<?php wp_head(); ?>
 </head>
 

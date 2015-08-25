@@ -90,6 +90,9 @@ if ($featured_posts->have_posts()) {
 
 // load rest of posts
 
+$posts_loaded = 0;
+$post_ids = array();
+$post_debug = array();
 
 $recent_posts = new WP_Query( $recent_post_opts );
 if ($recent_posts->have_posts()) {
@@ -103,12 +106,6 @@ if ($recent_posts->have_posts()) {
 	}
 }
 
-
-// $featured_posts = array($posts[4], $posts[7], $posts[9]);
-
-$post_ids = array();
-$post_debug = array();
-$posts_loaded = 0;
 
 get_header(); ?>
 
@@ -180,8 +177,8 @@ HTML;
 
 			</div>
 
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+		</main>
+	</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
@@ -205,6 +202,12 @@ function load_more()
 		dataType: "json",
 		success: function(response) {
 			console.log("got response: ", response);
+
+			var posts = response.posts;
+			var template = $("#tmpl-post").html();
+			$.each(posts, function(post) {
+				$(".recent-posts-container").append(_.template({post: post}));
+			});
 		}
 	});
 }
@@ -225,6 +228,18 @@ function enable_masonry()
 }
 
 // enable_masonry();
+</script>
+
+<script type="text/x-underscore" id="tmpl-post">
+<div class="homepage-post">
+	<a href="<%= post.permalink %>">
+		<img src="<%= post.featured_image =>" data-pradux-ignore="true">
+	</a>
+	<div class="bottom-text">
+		<a href="<%= post.permalink %>" class="category"><%= post.category %></a>
+		<a href="<%= post.permalink %>" class="title"><%= post.title %></a>
+	</div>
+</div>
 </script>
 
 <?php get_footer(); ?>

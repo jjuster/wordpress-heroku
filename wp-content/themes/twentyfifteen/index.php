@@ -185,12 +185,12 @@ HTML;
 
 <script type="text/x-underscore" id="tmpl-post">
 <div class="homepage-post">
-	<a href="<%= permalink %>">
-		<img src="<%= featured_image %>" data-pradux-ignore="true">
+	<a href="<%=permalink%>">
+		<img src="<%=featured_image%>" data-pradux-ignore="true">
 	</a>
 	<div class="bottom-text">
-		<a href="<%= permalink %>" class="category"><%= category %></a>
-		<a href="<%= permalink %>" class="title"><%= title %></a>
+		<a href="<%=permalink%>" class="category"><%=category%></a>
+		<a href="<%=permalink%>" class="title"><%=title%></a>
 	</div>
 </div>
 </script>

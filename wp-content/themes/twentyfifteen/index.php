@@ -185,12 +185,12 @@ HTML;
 
 <script type="text/x-underscore" id="tmpl-post">
 <div class="homepage-post">
-	<a href="<%=permalink%>">
-		<img src="<%=featured_image%>" data-pradux-ignore="true">
+	<a href="<%=post.permalink%>">
+		<img src="<%=post.featured_image%>" data-pradux-ignore="true">
 	</a>
 	<div class="bottom-text">
-		<a href="<%=permalink%>" class="category"><%=category%></a>
-		<a href="<%=permalink%>" class="title"><%=title%></a>
+		<a href="<%=post.permalink%>" class="category"><%=post.category%></a>
+		<a href="<%=post.permalink%>" class="title"><%=post.title%></a>
 	</div>
 </div>
 </script>
@@ -222,10 +222,12 @@ function load_more()
 				
 
 				$(".recent-posts-container").append(post_template({
-					permalink: post.permalink,
-					featured_image: post.featured_image,
-					category: post.category,
-					title: post.title
+					post: {
+						permalink: post.permalink,
+						featured_image: post.featured_image,
+						category: post.category,
+						title: post.title
+					}
 				}));
 			});
 		}

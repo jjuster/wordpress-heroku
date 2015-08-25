@@ -254,7 +254,9 @@ function enable_masonry()
 	});
 }
 
-enable_masonry();
+$grid.imagesLoaded(function() {
+	enable_masonry();
+});
 </script>
 
 

@@ -170,6 +170,8 @@ HTML;
 <script>
 var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;
+var recent_post_opts = <?=json_encode($recent_post_opts)?>;
+var posts_loaded = <?=count($recent_posts)?>;
 </script>
 
 <script>
@@ -178,7 +180,8 @@ function load_more()
 	$.ajax({
 		url: document.location.toString(),
 		data: {
-			xhr: 1
+			xhr: 1,
+			post_opts: recent_post_opts
 		},
 		dataType: "json",
 		success: function(response) {

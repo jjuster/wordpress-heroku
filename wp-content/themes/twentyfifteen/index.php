@@ -39,12 +39,35 @@ function grabExtraPostData(&$post)
 	$post->title = htmlencode($post->post_title);
 }
 
+$featured_post_opts = array(
+	'posts_per_page' => 3,
+	'post__in' => array(1, 232, 247)
+);
+
+$recent_post_opts = array(
+	'cat' => '-1',
+	'posts_per_page' => 24
+);
+
+
+// ajax load more posts
 if (!empty($_GET['xhr'])) {
+
+	$recent_post_opts['offset'] = (int)$_GET['offset'];
+	$posts_query = new WP_Query($recent_post_opts);
+	$posts = array();
+
+	if ($posts_query->have_posts()) {
+		while ($posts_query->have_posts()) {
+			$posts_query->the_post();
+			grabExtraPostData($post);
+			$posts[] = $post;
+		}
+	}
+
 	$response = array(
 		'success' => 1,
-		'posts' => array(
-			(object)array('id' => 1, 'title' => 'post title')
-		)
+		'posts' => $posts
 	);
 
 	echo json_encode($response);
@@ -52,10 +75,7 @@ if (!empty($_GET['xhr'])) {
 }
 
 // load top 3 featured posts
-$featured_post_opts = array(
-	'posts_per_page' => 3,
-	'post__in' => array(1, 232, 247)
-);
+
 
 $featured_posts = new WP_Query( $featured_post_opts );
 if ($featured_posts->have_posts()) {
@@ -69,10 +89,7 @@ if ($featured_posts->have_posts()) {
 }
 
 // load rest of posts
-$recent_post_opts = array(
-	'cat' => '-1',
-	'posts_per_page' => 24
-);
+
 
 $recent_posts = new WP_Query( $recent_post_opts );
 if ($recent_posts->have_posts()) {
@@ -82,6 +99,7 @@ if ($recent_posts->have_posts()) {
 		
 		$post_ids[] = $post->ID;
 		$post_debug[] = $post;
+		$posts_loaded++;
 	}
 }
 
@@ -90,6 +108,7 @@ if ($recent_posts->have_posts()) {
 
 $post_ids = array();
 $post_debug = array();
+$posts_loaded = 0;
 
 get_header(); ?>
 
@@ -171,7 +190,7 @@ HTML;
 var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;
 var recent_post_opts = <?=json_encode($recent_post_opts)?>;
-var posts_loaded = <?=count($recent_posts)?>;
+var num_posts_loaded = <?=$posts_loaded?>;
 </script>
 
 <script>
@@ -181,7 +200,7 @@ function load_more()
 		url: document.location.toString(),
 		data: {
 			xhr: 1,
-			post_opts: recent_post_opts
+			offset: num_posts_loaded
 		},
 		dataType: "json",
 		success: function(response) {

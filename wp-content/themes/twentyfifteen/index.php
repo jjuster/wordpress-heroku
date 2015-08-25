@@ -237,8 +237,10 @@ function load_more()
 				// $(".recent-posts-container").masonry('appended', $post);
 
 			});
-
-			$(".recent-posts-container").append($posts).masonry('appended', $posts);
+			$posts.imagesLoaded(function() {
+				$(".recent-posts-container").append($posts).masonry('appended', $posts);
+			});
+			
 			// $(".recent-posts-container").masonry('appended', $posts);
 			// $(".recent-posts-container").masonry('appended', $(".recent-posts-container .homepage-post"));
 		}

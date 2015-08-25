@@ -206,6 +206,7 @@ var $grid;
 
 <script>
 var $newposts = [];
+
 function load_more()
 {
 	$.ajax({
@@ -219,7 +220,7 @@ function load_more()
 			console.log("got response: ", response);
 
 			var posts = response.posts;
-			// var $posts = [];
+			$newposts = [];
 			
 			$.each(posts, function(i, post) {
 
@@ -234,23 +235,12 @@ function load_more()
 				$post.addClass("masonry-new");
 				$newposts.push($post);
 
-				// $(".recent-posts-container").append($post);
-				// $(".recent-posts-container").append($post).masonry('appended', $post);
-				// $(".recent-posts-container").masonry('appended', $post);
-
 			});
-			/* $(".recent-posts-container").append($posts).imagesLoaded(function() {
-				$(".recent-posts-container").masonry('appended', $posts);
-			}); */
 
-			/* $posts.imagesLoaded(function() {
-				$(".recent-posts-container").append($posts).masonry('appended', $posts);
-			}); */
-			
-			// $(".recent-posts-container").masonry('appended', $posts);
-			// $(".recent-posts-container").masonry('appended', $(".recent-posts-container .homepage-post"));
+			$(".recent-posts-container").append($newposts);
+			$grid.masonry('appended', $(".masonry-new"));
 
-
+			// $(".homepage-post").removeClass("masonry-new")
 		}
 	});
 }
@@ -262,19 +252,9 @@ function enable_masonry()
 	$grid = $('.recent-posts-container').masonry({
 		itemSelector: '.homepage-post'
 	});
-
-	/* var $grid = $('.recent-posts-container').masonry({
-		percentPosition: true,
-		columnWidth: '.grid-sizer',
-		itemSelector: '.homepage-post.masonry'
-	}); */
-
-	// $grid.imagesLoaded().progress( function() {
-	// 	$grid.masonry('layout');
-	// });
 }
 
-// enable_masonry();
+enable_masonry();
 </script>
 
 

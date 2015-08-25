@@ -200,7 +200,7 @@ var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;
 var recent_post_opts = <?=json_encode($recent_post_opts)?>;
 var num_posts_loaded = <?=$posts_loaded?>;
-var post_template = $("#tmpl-post").html();
+var post_template = _.template( $("#tmpl-post").html() );
 </script>
 
 <script>
@@ -219,7 +219,9 @@ function load_more()
 			var posts = response.posts;
 			
 			$.each(posts, function(post) {
-				$(".recent-posts-container").append(_.template(post_template, {
+				
+
+				$(".recent-posts-container").append(post_template({
 					permalink: post.permalink,
 					featured_image: post.featured_image,
 					category: post.category,

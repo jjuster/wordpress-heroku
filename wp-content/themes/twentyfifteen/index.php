@@ -278,7 +278,8 @@ $(window).scroll(load_more_debounced);
 function enable_masonry()
 {	
 	$grid = $('.recent-posts-container').masonry({
-		itemSelector: '.homepage-post'
+		itemSelector: '.homepage-post',
+		isAnimated: false
 	});
 }
 

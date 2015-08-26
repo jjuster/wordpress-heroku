@@ -279,7 +279,10 @@ function enable_masonry()
 {	
 	$grid = $('.recent-posts-container').masonry({
 		itemSelector: '.homepage-post',
-		isAnimated: false
+		isAnimated: false,
+		animationOptions: {
+			duration: 0
+		}
 	});
 }
 

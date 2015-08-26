@@ -1,19 +1,20 @@
 .single-post, .search-results, .archive
 {
 
-  a {
-    text-decoration: none;
-    border-bottom: none;
-    color: $textColor;
-    font-weight: bold;
-  }
-
   .site-content {
+
     background-color: $backgroundGrey;
 
     @media(max-width: $breakpoint-mobile-max) {
       padding-left: 16px;
       padding-right: 16px;
+    }
+
+    a {
+      text-decoration: none;
+      border-bottom: none;
+      color: $textColor;
+      font-weight: bold;
     }
 
     .blog-navigation {

@@ -263,13 +263,13 @@ function load_more()
 			setTimeout(function() {
 				$(".homepage-post").removeClass("masonry-new");
 				currently_loading_more = false;
-			}, 50);
+			}, 1000);
 
 		}
 	});
 }
 
-var load_more_debounced = _.debounce(load_more, 500);
+var load_more_debounced = _.debounce(load_more, 1000);
 $(window).scroll(load_more_debounced);
 
 </script>

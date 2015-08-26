@@ -244,7 +244,7 @@ function load_more()
 
 			num_posts_loaded += posts.length;
 
-			// $(".homepage-post").removeClass("masonry-new")
+			$(".homepage-post").removeClass("masonry-new")
 		}
 	});
 }

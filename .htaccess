@@ -1,4 +1,5 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteBase /stories/
 RewriteRule . /stories/index.php [L]
 </IfModule>

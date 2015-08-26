@@ -203,13 +203,18 @@ var recent_post_opts = <?=json_encode($recent_post_opts)?>;
 var num_posts_loaded = <?=$posts_loaded?>;
 var post_template = _.template( $("#tmpl-post").html() );
 var $grid;
-</script>
-
-<script>
 var $newposts = [];
+var load_more_active = true;
+var currently_loading_more = false;
 
 function load_more()
 {
+	if (!load_more_active || currently_loading_more) {
+		return;
+	}
+
+	currently_loading_more = true;
+
 	$.ajax({
 		url: document.location.toString(),
 		data: {
@@ -220,6 +225,13 @@ function load_more()
 		success: function(response) {
 
 			var posts = response.posts;
+			
+			if (posts.length == 0) {
+				load_more_active = false;
+				currently_loading_more = false;
+				return;
+			}
+
 			$newposts = [];
 			
 			$.each(posts, function(i, post) {
@@ -246,10 +258,15 @@ function load_more()
 			setTimeout(function() {
 				$(".homepage-post").removeClass("masonry-new");
 			}, 50);
-			
+
+			currently_loading_more = false;
 		}
 	});
 }
+
+var load_more_throttled = _.throttle(load_more, 1000);
+$(window).scroll(load_more_throttled);
+
 </script>
 
 <script>

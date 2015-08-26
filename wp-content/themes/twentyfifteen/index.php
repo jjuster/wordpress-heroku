@@ -210,6 +210,11 @@ var currently_loading_more = false;
 function load_more()
 {
 	if (!load_more_active || currently_loading_more) {
+		console.log("ignore loadmore");
+		return;
+	}
+
+	if ($(window).scrollTop() / $("body").height() < 0.75) {
 		return;
 	}
 
@@ -257,15 +262,15 @@ function load_more()
 			num_posts_loaded += posts.length;
 			setTimeout(function() {
 				$(".homepage-post").removeClass("masonry-new");
+				currently_loading_more = false;
 			}, 50);
 
-			currently_loading_more = false;
 		}
 	});
 }
 
-var load_more_throttled = _.throttle(load_more, 1000);
-$(window).scroll(load_more_throttled);
+var load_more_debounced = _.debounce(load_more, 500);
+$(window).scroll(load_more_debounced);
 
 </script>
 

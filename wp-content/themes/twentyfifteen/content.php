@@ -80,7 +80,7 @@ $nextID = $posts[$current+1];
 <!-- [content] -->
 <?php if ( is_single() ): ?>
 <div class="blog-navigation ">
-	<a class="back-btn" href="/news"><div class="arrow-left"></div> Back</a>
+	<a class="back-btn" href="/stories"><div class="arrow-left"></div> Back</a>
 </div>
 <?php endif; ?>
 

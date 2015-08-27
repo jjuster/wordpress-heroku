@@ -127,16 +127,19 @@ if ($recent_posts_query->have_posts()) {
 	}
 }
 
-// jack featured_middle_posts into recent_posts
-/* $recent_posts = 
-	array_slice($recent_posts, 0, 2) +
-	$featured_posts_middle[0] +
-	array_slice($recent_posts, offset)*/
-
 echo '<!-- *1* ';
 echo print_r($recent_posts[0],1);
 echo ' -->';
 
+// jack featured_middle_posts into recent_posts
+$recent_posts = 
+	array_slice($recent_posts, 0, 2) +
+	array_slice($featured_posts_middle, 0, 1) +
+	array_slice($recent_posts, 2, 4) + 
+	array_slice($featured_posts_middle, 1, 1) +
+	array_slice($recent_posts, 6, 4) + 
+	array_slice($featured_posts_middle, 2, 1) +
+	array_slice($recent_posts, 10, 2);
 
 // $recent_posts[] = 
 // 	$recent_posts[0] + $recent_posts[1] + 

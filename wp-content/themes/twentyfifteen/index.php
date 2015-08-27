@@ -37,8 +37,8 @@ function grabExtraPostData(&$post)
 	$post->permalink = get_permalink($post->ID);
 	$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
 	$post->title = htmlencode($post->post_title);
-	$post->is_top_featured = get_post_meta($post->ID, 'my_top_featured_post_field');
-	$post->is_middle_featured = get_post_meta($post->ID, 'my_middle_featured_post_field');
+	$post->is_top_featured = get_post_meta($post->ID, 'my_top_featured_post_field', true);
+	$post->is_middle_featured = get_post_meta($post->ID, 'my_middle_featured_post_field', true);
 }
 
 $featured_post_opts = array(

@@ -108,7 +108,7 @@ if ($featured_posts_middle_query->have_posts()) {
 	while ($featured_posts_middle_query->have_posts()) {
 		$featured_posts_middle_query->the_post();
 		grabExtraPostData($post);
-		$featured_posts_middle[] = $post;
+		$featured_posts_middle[] = (object)$post;
 		
 	}
 }
@@ -119,7 +119,7 @@ if ($recent_posts_query->have_posts()) {
 	while ($recent_posts_query->have_posts()) {
 		$recent_posts_query->the_post();
 		grabExtraPostData($post);
-		$recent_posts[] = $post;
+		$recent_posts[] = (object)$post;
 		
 		// $post_ids[] = $post->ID;
 		// $post_debug[] = $post;

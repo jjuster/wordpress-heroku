@@ -166,8 +166,9 @@ $recent_posts2 =
 // 	$recent_posts[10] + $recent_posts[11];
 
 echo '<!--  *2* ';
-echo print_r($recent_posts2[0],1);
+echo print_r($recent_posts2,1);
 echo ' -->';
+
 
 get_header(); ?>
 

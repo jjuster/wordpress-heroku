@@ -40,11 +40,16 @@ $column-width-recent: 33%;
 		display: inline-block;
 		margin: 0 0 12px 0px;
 		padding:	4px;
-		height: 450px;
-		float:left;
+		float: left;
+
+		img {
+			height: 450px;
+		}
 
 		&.tall-post {
-			height: 900px;
+			img {
+				height: 900px;
+			}
 		}
 
 		a {

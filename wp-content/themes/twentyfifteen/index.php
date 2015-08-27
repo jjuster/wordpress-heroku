@@ -185,10 +185,10 @@ HTML;
 
 			<div class="recent-posts-container">
 
-				<?php if ( $recent_posts->have_posts() ) : 
-					$post_i = 0;
+				<?php if ( count($recent_posts) ) : 
 
-					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
+					// while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
+					foreach ($recent_posts as $post_i => $post):
 
 						if ($post_i%5 == 2) {
 							// featured middle
@@ -229,8 +229,7 @@ HTML;
 						}
 
 
-						$post_i++;
-					endwhile;
+					endforeach;
 				endif; ?>
 
 			</div>

@@ -148,6 +148,7 @@ HTML;
 
 				<?php if ( $recent_posts->have_posts() ) : 
 					$i = 0;
+
 					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
 
 						$tall_class = $i%5 == 2 ? 'tall-post' : '';
@@ -168,7 +169,7 @@ HTML;
 	</div>
 </div>
 HTML;
-						if ($i%1 == 1 || $i%5 == 4) {
+						if ($i%5 == 1 || $i%5 == 4) {
 							echo '</div>';
 						}
 

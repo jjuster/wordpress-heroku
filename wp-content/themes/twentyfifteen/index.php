@@ -139,7 +139,7 @@ if ($recent_posts_query->have_posts()) {
 }
 
 echo '<!-- *1* ';
-echo print_r($recent_posts[0],1);
+echo print_r(array_slice($recent_posts, 0, 2),1);
 echo ' -->';
 
 // jack featured_middle_posts into recent_posts

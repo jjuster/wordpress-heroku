@@ -41,14 +41,23 @@ function grabExtraPostData(&$post)
 	$post->is_middle_featured = get_post_meta($post->ID, 'my_middle_featured_post_field', true);
 }
 
-$featured_post_opts = array(
+$featured_post_top_opts = array(
 	'posts_per_page' => 3,
-	'post__in' => array(1, 232, 247)
+	// 'post__in' => array(1, 232, 247)
+	'meta_key' => 'my_top_featured_post_field',
+	'meta_value' => 1
+);
+
+$featured_post_middle_opts = array(
+	'posts_per_page' => 3,
+	// 'post__in' => array(1, 232, 247)
+	'meta_key' => 'my_middle_featured_post_field',
+	'meta_value' => 1
 );
 
 $recent_post_opts = array(
 	'cat' => '-1',
-	'posts_per_page' => 15
+	'posts_per_page' => 12
 );
 
 
@@ -77,37 +86,65 @@ if (!empty($_GET['xhr'])) {
 	die;
 }
 
-// load top 3 featured posts
 
-
-$featured_posts = new WP_Query( $featured_post_opts );
-if ($featured_posts->have_posts()) {
-	while ($featured_posts->have_posts()) {
-		$featured_posts->the_post();
+// load TOP featured posts
+$featured_posts_top = new WP_Query( $featured_post_top_opts );
+if ($featured_posts_top->have_posts()) {
+	while ($featured_posts_top->have_posts()) {
+		$featured_posts_top->the_post();
 		grabExtraPostData($post);
 		
-		$post_ids[] = $post->ID;
-		$post_debug[] = $post;
+		// $post_ids[] = $post->ID;
+		// $post_debug[] = $post;
+	}
+}
+
+$recent_posts = array();
+$featured_posts_middle = array();
+
+// load MIDDLE featured posts
+$featured_posts_middle_query = new WP_Query( $featured_post_middle_opts );
+if ($featured_posts_middle_query->have_posts()) {
+	while ($featured_posts_middle_query->have_posts()) {
+		$featured_posts_middle_query->the_post();
+		grabExtraPostData($post);
+		$featured_posts_middle[] = $post;
+		
 	}
 }
 
 // load rest of posts
-
-$posts_loaded = 0;
-$post_ids = array();
-$post_debug = array();
-
-$recent_posts = new WP_Query( $recent_post_opts );
-if ($recent_posts->have_posts()) {
-	while ($recent_posts->have_posts()) {
-		$recent_posts->the_post();
+$recent_posts_query = new WP_Query( $recent_post_opts );
+if ($recent_posts_query->have_posts()) {
+	while ($recent_posts_query->have_posts()) {
+		$recent_posts_query->the_post();
 		grabExtraPostData($post);
+		$recent_posts[] = $post;
 		
-		$post_ids[] = $post->ID;
-		$post_debug[] = $post;
-		$posts_loaded++;
+		// $post_ids[] = $post->ID;
+		// $post_debug[] = $post;
+		// $posts_loaded++;
 	}
 }
+
+// jack featured_middle_posts into recent_posts
+/* $recent_posts = 
+	array_slice($recent_posts, 0, 2) +
+	$featured_posts_middle[0] +
+	array_slice($recent_posts, offset)*/
+
+$recent_posts = 
+	$recent_posts[0] + $recent_posts[1] + 
+	$featured_posts_middle[0] + 
+	$recent_posts[2] + $recent_posts[3] + 
+
+	$recent_posts[4] + $recent_posts[5] + 
+	$featured_posts_middle[1] + 
+	$recent_posts[6] + $recent_posts[7] + 
+
+	$recent_posts[8] + $recent_posts[9] + 
+	$featured_posts_middle[2] + 
+	$recent_posts[10] + $recent_posts[11];
 
 
 get_header(); ?>
@@ -118,11 +155,11 @@ get_header(); ?>
 
 			<div class="featured-post-container">
 
-				<?php if ( $featured_posts->have_posts() ) :
+				<?php if ( $featured_posts_top->have_posts() ) :
 
 				$i=0; 
 
-					while ( $featured_posts->have_posts() ) : $featured_posts->the_post();
+					while ( $featured_posts_top->have_posts() ) : $featured_posts_top->the_post();
 						
 						// top featured posts
 						echo <<<HTML
@@ -146,22 +183,17 @@ HTML;
 			<!-- Recent Posts -->
 			<h4>Most Recent Posts</h4>
 
-			<div class="recent-posts-container grid">
+			<div class="recent-posts-container">
 
 				<?php if ( $recent_posts->have_posts() ) : 
-					$i = 0;
+					$post_i = 0;
 
 					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
 
-						$tall_class = $i%5 == 2 ? 'tall-post' : '';
-
-						if ($i%5 == 0 || $i%5 == 3) {
-							echo '<div class="grid-wrap">';
-						}
-
-						echo <<<HTML
-
-<div class="homepage-post {$tall_class}">
+						if ($post_i%5 == 2) {
+							// featured middle
+							echo <<<HTML
+<div class="homepage-post tall-post">
 	<a href="{$post->permalink}">
 		<img src="{$post->featured_image}" data-pradux-ignore="true">
 	</a>
@@ -171,11 +203,33 @@ HTML;
 	</div>
 </div>
 HTML;
-						if ($i%5 == 1 || $i%5 == 4) {
-							echo '</div>';
 						}
 
-						$i++;
+						else
+						{
+							if ($post_i%5 == 0 || $post_i%5 == 3) {
+								echo '<div class="grid-wrap">';
+							}
+
+							echo <<<HTML
+<div class="homepage-post">
+	<a href="{$post->permalink}">
+		<img src="{$post->featured_image}" data-pradux-ignore="true">
+	</a>
+	<div class="bottom-text">
+		<a href="{$post->permalink}" class="category">{$post->category}</a>
+		<a href="{$post->permalink}" class="title">{$post->title}</a>
+	</div>
+</div>
+HTML;
+							if ($post_i%5 == 1 || $post_i%5 == 4) {
+								echo '</div>';
+							}
+
+						}
+
+
+						$post_i++;
 					endwhile;
 				endif; ?>
 
@@ -264,13 +318,10 @@ function load_more()
 	});
 }
 
-var load_more_debounced = _.debounce(load_more, 500);
-$(window).scroll(load_more_debounced);
+// var load_more_debounced = _.debounce(load_more, 500);
+// $(window).scroll(load_more_debounced);
 
 </script>
-
-
-
 
 
 <?php get_footer(); ?>

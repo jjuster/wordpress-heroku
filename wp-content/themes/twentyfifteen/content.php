@@ -235,29 +235,25 @@ HTML;
 
 	<script>
 
-	var animate_duration = 200;
+	positionSSK = function() {
+		var leftPadding = 90;
+		var offset = $(".entry-title").offset();
 
-	$(function() {
-		var $window = $(window),
-				$ssk = $(".ssk-sticky"),
-				ssk_y = $(".entry-title").offset().top,
-				top_padding = 60;
+		var ssk = $(".ssk-sticky");
 
-		$window.scroll(function() {
-			if ($window.scrollTop() > ssk_y - 60) {
-				$ssk.stop().animate({
-					marginTop: $window.scrollTop() - ssk_y + top_padding
-				}, animate_duration);
-			}
-			else
-			{
-				$ssk.stop().animate({
-					marginTop: 0
-				}, animate_duration);
-			}
-		});
+		var bottom = $('.post-tags-container').offset().top - $('.post-tags-container').height();
 
-	});
+		if ($(window).scrollTop() + $(".ssk-sticky").height() < bottom) {
+			ssk.css('position', 'fixed').css('top', offset.top + 'px');
+		} else if ($(".ssk-sticky").css('position') == 'fixed') {			
+			ssk.css('top', ($(window).scrollTop() + offset.top) + 'px').css('position', 'absolute');
+		}
+		ssk.css('left', (offset.left - leftPadding) + 'px').show();
+	}
+
+	$(window).on('resize', positionSSK);
+	$(window).on('scroll', positionSSK);
+	positionSSK();
 
 	$(".ssk-comment").on("click", function(e) {
 		e.preventDefault();

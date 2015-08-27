@@ -1566,7 +1566,7 @@ img.aligncenter {
 .hentry {
 	background-color: #fff;
 	padding-top: 7.6923%;
-	position: relative;
+	/*position: relative;*/ /* JJ for SSK */
 }
 
 .hentry.has-post-thumbnail {

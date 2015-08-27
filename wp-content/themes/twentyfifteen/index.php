@@ -138,18 +138,18 @@ echo print_r($recent_posts[0],1);
 echo ' -->';
 
 
-$recent_posts = 
-	$recent_posts[0] + $recent_posts[1] + 
-	$featured_posts_middle[0] + 
-	$recent_posts[2] + $recent_posts[3] + 
+// $recent_posts[] = 
+// 	$recent_posts[0] + $recent_posts[1] + 
+// 	$featured_posts_middle[0] + 
+// 	$recent_posts[2] + $recent_posts[3] + 
 
-	$recent_posts[4] + $recent_posts[5] + 
-	$featured_posts_middle[1] + 
-	$recent_posts[6] + $recent_posts[7] + 
+// 	$recent_posts[4] + $recent_posts[5] + 
+// 	$featured_posts_middle[1] + 
+// 	$recent_posts[6] + $recent_posts[7] + 
 
-	$recent_posts[8] + $recent_posts[9] + 
-	$featured_posts_middle[2] + 
-	$recent_posts[10] + $recent_posts[11];
+// 	$recent_posts[8] + $recent_posts[9] + 
+// 	$featured_posts_middle[2] + 
+// 	$recent_posts[10] + $recent_posts[11];
 
 echo '<!--  *2* ';
 echo print_r($recent_posts[0],1);

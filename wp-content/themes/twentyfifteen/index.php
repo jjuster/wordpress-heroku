@@ -133,6 +133,11 @@ if ($recent_posts_query->have_posts()) {
 	$featured_posts_middle[0] +
 	array_slice($recent_posts, offset)*/
 
+echo '<!-- ';
+echo print_r($recent_posts[0],1);
+echo ' -->';
+
+
 $recent_posts = 
 	$recent_posts[0] + $recent_posts[1] + 
 	$featured_posts_middle[0] + 
@@ -255,7 +260,7 @@ var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;
 var posts = <?=json_encode($recent_posts)?>;
 var recent_post_opts = <?=json_encode($recent_post_opts)?>;
-var num_posts_loaded = <?=$posts_loaded?>;
+// var num_posts_loaded = <?=$posts_loaded?>;
 var post_template = _.template( $("#tmpl-post").html() );
 
 var $newposts = [];

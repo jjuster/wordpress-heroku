@@ -57,7 +57,18 @@ $featured_post_middle_opts = array(
 
 $recent_post_opts = array(
 	'cat' => '-1',
-	'posts_per_page' => 12
+	'posts_per_page' => 12,
+	'meta_query' => array(
+		'relation' => 'AND',
+		array(
+			'key' => 'my_middle_featured_post_field',
+			'value' => ''
+		),
+		array(
+			'key' => 'my_top_featured_post_field',
+			'value' => ''
+		)
+	)
 );
 
 

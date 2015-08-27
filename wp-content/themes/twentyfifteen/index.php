@@ -46,7 +46,7 @@ $featured_post_opts = array(
 
 $recent_post_opts = array(
 	'cat' => '-1',
-	'posts_per_page' => 24
+	'posts_per_page' => 15
 );
 
 
@@ -54,7 +54,7 @@ $recent_post_opts = array(
 if (!empty($_GET['xhr'])) {
 
 	$recent_post_opts['offset'] = (int)$_GET['offset'];
-	$recent_post_opts['posts_per_page'] = 9;
+	$recent_post_opts['posts_per_page'] = 10;
 	$posts_query = new WP_Query($recent_post_opts);
 	$posts = array();
 
@@ -116,17 +116,13 @@ get_header(); ?>
 
 			<div class="featured-post-container">
 
-				<?php if ( $featured_posts->have_posts() ) : 
+				<?php if ( $featured_posts->have_posts() ) :
+
+				$i=0; 
 
 					while ( $featured_posts->have_posts() ) : $featured_posts->the_post();
-
-						// $post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
-						// $post->permalink = get_permalink($post->ID);
-						// $post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
-						// $post->title = htmlencode($post->post_title);
-						// $post_ids[] = $post->ID;
-						// $post_debug[] = $post;
-
+						
+						// top featured posts
 						echo <<<HTML
 <a class="homepage-post featured" href="{$post->permalink}">
 	<span class="post-image" style="background-image:url({$post->featured_image})"></span>
@@ -136,11 +132,9 @@ get_header(); ?>
 	</div>
 </a>
 HTML;
-
 					endwhile; 
 				endif; ?>
-				
-
+			
 			</div>
 
 			<div class="separator-wrap">
@@ -149,20 +143,22 @@ HTML;
 
 			<!-- Recent Posts -->
 			<h4>Most Recent Posts</h4>
-			<!-- <div class="recent-posts-container js-masonry" data-masonry-options='{"itemSelector": ".homepage-post"}'> -->
-			<div class="recent-posts-container">
+
+			<div class="recent-posts-container grid">
 
 				<?php if ( $recent_posts->have_posts() ) : 
-
+					$i = 0;
 					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
 
-						if (empty($post->featured_image)) {
-							// continue;
+						$tall_class = $i%5 == 2 ? 'tall-post' : '';
+
+						if ($i%5 == 0 || $i%5 == 3) {
+							echo '<div class="grid-wrap">';
 						}
 
 						echo <<<HTML
 
-<div class="homepage-post">
+<div class="homepage-post {$tall_class}">
 	<a href="{$post->permalink}">
 		<img src="{$post->featured_image}" data-pradux-ignore="true">
 	</a>
@@ -172,8 +168,12 @@ HTML;
 	</div>
 </div>
 HTML;
+						if ($i%1 == 1 || $i%5 == 4) {
+							echo '</div>';
+						}
 
-					endwhile; 
+						$i++;
+					endwhile;
 				endif; ?>
 
 			</div>
@@ -181,8 +181,6 @@ HTML;
 		</main>
 	</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
 
 <script type="text/x-underscore" id="tmpl-post">
 <div class="homepage-post">
@@ -202,7 +200,7 @@ var post_debug = <?=json_encode($post_debug)?>;
 var recent_post_opts = <?=json_encode($recent_post_opts)?>;
 var num_posts_loaded = <?=$posts_loaded?>;
 var post_template = _.template( $("#tmpl-post").html() );
-var $grid;
+
 var $newposts = [];
 var load_more_active = true;
 var currently_loading_more = false;
@@ -249,21 +247,15 @@ function load_more()
 						title: post.title
 					}
 				}));
-				$post.addClass("masonry-new");
+
 				$newposts.push($post);
 			});
 
 			$(".recent-posts-container").append($newposts);
 
-			$(".masonry-new").imagesLoaded(function() {
-				$grid.masonry('appended', $(".masonry-new"));
-			});
+			
 
 			num_posts_loaded += posts.length;
-			setTimeout(function() {
-				$(".homepage-post").removeClass("masonry-new");
-				currently_loading_more = false;
-			}, 100);
 
 		}
 	});
@@ -274,19 +266,7 @@ $(window).scroll(load_more_debounced);
 
 </script>
 
-<script>
-function enable_masonry()
-{	
-	$grid = $('.recent-posts-container').masonry({
-		itemSelector: '.homepage-post',
-		transitionDuration: 0
-	});
-}
 
-$('.recent-posts-container').imagesLoaded(function() {
-	enable_masonry();
-});
-</script>
 
 
 

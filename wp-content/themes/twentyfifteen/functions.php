@@ -342,9 +342,7 @@ if (class_exists('MultiPostThumbnails')) {
 }
 
 // add MIDDLE FEATURED POST checkbox
-$middle_featured_post_name = 'my_middle_featured_post_field';
-
-add_action( 'post_submitbox_misc_actions', $middle_featured_post_name );
+add_action( 'post_submitbox_misc_actions', 'my_middle_featured_post_field' );
 function my_middle_featured_post_field()
 {
   global $post;
@@ -354,11 +352,11 @@ function my_middle_featured_post_field()
   if (get_post_type($post) != 'post') return false;
 
   /* get the value corrent value of the custom field */
-  $value = get_post_meta($post->ID, $middle_featured_post_name, true);
+  $value = get_post_meta($post->ID, 'my_middle_featured_post_field', true);
   ?>
     <div class="misc-pub-section">
       <?php //if there is a value (1), check the checkbox ?>
-      <label><input type="checkbox"<?php echo (!empty($value) ? ' checked="checked"' : null) ?> value="1" name="<?=$middle_featured_post_name?>" /> Middle featured post</label>
+      <label><input type="checkbox"<?php echo (!empty($value) ? ' checked="checked"' : null) ?> value="1" name="my_middle_featured_post_field" /> Middle featured post</label>
     </div>
   <?php
 }
@@ -380,20 +378,19 @@ function my_save_postdata_middle($postid)
   /* use add_post_meta, update_post_meta and delete_post_meta, to control the stored value */
 
   /* check if the custom field is submitted (checkboxes that aren't marked, aren't submitted) */
-  if(isset($_POST["{$middle_featured_post_name}"])){
+  if(isset($_POST['my_middle_featured_post_field'])){
     /* store the value in the database */
-    add_post_meta($postid, $middle_featured_post_name, 1, true );
+    add_post_meta($postid, 'my_middle_featured_post_field', 1, true );
   }
   else{
     /* not marked? delete the value in the database */
-    delete_post_meta($postid, $middle_featured_post_name);
+    delete_post_meta($postid, 'my_middle_featured_post_field');
   }
 }
 
 
 // add TOP FEATURED POST checkbox
-$top_featured_post_name = 'my_top_featured_post_field';
-add_action( 'post_submitbox_misc_actions', $top_featured_post_name );
+add_action( 'post_submitbox_misc_actions', 'my_top_featured_post_field' );
 function my_top_featured_post_field()
 {
   global $post;
@@ -403,11 +400,11 @@ function my_top_featured_post_field()
   if (get_post_type($post) != 'post') return false;
 
   /* get the value corrent value of the custom field */
-  $value = get_post_meta($post->ID, $top_featured_post_name, true);
+  $value = get_post_meta($post->ID, 'my_top_featured_post_field', true);
   ?>
     <div class="misc-pub-section">
       <?php //if there is a value (1), check the checkbox ?>
-      <label><input type="checkbox"<?php echo (!empty($value) ? ' checked="checked"' : null) ?> value="1" name="<?=$top_featured_post_name?>" /> Top featured post</label>
+      <label><input type="checkbox"<?php echo (!empty($value) ? ' checked="checked"' : null) ?> value="1" name="my_top_featured_post_field" /> Top featured post</label>
     </div>
   <?php
 }
@@ -429,12 +426,12 @@ function my_save_postdata_top($postid)
   /* use add_post_meta, update_post_meta and delete_post_meta, to control the stored value */
 
   /* check if the custom field is submitted (checkboxes that aren't marked, aren't submitted) */
-  if(isset($_POST["{$top_featured_post_name}"])){
+  if(isset($_POST['my_top_featured_post_field'])){
     /* store the value in the database */
-    add_post_meta($postid, $top_featured_post_name, 1, true );
+    add_post_meta($postid, 'my_top_featured_post_field', 1, true );
   }
   else{
     /* not marked? delete the value in the database */
-    delete_post_meta($postid, $top_featured_post_name);
+    delete_post_meta($postid, 'my_top_featured_post_field');
   }
 }

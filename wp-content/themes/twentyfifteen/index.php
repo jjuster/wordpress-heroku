@@ -132,7 +132,7 @@ echo print_r($recent_posts[0],1);
 echo ' -->';
 
 // jack featured_middle_posts into recent_posts
-$recent_posts = 
+$recent_posts2 = 
 	array_slice($recent_posts, 0, 2) +
 	array_slice($featured_posts_middle, 0, 1) +
 	array_slice($recent_posts, 2, 4) + 
@@ -155,7 +155,7 @@ $recent_posts =
 // 	$recent_posts[10] + $recent_posts[11];
 
 echo '<!--  *2* ';
-echo print_r($recent_posts[0],1);
+echo print_r($recent_posts2[0],1);
 echo ' -->';
 
 get_header(); ?>
@@ -196,10 +196,10 @@ HTML;
 
 			<div class="recent-posts-container">
 
-				<?php if ( count($recent_posts) ) : 
+				<?php if ( count($recent_posts2) ) : 
 
 					// while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
-					foreach ($recent_posts as $post_i => $post):
+					foreach ($recent_posts2 as $post_i => $post):
 
 						if ($post_i%5 == 2) {
 							// featured middle
@@ -264,7 +264,7 @@ HTML;
 <script>
 var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;
-var posts = <?=json_encode($recent_posts)?>;
+var posts = <?=json_encode($recent_posts2)?>;
 var recent_post_opts = <?=json_encode($recent_post_opts)?>;
 // var num_posts_loaded = <?=$posts_loaded?>;
 var post_template = _.template( $("#tmpl-post").html() );

@@ -28,7 +28,7 @@ $column-width-recent: 33%;
 		width: $column-width-recent;
 	}
 
-	.recent-posts-container {
+	.featured-post-container, .recent-posts-container {
 		&:after {
 			content: '';
 			display: block;

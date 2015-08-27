@@ -133,7 +133,7 @@ if ($recent_posts_query->have_posts()) {
 	$featured_posts_middle[0] +
 	array_slice($recent_posts, offset)*/
 
-echo '<!-- ';
+echo '<!-- *1* ';
 echo print_r($recent_posts[0],1);
 echo ' -->';
 
@@ -151,6 +151,9 @@ $recent_posts =
 	$featured_posts_middle[2] + 
 	$recent_posts[10] + $recent_posts[11];
 
+echo '<!--  *2* ';
+echo print_r($recent_posts[0],1);
+echo ' -->';
 
 get_header(); ?>
 

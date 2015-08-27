@@ -341,10 +341,11 @@ if (class_exists('MultiPostThumbnails')) {
     );
 }
 
+// add MIDDLE FEATURED POST checkbox
+$middle_featured_post_name = 'my_middle_featured_post_field';
 
-// add TOP FEATURED POST checkbox
-add_action( 'post_submitbox_misc_actions', 'my_top_featured_post_field' );
-function my_top_featured_post_field()
+add_action( 'post_submitbox_misc_actions', $middle_featured_post_name );
+function my_middle_featured_post_field()
 {
   global $post;
 
@@ -353,17 +354,17 @@ function my_top_featured_post_field()
   if (get_post_type($post) != 'post') return false;
 
   /* get the value corrent value of the custom field */
-  $value = get_post_meta($post->ID, 'my_top_featured_post_field', true);
+  $value = get_post_meta($post->ID, $middle_featured_post_name, true);
   ?>
     <div class="misc-pub-section">
       <?php //if there is a value (1), check the checkbox ?>
-      <label><input type="checkbox"<?php echo (!empty($value) ? ' checked="checked"' : null) ?> value="1" name="my_featured_post_field" /> Featured on frontpage</label>
+      <label><input type="checkbox"<?php echo (!empty($value) ? ' checked="checked"' : null) ?> value="1" name="<?=$middle_featured_post_name?>" /> Middle featured post</label>
     </div>
   <?php
 }
 
-add_action( 'save_post', 'my_save_postdata');
-function my_save_postdata($postid)
+add_action( 'save_post', 'my_save_postdata_middle');
+function my_save_postdata_middle($postid)
 {
   /* check if this is an autosave */
   if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return false;
@@ -379,12 +380,61 @@ function my_save_postdata($postid)
   /* use add_post_meta, update_post_meta and delete_post_meta, to control the stored value */
 
   /* check if the custom field is submitted (checkboxes that aren't marked, aren't submitted) */
-  if(isset($_POST['my_top_featured_post_field'])){
+  if(isset($_POST["{$middle_featured_post_name}"])){
     /* store the value in the database */
-    add_post_meta($postid, 'my_top_featured_post_field', 1, true );
+    add_post_meta($postid, $middle_featured_post_name, 1, true );
   }
   else{
     /* not marked? delete the value in the database */
-    delete_post_meta($postid, 'my_top_featured_post_field');
+    delete_post_meta($postid, $middle_featured_post_name);
+  }
+}
+
+
+// add TOP FEATURED POST checkbox
+$top_featured_post_name = 'my_top_featured_post_field';
+add_action( 'post_submitbox_misc_actions', $top_featured_post_name );
+function my_top_featured_post_field()
+{
+  global $post;
+
+  /* check if this is a post, if not then we won't add the custom field */
+  /* change this post type to any type you want to add the custom field to */
+  if (get_post_type($post) != 'post') return false;
+
+  /* get the value corrent value of the custom field */
+  $value = get_post_meta($post->ID, $top_featured_post_name, true);
+  ?>
+    <div class="misc-pub-section">
+      <?php //if there is a value (1), check the checkbox ?>
+      <label><input type="checkbox"<?php echo (!empty($value) ? ' checked="checked"' : null) ?> value="1" name="<?=$top_featured_post_name?>" /> Top featured post</label>
+    </div>
+  <?php
+}
+
+add_action( 'save_post', 'my_save_postdata_top');
+function my_save_postdata_top($postid)
+{
+  /* check if this is an autosave */
+  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return false;
+
+  /* check if the user can edit this page */
+  if ( !current_user_can( 'edit_page', $postid ) ) return false;
+
+  /* check if there's a post id and check if this is a post */
+  /* make sure this is the same post type as above */
+  if(empty($postid) || $_POST['post_type'] != 'post' ) return false;
+
+  /* if you are going to use text fields, then you should change the part below */
+  /* use add_post_meta, update_post_meta and delete_post_meta, to control the stored value */
+
+  /* check if the custom field is submitted (checkboxes that aren't marked, aren't submitted) */
+  if(isset($_POST["{$top_featured_post_name}"])){
+    /* store the value in the database */
+    add_post_meta($postid, $top_featured_post_name, 1, true );
+  }
+  else{
+    /* not marked? delete the value in the database */
+    delete_post_meta($postid, $top_featured_post_name);
   }
 }

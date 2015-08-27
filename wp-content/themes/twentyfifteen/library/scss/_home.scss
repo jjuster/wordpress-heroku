@@ -25,6 +25,7 @@ $column-width-recent: 33%;
 
 	.grid-wrap {
 		float: left;
+		width: $column-width-recent;
 	}
 
 	.recent-posts-container {
@@ -36,7 +37,7 @@ $column-width-recent: 33%;
 	}
 
 	.homepage-post {
-		width: $column-width-recent;
+		width: 100%;
 		display: inline-block;
 		margin: 0 0 12px 0px;
 		padding:	4px;
@@ -47,6 +48,7 @@ $column-width-recent: 33%;
 		}
 
 		&.tall-post {
+			width: $column-width-recent;
 			img {
 				height: 900px;
 			}

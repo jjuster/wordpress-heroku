@@ -59,17 +59,19 @@ $featured_post_middle_opts = array(
 $recent_post_opts = array(
 	'cat' => '-1',
 	'posts_per_page' => 12,
-	'meta_query' => array(
-		'relation' => 'AND',
-		array(
-			'key' => 'my_middle_featured_post_field',
-			'value' => null
-		),
-		array(
-			'key' => 'my_top_featured_post_field',
-			'value' => null
-		)
-	)
+	'meta_key' => 'my_regular_post_field',
+	'meta_value' => 1
+	// 'meta_query' => array(
+	// 	'relation' => 'AND',
+	// 	array(
+	// 		'key' => 'my_middle_featured_post_field',
+	// 		'value' => null
+	// 	),
+	// 	array(
+	// 		'key' => 'my_top_featured_post_field',
+	// 		'value' => null
+	// 	)
+	// )
 );
 
 

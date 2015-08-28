@@ -435,3 +435,52 @@ function my_save_postdata_top($postid)
     delete_post_meta($postid, 'my_top_featured_post_field');
   }
 }
+
+
+
+// add REGULAR POST checkbox
+add_action( 'post_submitbox_misc_actions', 'my_regular_post_field' );
+function my_regular_post_field()
+{
+  global $post;
+
+  /* check if this is a post, if not then we won't add the custom field */
+  /* change this post type to any type you want to add the custom field to */
+  if (get_post_type($post) != 'post') return false;
+
+  /* get the value corrent value of the custom field */
+  $value = get_post_meta($post->ID, 'my_regular_post_field', true);
+  ?>
+    <div class="misc-pub-section">
+      <?php //if there is a value (1), check the checkbox ?>
+      <label><input type="checkbox"<?php echo (!empty($value) ? ' checked="checked"' : null) ?> value="1" name="my_regular_post_field" /> Regular post</label>
+    </div>
+  <?php
+}
+
+add_action( 'save_post', 'my_save_postdata_regular');
+function my_save_postdata_regular($postid)
+{
+  /* check if this is an autosave */
+  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return false;
+
+  /* check if the user can edit this page */
+  if ( !current_user_can( 'edit_page', $postid ) ) return false;
+
+  /* check if there's a post id and check if this is a post */
+  /* make sure this is the same post type as above */
+  if(empty($postid) || $_POST['post_type'] != 'post' ) return false;
+
+  /* if you are going to use text fields, then you should change the part below */
+  /* use add_post_meta, update_post_meta and delete_post_meta, to control the stored value */
+
+  /* check if the custom field is submitted (checkboxes that aren't marked, aren't submitted) */
+  if(isset($_POST['my_regular_post_field'])){
+    /* store the value in the database */
+    add_post_meta($postid, 'my_regular_post_field', 1, true );
+  }
+  else{
+    /* not marked? delete the value in the database */
+    delete_post_meta($postid, 'my_regular_post_field');
+  }
+}

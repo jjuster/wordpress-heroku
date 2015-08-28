@@ -89,13 +89,13 @@ if (!empty($_GET['xhr'])) {
 	// load middle col featured posts
 	$featured_posts_middle = get_posts($featured_post_middle_opts);
 	foreach ($featured_posts_middle as $i => $post) {
-		$featured_posts_middle[$i] = grabExtraPostData($post);
+		$featured_posts_middle[$i] = grabExtraPostData_return($post);
 	}
 
 	// load rest of posts
 	$recent_posts = get_posts($recent_post_opts);
 	foreach ($recent_posts as $i => $post) {
-		$recent_posts[$i] = grabExtraPostData($post);
+		$recent_posts[$i] = grabExtraPostData_return($post);
 	}
 
 	$recent_posts_combined = array();

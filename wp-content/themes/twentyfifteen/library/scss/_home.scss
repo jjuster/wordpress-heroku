@@ -26,6 +26,10 @@ $column-width-recent: 33%;
 	.grid-wrap {
 		float: left;
 		width: $column-width-recent;
+
+		@media(max-width: 767px) {
+			width: 100%;
+		}
 	}
 
 	.featured-post-container, .recent-posts-container {

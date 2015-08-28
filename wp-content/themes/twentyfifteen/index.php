@@ -98,7 +98,7 @@ if (!empty($_GET['xhr'])) {
 		grabExtraPostData($post);
 	}
 
-	echo ' <!--  yoyoyo ' .print_r($recent_posts,1) . ' --> ';
+	// echo ' <!--  yoyoyo ' .print_r($recent_posts,1) . ' --> ';
 
 	$recent_posts_combined = array();
 	if (!empty($recent_posts[0])) { $recent_posts_combined[] = $recent_posts[0]; }
@@ -109,7 +109,7 @@ if (!empty($_GET['xhr'])) {
 
 	$response = array(
 		'success' => 1,
-		'posts' => $posts
+		'posts' => $recent_posts_combined
 	);
 
 	echo json_encode($response);

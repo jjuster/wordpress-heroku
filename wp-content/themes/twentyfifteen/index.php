@@ -110,7 +110,7 @@ if ($featured_posts_top->have_posts()) {
 	}
 }
 
-$recent_posts = array();
+
 $featured_posts_middle = array();
 
 // load MIDDLE featured posts
@@ -127,6 +127,9 @@ if ($featured_posts_middle_query->have_posts()) {
 // load rest of posts
 // $recent_posts_query = new WP_Query( $recent_post_opts );
 $recent_posts = get_posts($recent_post_opts);
+foreach ($recent_posts as &$post) {
+	grabExtraPostData($post);
+}
 
 /* if ($recent_posts_query->have_posts()) {
 	while ($recent_posts_query->have_posts()) {
@@ -166,11 +169,11 @@ $recent_posts2 =
 // 	$recent_posts[8] + $recent_posts[9] + 
 // 	$featured_posts_middle[2] + 
 // 	$recent_posts[10] + $recent_posts[11];
-
+/* 
 echo '<!--  *2* ';
 echo print_r($recent_posts2,1);
 echo ' -->';
-
+*/
 
 get_header(); ?>
 

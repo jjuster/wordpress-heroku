@@ -125,8 +125,12 @@ foreach ($recent_posts as &$post) {
 }
 
 
-echo '<!-- *1* ';
+echo '<!-- *recent* ';
 echo print_r($recent_posts,1);
+echo ' -->';
+
+echo '<!-- *featured/middle* ';
+echo print_r($featured_posts_middle,1);
 echo ' -->';
 
 // jack featured_middle_posts into recent_posts

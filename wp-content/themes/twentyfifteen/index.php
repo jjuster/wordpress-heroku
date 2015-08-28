@@ -319,6 +319,10 @@ function load_more()
 
 				$(".recent-posts-container").append( $(append_html) );
 			}
+
+			if (newposts.length < 5) {
+				load_more_active = false;
+			}
 			
 			currently_loading_more = false;
 		}

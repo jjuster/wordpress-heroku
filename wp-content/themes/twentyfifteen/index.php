@@ -43,19 +43,6 @@ function grabExtraPostData(&$post)
 	unset($post->post_content);
 }
 
-// function grabExtraPostData_return($post)
-// {
-// 	$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
-// 	$post->permalink = get_permalink($post->ID);
-// 	$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
-// 	$post->title = htmlencode($post->post_title);
-// 	$post->is_top_featured = get_post_meta($post->ID, 'my_top_featured_post_field', true);
-// 	$post->is_middle_featured = get_post_meta($post->ID, 'my_middle_featured_post_field', true);
-// 	$post->is_regular = get_post_meta($post->ID, 'my_regular_post_field', true);
-// 	unset($post->post_content);
-// 	return $post;
-// }
-
 $featured_post_top_opts = array(
 	'posts_per_page' => 3,
 	'meta_key' => 'my_top_featured_post_field',
@@ -97,8 +84,6 @@ if (!empty($_GET['xhr'])) {
 	foreach ($recent_posts as &$post) {
 		grabExtraPostData($post);
 	}
-
-	// echo ' <!--  yoyoyo ' .print_r($recent_posts,1) . ' --> ';
 
 	$recent_posts_combined = array();
 	if (!empty($recent_posts[0])) { $recent_posts_combined[] = $recent_posts[0]; }
@@ -248,11 +233,23 @@ HTML;
 </div>
 </script>
 
+<script type="text/x-underscore" id="tmpl-post-tall">
+<div class="homepage-post tall-post">
+	<a href="<%=post.permalink%>">
+		<img src="<%=post.featured_image%>" data-pradux-ignore="true">
+	</a>
+	<div class="bottom-text">
+		<a href="<%=post.permalink%>" class="category"><%=post.category%></a>
+		<a href="<%=post.permalink%>" class="title"><%=post.title%></a>
+	</div>
+</div>
+</script>
+
 <script>
 var posts = <?=json_encode($recent_posts_combined)?>;
 var post_template = _.template( $("#tmpl-post").html() );
+var post_tall_template = _.template( $("#tmpl-postt-tall").html() );
 
-var $newposts = [];
 var load_more_active = true;
 var currently_loading_more = false;
 
@@ -287,44 +284,42 @@ function load_more()
 				return;
 			}
 
-			// place first post
+			// place first/second post
 			if (newposts[0]) {
-				// append_html += '<div class="grid-wrap">';
-				// append_html += 
-				console.log('new post 0: ' , newposts[0]);
-				append_html = post_template({post: newposts[0]});
-				// var append_html2 = $(post_template({post: newposts[0]})).html();
-				console.log(append_html);
-				// console.log(append_html2);
-			}
+				append_html += '<div class="grid-wrap">';
+				append_html += post_template({post: newposts[0]});
+				posts.push(newposts[0]);
+				
+				if (newposts[1]) {
+					append_html += post_template({post: newposts[1]});
+					posts.push(newposts[1]);
+				}
 
-			return;
+				append_html += '</div>'; // </.grid-wrap>
 
+				if (newposts[2])
+				{
+					append_html += post_tall_template({post: newposts[2]});
+					posts.push(newposts[2]);
 
+					if (newposts[3])
+					{
+						append_html += '<div class="grid-wrap">';
+						append_html += post_template({post: newposts[3]});
+						posts.push(newposts[3]);
 
-			$newposts = [];
-			
-			$.each(posts, function(i, post) {
+						if (newposts[4]) {
+							append_html += post_template({post: newposts[4]});
+							posts.push(newposts[4]);
+						}
 
-				var $post = $(post_template({
-					post: {
-						permalink: post.permalink,
-						featured_image: post.featured_image,
-						category: post.category,
-						title: post.title
+						append_html += '</div>'; // </.grid-wrap>
 					}
-				}));
+				}
 
-				$newposts.push($post);
-			});
-
-			$(".recent-posts-container").append($newposts);
-
-			
-
-			num_posts_loaded += posts.length;
-
-		}
+				$(".recent-posts-container").append( $(append_html) );
+			}
+		});
 	});
 }
 

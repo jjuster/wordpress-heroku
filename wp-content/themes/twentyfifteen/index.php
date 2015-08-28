@@ -277,7 +277,7 @@ function load_more()
 				// append_html += '<div class="grid-wrap">';
 				// append_html += 
 				console.log('new post 0: ' , newposts[0]);
-				append_html = post_template(newposts[0]);
+				append_html = $(post_template(newposts[0])).html();
 				console.log(append_html);
 			}
 			return;

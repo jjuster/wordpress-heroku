@@ -308,8 +308,8 @@ function load_more()
 	});
 }
 
-// var load_more_debounced = _.debounce(load_more, 500);
-// $(window).scroll(load_more_debounced);
+var load_more_debounced = _.debounce(load_more, 500);
+$(window).scroll(load_more_debounced);
 
 </script>
 

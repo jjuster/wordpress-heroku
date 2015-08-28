@@ -66,18 +66,31 @@ $recent_post_opts = array(
 // ajax load more posts
 if (!empty($_GET['xhr'])) {
 
-	$recent_post_opts['offset'] = (int)$_GET['offset'];
-	$recent_post_opts['posts_per_page'] = 10;
-	$posts_query = new WP_Query($recent_post_opts);
-	$posts = array();
+	// offsets for regular/featured
+	$featured_post_middle_opts['offset'] = (int)$_GET['offset'] * 0.2;
+	$featured_post_middle_opts['posts_per_page'] = 1;
 
-	if ($posts_query->have_posts()) {
-		while ($posts_query->have_posts()) {
-			$posts_query->the_post();
-			grabExtraPostData($post);
-			$posts[] = $post;
-		}
+	$recent_post_opts['offset'] = (int)$_GET['offset'] * 0.8;
+	$recent_post_opts['posts_per_page'] = 4; 
+	
+	// load middle col featured posts
+	$featured_posts_middle = get_posts($featured_post_middle_opts);
+	foreach ($featured_posts_middle as &$post) {
+		grabExtraPostData($post);
 	}
+
+	// load rest of posts
+	$recent_posts = get_posts($recent_post_opts);
+	foreach ($recent_posts as &$post) {
+		grabExtraPostData($post);
+	}
+
+	$recent_posts_combined = array();
+	if (!empty($recent_posts[0])) { $recent_posts_combined[] = $recent_posts[0]; }
+	if (!empty($recent_posts[1])) { $recent_posts_combined[] = $recent_posts[1]; }
+	if (!empty($featured_posts_middle[0])) { $recent_posts_combined[] = $featured_posts_middle[0]; }
+	if (!empty($recent_posts[2])) { $recent_posts_combined[] = $recent_posts[2]; }
+	if (!empty($recent_posts[3])) { $recent_posts_combined[] = $recent_posts[3]; }
 
 	$response = array(
 		'success' => 1,
@@ -250,13 +263,24 @@ function load_more()
 		dataType: "json",
 		success: function(response) {
 
-			var posts = response.posts;
+			var newposts = response.posts;
+			var append_html = '';
 			
-			if (posts.length == 0) {
+			if (newposts.length == 0) {
 				load_more_active = false;
 				currently_loading_more = false;
 				return;
 			}
+
+			// place first post
+			if (newposts[0]) {
+				// append_html += '<div class="grid-wrap">';
+				// append_html += 
+				console.log('new post 0: ' , newposts[0]);
+				append_html = post_template(newposts[0]);
+				console.log(append_html);
+			}
+			return;
 
 			$newposts = [];
 			

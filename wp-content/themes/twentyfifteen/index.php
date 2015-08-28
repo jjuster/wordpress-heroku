@@ -125,8 +125,10 @@ if ($featured_posts_middle_query->have_posts()) {
 }
 
 // load rest of posts
-$recent_posts_query = new WP_Query( $recent_post_opts );
-if ($recent_posts_query->have_posts()) {
+// $recent_posts_query = new WP_Query( $recent_post_opts );
+$recent_posts = get_posts($recent_post_opts);
+
+/* if ($recent_posts_query->have_posts()) {
 	while ($recent_posts_query->have_posts()) {
 		$recent_posts_query->the_post();
 		grabExtraPostData($post);
@@ -136,7 +138,7 @@ if ($recent_posts_query->have_posts()) {
 		// $post_debug[] = $post;
 		// $posts_loaded++;
 	}
-}
+} */
 
 echo '<!-- *1* ';
 echo print_r(array_slice($recent_posts, 0, 2),1);

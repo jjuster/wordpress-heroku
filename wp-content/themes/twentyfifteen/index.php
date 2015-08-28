@@ -248,7 +248,7 @@ HTML;
 <script>
 var posts = <?=json_encode($recent_posts_combined)?>;
 var post_template = _.template( $("#tmpl-post").html() );
-var post_tall_template = _.template( $("#tmpl-postt-tall").html() );
+var post_tall_template = _.template( $("#tmpl-post-tall").html() );
 
 var load_more_active = true;
 var currently_loading_more = false;

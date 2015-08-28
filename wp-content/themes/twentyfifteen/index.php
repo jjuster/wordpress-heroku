@@ -133,43 +133,21 @@ echo '<!-- *featured/middle* ';
 echo print_r($featured_posts_middle,1);
 echo ' -->';
 
-// jack featured_middle_posts into recent_posts
-// $recent_posts2 = 
-// 	array_slice($recent_posts, 0, 2) +
-// 	array_slice($featured_posts_middle, 0, 1) +
-// 	array_slice($recent_posts, 2, 4) + 
-// 	array_slice($featured_posts_middle, 1, 1) +
-// 	array_slice($recent_posts, 6, 4) + 
-// 	array_slice($featured_posts_middle, 2, 1) +
-// 	array_slice($recent_posts, 10, 2);
-
 $recent_posts3 = array();
 array_push($recent_posts3,
-	array_slice($recent_posts, 0, 2),
-	array_slice($featured_posts_middle, 0, 1),
-	array_slice($recent_posts, 2, 4),
-	array_slice($featured_posts_middle, 1, 1),
-	array_slice($recent_posts, 6, 4),
-	array_slice($featured_posts_middle, 2, 1),
-	array_slice($recent_posts, 10, 2)
+	$recent_posts[0], $recent_posts[1],
+	$featured_posts_middle[0],
+	$recent_posts[2], $recent_posts[3],
+
+	$recent_posts[4], $recent_posts[5],
+	$featured_posts_middle[1],
+	$recent_posts[6], $recent_posts[7],
+
+	$recent_posts[8], $recent_posts[9],
+	$featured_posts_middle[2],
+	$recent_posts[10], $recent_posts[11]
 );
 
-// $recent_posts3 = 
-// 	$recent_posts[0] + $recent_posts[1] + 
-// 	$featured_posts_middle[0] + 
-// 	$recent_posts[2] + $recent_posts[3] + 
-
-// 	$recent_posts[4] + $recent_posts[5] + 
-// 	$featured_posts_middle[1] + 
-// 	$recent_posts[6] + $recent_posts[7] + 
-
-// 	$recent_posts[8] + $recent_posts[9] + 
-// 	$featured_posts_middle[2] + 
-// 	$recent_posts[10] + $recent_posts[11];
- 
-// echo '<!--  *combined(a)* ';
-// echo print_r($recent_posts2,1);
-// echo ' -->';
 
 echo '<!--  *combined(b)* ';
 echo print_r($recent_posts3,1);
@@ -212,10 +190,10 @@ HTML;
 
 			<div class="recent-posts-container">
 
-				<?php if ( count($recent_posts2) ) : 
+				<?php if ( count($recent_posts3) ) : 
 
 					// while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
-					foreach ($recent_posts2 as $post_i => $post):
+					foreach ($recent_posts3 as $post_i => $post):
 
 						if ($post_i%5 == 2) {
 							// featured middle
@@ -278,7 +256,7 @@ HTML;
 <script>
 var post_ids = <?=json_encode($post_ids)?>;
 var post_debug = <?=json_encode($post_debug)?>;
-var posts = <?=json_encode($recent_posts2)?>;
+var posts = <?=json_encode($recent_posts3)?>;
 var recent_post_opts = <?=json_encode($recent_post_opts)?>;
 // var num_posts_loaded = <?=$posts_loaded?>;
 var post_template = _.template( $("#tmpl-post").html() );

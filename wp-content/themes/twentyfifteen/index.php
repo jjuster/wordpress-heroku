@@ -63,14 +63,14 @@ $featured_post_top_opts = array(
 );
 
 $featured_post_middle_opts = array(
-	'posts_per_page' => 3,
+	'posts_per_page' => 2,
 	'meta_key' => 'my_middle_featured_post_field',
 	'meta_value' => 1
 );
 
 $recent_post_opts = array(
 	'cat' => '-1',
-	'posts_per_page' => 12,
+	'posts_per_page' => 8,
 	'meta_key' => 'my_regular_post_field',
 	'meta_value' => 1
 );
@@ -143,9 +143,9 @@ array_push($recent_posts_combined,
 	$featured_posts_middle[1],
 	$recent_posts[6], $recent_posts[7],
 
-	$recent_posts[8], $recent_posts[9],
-	$featured_posts_middle[2],
-	$recent_posts[10], $recent_posts[11]
+	// $recent_posts[8], $recent_posts[9],
+	// $featured_posts_middle[2],
+	// $recent_posts[10], $recent_posts[11]
 );
 
 get_header(); ?>
@@ -295,7 +295,10 @@ function load_more()
 				console.log(append_html);
 				// console.log(append_html2);
 			}
+
 			return;
+
+			
 
 			$newposts = [];
 			

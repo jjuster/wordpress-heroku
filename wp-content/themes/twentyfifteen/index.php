@@ -39,19 +39,18 @@ function grabExtraPostData(&$post)
 	$post->title = htmlencode($post->post_title);
 	$post->is_top_featured = get_post_meta($post->ID, 'my_top_featured_post_field', true);
 	$post->is_middle_featured = get_post_meta($post->ID, 'my_middle_featured_post_field', true);
+	$post->is_regular = get_post_meta($post->ID, 'my_regular_post_field', true);
 	unset($post->post_content);
 }
 
 $featured_post_top_opts = array(
 	'posts_per_page' => 3,
-	// 'post__in' => array(1, 232, 247)
 	'meta_key' => 'my_top_featured_post_field',
 	'meta_value' => 1
 );
 
 $featured_post_middle_opts = array(
 	'posts_per_page' => 3,
-	// 'post__in' => array(1, 232, 247)
 	'meta_key' => 'my_middle_featured_post_field',
 	'meta_value' => 1
 );
@@ -61,17 +60,6 @@ $recent_post_opts = array(
 	'posts_per_page' => 12,
 	'meta_key' => 'my_regular_post_field',
 	'meta_value' => 1
-	// 'meta_query' => array(
-	// 	'relation' => 'AND',
-	// 	array(
-	// 		'key' => 'my_middle_featured_post_field',
-	// 		'value' => null
-	// 	),
-	// 	array(
-	// 		'key' => 'my_top_featured_post_field',
-	// 		'value' => null
-	// 	)
-	// )
 );
 
 
@@ -102,29 +90,31 @@ if (!empty($_GET['xhr'])) {
 
 
 // load TOP featured posts
-$featured_posts_top = new WP_Query( $featured_post_top_opts );
-if ($featured_posts_top->have_posts()) {
-	while ($featured_posts_top->have_posts()) {
-		$featured_posts_top->the_post();
-		grabExtraPostData($post);
-		
-		// $post_ids[] = $post->ID;
-		// $post_debug[] = $post;
-	}
+// $featured_posts_top = new WP_Query( $featured_post_top_opts );
+// if ($featured_posts_top->have_posts()) {
+// 	while ($featured_posts_top->have_posts()) {
+// 		$featured_posts_top->the_post();
+// 		grabExtraPostData($post);
+// 	}
+// }
+$featured_posts_top = get_posts($featured_post_top_opts);
+foreach ($featured_posts_top as &$post) {
+	grabExtraPostData($post);
 }
 
 
-$featured_posts_middle = array();
-
 // load MIDDLE featured posts
-$featured_posts_middle_query = new WP_Query( $featured_post_middle_opts );
-if ($featured_posts_middle_query->have_posts()) {
-	while ($featured_posts_middle_query->have_posts()) {
-		$featured_posts_middle_query->the_post();
-		grabExtraPostData($post);
-		$featured_posts_middle[] = (object)$post;
-		
-	}
+// $featured_posts_middle_query = new WP_Query( $featured_post_middle_opts );
+// if ($featured_posts_middle_query->have_posts()) {
+// 	while ($featured_posts_middle_query->have_posts()) {
+// 		$featured_posts_middle_query->the_post();
+// 		grabExtraPostData($post);
+// 		$featured_posts_middle[] = (object)$post;
+// 	}
+// }
+$featured_posts_middle = get_posts($featured_post_middle_opts);
+foreach ($featured_posts_middle as &$post) {
+	grabExtraPostData($post);
 }
 
 // load rest of posts
@@ -134,17 +124,6 @@ foreach ($recent_posts as &$post) {
 	grabExtraPostData($post);
 }
 
-/* if ($recent_posts_query->have_posts()) {
-	while ($recent_posts_query->have_posts()) {
-		$recent_posts_query->the_post();
-		grabExtraPostData($post);
-		$recent_posts[] = (object)$post;
-		
-		// $post_ids[] = $post->ID;
-		// $post_debug[] = $post;
-		// $posts_loaded++;
-	}
-} */
 
 echo '<!-- *1* ';
 echo print_r($recent_posts,1);
@@ -172,11 +151,11 @@ $recent_posts2 =
 // 	$recent_posts[8] + $recent_posts[9] + 
 // 	$featured_posts_middle[2] + 
 // 	$recent_posts[10] + $recent_posts[11];
-/* 
+ 
 echo '<!--  *2* ';
 echo print_r($recent_posts2,1);
 echo ' -->';
-*/
+
 
 get_header(); ?>
 
@@ -186,11 +165,9 @@ get_header(); ?>
 
 			<div class="featured-post-container">
 
-				<?php if ( $featured_posts_top->have_posts() ) :
+				<?php if ( count($featured_posts_top) ) :
 
-				$i=0; 
-
-					while ( $featured_posts_top->have_posts() ) : $featured_posts_top->the_post();
+					foreach ($featured_posts_top as $post):
 						
 						// top featured posts
 						echo <<<HTML
@@ -202,7 +179,7 @@ get_header(); ?>
 	</div>
 </a>
 HTML;
-					endwhile; 
+					endforeach; 
 				endif; ?>
 			
 			</div>
@@ -256,9 +233,7 @@ HTML;
 							if ($post_i%5 == 1 || $post_i%5 == 4) {
 								echo '</div>';
 							}
-
 						}
-
 
 					endforeach;
 				endif; ?>

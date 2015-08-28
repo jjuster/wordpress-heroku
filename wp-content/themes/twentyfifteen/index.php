@@ -43,18 +43,18 @@ function grabExtraPostData(&$post)
 	unset($post->post_content);
 }
 
-function grabExtraPostData_return($post)
-{
-	$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
-	$post->permalink = get_permalink($post->ID);
-	$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
-	$post->title = htmlencode($post->post_title);
-	$post->is_top_featured = get_post_meta($post->ID, 'my_top_featured_post_field', true);
-	$post->is_middle_featured = get_post_meta($post->ID, 'my_middle_featured_post_field', true);
-	$post->is_regular = get_post_meta($post->ID, 'my_regular_post_field', true);
-	unset($post->post_content);
-	return $post;
-}
+// function grabExtraPostData_return($post)
+// {
+// 	$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
+// 	$post->permalink = get_permalink($post->ID);
+// 	$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
+// 	$post->title = htmlencode($post->post_title);
+// 	$post->is_top_featured = get_post_meta($post->ID, 'my_top_featured_post_field', true);
+// 	$post->is_middle_featured = get_post_meta($post->ID, 'my_middle_featured_post_field', true);
+// 	$post->is_regular = get_post_meta($post->ID, 'my_regular_post_field', true);
+// 	unset($post->post_content);
+// 	return $post;
+// }
 
 $featured_post_top_opts = array(
 	'posts_per_page' => 3,
@@ -88,15 +88,17 @@ if (!empty($_GET['xhr'])) {
 	
 	// load middle col featured posts
 	$featured_posts_middle = get_posts($featured_post_middle_opts);
-	foreach ($featured_posts_middle as $i => $post) {
-		$featured_posts_middle[$i] = grabExtraPostData_return($post);
+	foreach ($featured_posts_middle as &$post) {
+		grabExtraPostData($post);
 	}
 
 	// load rest of posts
 	$recent_posts = get_posts($recent_post_opts);
-	foreach ($recent_posts as $i => $post) {
-		$recent_posts[$i] = grabExtraPostData_return($post);
+	foreach ($recent_posts as &$post) {
+		grabExtraPostData($post);
 	}
+
+	echo ' <!--  yoyoyo ' .print_r($recent_posts,1) . ' --> ';
 
 	$recent_posts_combined = array();
 	if (!empty($recent_posts[0])) { $recent_posts_combined[] = $recent_posts[0]; }
@@ -141,7 +143,7 @@ array_push($recent_posts_combined,
 
 	$recent_posts[4], $recent_posts[5],
 	$featured_posts_middle[1],
-	$recent_posts[6], $recent_posts[7],
+	$recent_posts[6], $recent_posts[7]
 
 	// $recent_posts[8], $recent_posts[9],
 	// $featured_posts_middle[2],
@@ -298,7 +300,7 @@ function load_more()
 
 			return;
 
-			
+
 
 			$newposts = [];
 			

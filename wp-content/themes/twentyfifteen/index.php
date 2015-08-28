@@ -90,51 +90,25 @@ if (!empty($_GET['xhr'])) {
 
 
 // load TOP featured posts
-// $featured_posts_top = new WP_Query( $featured_post_top_opts );
-// if ($featured_posts_top->have_posts()) {
-// 	while ($featured_posts_top->have_posts()) {
-// 		$featured_posts_top->the_post();
-// 		grabExtraPostData($post);
-// 	}
-// }
 $featured_posts_top = get_posts($featured_post_top_opts);
 foreach ($featured_posts_top as &$post) {
 	grabExtraPostData($post);
 }
 
-
-// load MIDDLE featured posts
-// $featured_posts_middle_query = new WP_Query( $featured_post_middle_opts );
-// if ($featured_posts_middle_query->have_posts()) {
-// 	while ($featured_posts_middle_query->have_posts()) {
-// 		$featured_posts_middle_query->the_post();
-// 		grabExtraPostData($post);
-// 		$featured_posts_middle[] = (object)$post;
-// 	}
-// }
+// load middle col featured posts
 $featured_posts_middle = get_posts($featured_post_middle_opts);
 foreach ($featured_posts_middle as &$post) {
 	grabExtraPostData($post);
 }
 
 // load rest of posts
-// $recent_posts_query = new WP_Query( $recent_post_opts );
 $recent_posts = get_posts($recent_post_opts);
 foreach ($recent_posts as &$post) {
 	grabExtraPostData($post);
 }
 
-
-echo '<!-- *recent* ';
-echo print_r($recent_posts,1);
-echo ' -->';
-
-echo '<!-- *featured/middle* ';
-echo print_r($featured_posts_middle,1);
-echo ' -->';
-
-$recent_posts3 = array();
-array_push($recent_posts3,
+$recent_posts_combined = array();
+array_push($recent_posts_combined,
 	$recent_posts[0], $recent_posts[1],
 	$featured_posts_middle[0],
 	$recent_posts[2], $recent_posts[3],
@@ -147,12 +121,6 @@ array_push($recent_posts3,
 	$featured_posts_middle[2],
 	$recent_posts[10], $recent_posts[11]
 );
-
-
-echo '<!--  *combined(b)* ';
-echo print_r($recent_posts3,1);
-echo ' -->';
-
 
 get_header(); ?>
 
@@ -190,10 +158,9 @@ HTML;
 
 			<div class="recent-posts-container">
 
-				<?php if ( count($recent_posts3) ) : 
+				<?php if ( count($recent_posts_combined) ) : 
 
-					// while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
-					foreach ($recent_posts3 as $post_i => $post):
+					foreach ($recent_posts_combined as $post_i => $post):
 
 						if ($post_i%5 == 2) {
 							// featured middle
@@ -254,11 +221,7 @@ HTML;
 </script>
 
 <script>
-var post_ids = <?=json_encode($post_ids)?>;
-var post_debug = <?=json_encode($post_debug)?>;
-var posts = <?=json_encode($recent_posts3)?>;
-var recent_post_opts = <?=json_encode($recent_post_opts)?>;
-// var num_posts_loaded = <?=$posts_loaded?>;
+var posts = <?=json_encode($recent_posts_combined)?>;
 var post_template = _.template( $("#tmpl-post").html() );
 
 var $newposts = [];
@@ -282,7 +245,7 @@ function load_more()
 		url: document.location.toString(),
 		data: {
 			xhr: 1,
-			offset: num_posts_loaded
+			offset: posts.length
 		},
 		dataType: "json",
 		success: function(response) {

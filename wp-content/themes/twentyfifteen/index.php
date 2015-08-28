@@ -141,7 +141,7 @@ $recent_posts = get_posts($recent_post_opts);
 } */
 
 echo '<!-- *1* ';
-echo print_r(array_slice($recent_posts, 0, 2),1);
+echo print_r($recent_posts,1);
 echo ' -->';
 
 // jack featured_middle_posts into recent_posts

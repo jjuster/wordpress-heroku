@@ -319,7 +319,7 @@ function load_more()
 
 				$(".recent-posts-container").append( $(append_html) );
 			}
-		});
+		}
 	});
 }
 

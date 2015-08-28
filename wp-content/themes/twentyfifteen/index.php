@@ -43,6 +43,19 @@ function grabExtraPostData(&$post)
 	unset($post->post_content);
 }
 
+function grabExtraPostData_return($post)
+{
+	$post->featured_image = extract_img_src(get_the_post_thumbnail($post->ID));
+	$post->permalink = get_permalink($post->ID);
+	$post->category = htmlencode(strip_tags( get_the_category_list('/', '', $post->ID) ));
+	$post->title = htmlencode($post->post_title);
+	$post->is_top_featured = get_post_meta($post->ID, 'my_top_featured_post_field', true);
+	$post->is_middle_featured = get_post_meta($post->ID, 'my_middle_featured_post_field', true);
+	$post->is_regular = get_post_meta($post->ID, 'my_regular_post_field', true);
+	unset($post->post_content);
+	return $post;
+}
+
 $featured_post_top_opts = array(
 	'posts_per_page' => 3,
 	'meta_key' => 'my_top_featured_post_field',
@@ -75,14 +88,14 @@ if (!empty($_GET['xhr'])) {
 	
 	// load middle col featured posts
 	$featured_posts_middle = get_posts($featured_post_middle_opts);
-	foreach ($featured_posts_middle as &$post) {
-		grabExtraPostData($post);
+	foreach ($featured_posts_middle as $i => $post) {
+		$featured_posts_middle[$i] = grabExtraPostData($post);
 	}
 
 	// load rest of posts
 	$recent_posts = get_posts($recent_post_opts);
-	foreach ($recent_posts as &$post) {
-		grabExtraPostData($post);
+	foreach ($recent_posts as $i => $post) {
+		$recent_posts[$i] = grabExtraPostData($post);
 	}
 
 	$recent_posts_combined = array();
@@ -277,10 +290,10 @@ function load_more()
 				// append_html += '<div class="grid-wrap">';
 				// append_html += 
 				console.log('new post 0: ' , newposts[0]);
-				append_html = $(post_template({post: newposts[0]})).html();
-				var append_html2 = post_template({post: newposts[0]});
+				append_html = post_template({post: newposts[0]});
+				// var append_html2 = $(post_template({post: newposts[0]})).html();
 				console.log(append_html);
-				console.log(append_html2);
+				// console.log(append_html2);
 			}
 			return;
 

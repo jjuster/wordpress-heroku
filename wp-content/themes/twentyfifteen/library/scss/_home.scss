@@ -47,21 +47,22 @@ $column-width-recent: 33%;
 		padding:	4px;
 		float: left;
 
-		img {
-			height: 450px;
-		}
+		// img {
+		// 	height: 450px;
+		// }
 
 		&.tall-post {
 			width: $column-width-recent;
-			img {
-				height: 900px;
-			}
+			// img {
+			// 	height: 900px;
+			// }
 		}
 
 		a {
 			display: block;
 			img {
-				max-width: 100%;
+				width: 100%;
+				background-size: cover;
 			}
 		}
 

@@ -48,7 +48,12 @@ $column-width-recent: 33.333%;
 		float: left;
 
 		&.tall-post {
-			width: $column-width-recent;			
+			width: $column-width-recent;
+			a {
+				img {
+					padding-bottom: 74px;
+				}
+			}
 		}
 
 		a {

@@ -180,7 +180,7 @@ HTML;
 							echo <<<HTML
 <div class="homepage-post tall-post">
 	<a href="{$post->permalink}">
-		<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441048219_blank-768x1214.png" data-pradux-ignore="true" style="background-image:url({$post->featured_image})">
+		<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441050966_blank-768x1283.png" data-pradux-ignore="true" style="background-image:url({$post->featured_image})">
 	</a>
 	<div class="bottom-text">
 		<div class="category">{$post->category}</div>
@@ -224,7 +224,7 @@ HTML;
 <script type="text/x-underscore" id="tmpl-post">
 <div class="homepage-post">
 	<a href="<%=post.permalink%>">
-		<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441050966_blank-768x1283.png" data-pradux-ignore="true" style="background-image:url(<%=post.featured_image%>)">
+		<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441048219_blank-768x576.png" data-pradux-ignore="true" style="background-image:url(<%=post.featured_image%>)">
 	</a>
 	<div class="bottom-text">
 		<div class="category"><%=post.category%></div>

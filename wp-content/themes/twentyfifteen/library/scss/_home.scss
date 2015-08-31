@@ -47,15 +47,8 @@ $column-width-recent: 33%;
 		padding:	4px;
 		float: left;
 
-		// img {
-		// 	height: 450px;
-		// }
-
 		&.tall-post {
-			width: $column-width-recent;
-			// img {
-			// 	height: 900px;
-			// }
+			width: $column-width-recent;			
 		}
 
 		a {

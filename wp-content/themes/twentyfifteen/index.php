@@ -222,6 +222,10 @@ HTML;
 
 			</div>
 
+			<div class="preload-container">
+				<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441134990_ellipsis.gif">
+			</div>
+
 		</main>
 	</div>
 
@@ -272,6 +276,7 @@ function load_more()
 	}
 
 	currently_loading_more = true;
+	$(".preload-container").show();
 
 	$.ajax({
 		url: document.location.toString(),
@@ -336,6 +341,7 @@ function load_more()
 			}
 			
 			currently_loading_more = false;
+			$(".preload-container").hide();
 		}
 	});
 }
@@ -345,5 +351,9 @@ $(window).scroll(load_more_debounced);
 
 </script>
 
+<!-- preload -->
+<div style="display:none;">
+	<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441134990_ellipsis.gif">
+</div>
 
 <?php get_footer(); ?>

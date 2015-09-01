@@ -207,8 +207,13 @@ HTML;
 	</div>
 </div>
 HTML;
-							if ($post_i%5 == 1 || $post_i%5 == 4) {
+							if ($post_i%5 == 1) {
 								echo '</div>';
+							}
+
+							elseif ($post_i%5 == 4) {
+								echo '</div>';
+								echo '<div style="clear:both;"></div>';
 							}
 						}
 
@@ -311,9 +316,13 @@ function load_more()
 						if (newposts[4]) {
 							append_html += post_template({post: newposts[4]});
 							posts.push(newposts[4]);
-						}
 
-						append_html += '</div>'; // </.grid-wrap>
+							append_html += '</div>'; // </.grid-wrap>
+							append_html += '<div style="clear:both;"></div>'; // clear
+						}
+						else {
+							append_html += '</div>'; // </.grid-wrap>
+						}		
 					}
 				}
 

@@ -265,7 +265,9 @@ function load_more()
 		return;
 	}
 
-	if ($(window).scrollTop() / $("body").height() < 0.75) {
+	var pct = parseInt($(window).scrollTop(), 10) / parseInt($("body").height(), 10);
+
+	if (pct < 0.5) {
 		return;
 	}
 
@@ -338,7 +340,7 @@ function load_more()
 	});
 }
 
-var load_more_debounced = _.debounce(load_more, 500);
+var load_more_debounced = _.debounce(load_more, 500, true);
 $(window).scroll(load_more_debounced);
 
 </script>

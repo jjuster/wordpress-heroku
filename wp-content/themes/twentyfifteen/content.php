@@ -231,6 +231,11 @@ HTML;
 	var prev_post_id = <?=json_encode($prevID)?>;
 	var next_post_id = <?=json_encode($nextID)?>;
 
+	// disable category links for now
+	$(".entry-header .category a").replaceWith(function() {
+		return $(this).text();
+	});
+
 	</script>
 
 	<script>

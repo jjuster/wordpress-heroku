@@ -347,7 +347,7 @@ function load_more()
 	});
 }
 
-var load_more_debounced = _.debounce(load_more, 250, true);
+var load_more_debounced = _.debounce(load_more, 250, false);
 $(window).scroll(load_more_debounced);
 
 </script>

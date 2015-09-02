@@ -34,13 +34,17 @@ span.pradux-nested {
 }
 
 .ssk-wrapper {
-  position: relative;
-  margin-top: 40px;
   .ssk-sticky {
     position: absolute;
+    margin-top: 6px;
     top: 0;
     left: 0;
     z-index: 90;
+    opacity: 0;
+
+    transition: opacity 0.3s ease-in;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
   }
 }
 .ssk {

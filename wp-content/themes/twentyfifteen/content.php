@@ -247,18 +247,27 @@ HTML;
 		var ssk = $(".ssk-sticky");
 
 		var bottom = $('.post-tags-container').offset().top - $('.post-tags-container').height();
-
 		if ($(window).scrollTop() + $(".ssk-sticky").height() < bottom) {
 			ssk.css('position', 'fixed').css('top', offset.top + 'px');
 		} else if ($(".ssk-sticky").css('position') == 'fixed') {			
 			ssk.css('top', ($(window).scrollTop() + offset.top) + 'px').css('position', 'absolute');
 		}
+		// console.log((offset.left - leftPadding));
 		ssk.css('left', (offset.left - leftPadding) + 'px').show();
+		ssk.css('opacity', 1);
 	}
 
 	$(window).on('resize', positionSSK);
 	$(window).on('scroll', positionSSK);
-	positionSSK();
+	
+	var headerImage = $('.top-featured-image img');
+	if (headerImage.length) {
+		var img = new Image();
+		img.onload = positionSSK;
+		img.src = headerImage.attr('src');
+	} else {
+		positionSSK();
+	}
 
 	$(".ssk-comment").on("click", function(e) {
 		e.preventDefault();

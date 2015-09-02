@@ -265,14 +265,14 @@ var currently_loading_more = false;
 function load_more()
 {
 	if (!load_more_active || currently_loading_more) {
-		console.log("ignore loadmore");
+		// console.log("ignore loadmore");
 		return;
 	}
 
 	var pct = parseInt($(window).scrollTop(), 10) / parseInt($("body").height(), 10);
 
 	if (pct < 0.5) {
-		console.log("pct " + pct.toString());
+		// console.log("pct " + pct.toString());
 		return;
 	}
 

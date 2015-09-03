@@ -294,6 +294,7 @@ function load_more()
 			if (newposts.length == 0) {
 				load_more_active = false;
 				currently_loading_more = false;
+				$(".preload-container").hide();
 				return;
 			}
 

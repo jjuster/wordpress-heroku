@@ -242,15 +242,24 @@ HTML;
 
 	positionSSK = function() {
 		var leftPadding = 90;
+		var topPadding = 90;
 		var offset = $(".entry-title").offset();
 
 		var ssk = $(".ssk-sticky");
 
-		var bottom = $('.post-tags-container').offset().top - $('.post-tags-container').height();
-		if ($(window).scrollTop() + $(".ssk-sticky").height() < bottom) {
-			ssk.css('position', 'fixed').css('top', offset.top + 'px');
-		} else if ($(".ssk-sticky").css('position') == 'fixed') {			
-			ssk.css('top', ($(window).scrollTop() + offset.top) + 'px').css('position', 'absolute');
+		var top = offset.top - topPadding;
+
+		var stickyTop = Math.min(topPadding, offset.top);
+		var bottom = $('article .entry-content').offset().top + $('article .entry-content').height();
+
+		if (($(window).scrollTop() + $(".ssk-sticky").height() + topPadding) < bottom) {
+			if ($(window).scrollTop() < top) {
+				ssk.css('top', offset.top + 'px').css('position', 'absolute');
+			} else if ($(window).scrollTop() >= top) {
+				ssk.css('position', 'fixed').css('top', stickyTop + 'px');
+			}
+		} else {
+			ssk.css('top', (bottom - $(".ssk-sticky").height()) + 'px').css('position', 'absolute');
 		}
 		// console.log((offset.left - leftPadding));
 		ssk.css('left', (offset.left - leftPadding) + 'px').show();

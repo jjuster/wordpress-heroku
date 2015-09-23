@@ -442,3 +442,8 @@ span.pradux-nested {
   text-align: center;
   display: none;
 }
+.site {
+  max-width: 1276px !important;
+  width: 100% !important;
+  padding: 0 24px 0 30px !important;    
+}

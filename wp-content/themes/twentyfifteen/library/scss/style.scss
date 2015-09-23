@@ -15,12 +15,6 @@ body {
   @media (max-width: 767px) {
     padding-top: 0;
   }
-
-  #page {
-    max-width: 1276px;
-    width: 100%;
-    padding: 0 24px 0 30px;    
-  }
 }
 
 .entry-title, .entry-meta, .entry-content, .entry-summary, .blog-navigation, .wp-caption-text, h4 {
@@ -29,6 +23,12 @@ body {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   color: $textColor;
+}
+
+.site {
+  max-width: 1276px !important;
+  width: 100% !important;
+  padding: 0 24px 0 30px !important;    
 }
 
 iframe {

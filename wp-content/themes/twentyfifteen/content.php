@@ -80,7 +80,7 @@ $nextID = $posts[$current+1];
 <!-- [content] -->
 <?php if ( is_single() ): ?>
 <div class="blog-navigation ">
-	<a class="back-btn" href="/stories"><div class="arrow-left"></div> Back</a>
+	<a class="back-btn" href="/features"><div class="arrow-left"></div> Back</a>
 </div>
 <?php endif; ?>
 
@@ -186,7 +186,7 @@ HTML;
 	<? if ($num_related_posts && is_single()): ?>
 	<div class="related-posts-container">
 		<div class="related-posts">
-			<h4>Related Stories</h4>
+			<h4>Related Features</h4>
 
 			<div class="related-posts-wrap">
 				

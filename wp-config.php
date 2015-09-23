@@ -37,8 +37,8 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 if (!empty($_ENV['DATABASE_URL'])) {
-  define('WP_SITEURL', 'http://pradux-stories.herokuapp.com');
-  define('WP_HOME', 'http://next.pradux.com/stories');
+  define('WP_SITEURL', 'http://pradux-features.herokuapp.com');
+  define('WP_HOME', 'http://next.pradux.com/features');
 }
 
 /**#@+

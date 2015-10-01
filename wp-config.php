@@ -38,7 +38,7 @@ define('DB_COLLATE', '');
 
 if (!empty($_ENV['DATABASE_URL'])) {
   define('WP_SITEURL', 'http://pradux-features.herokuapp.com');
-  define('WP_HOME', 'http://next.pradux.com/features');
+  define('WP_HOME', 'http://www.pradux.com/features');
 }
 
 /**#@+

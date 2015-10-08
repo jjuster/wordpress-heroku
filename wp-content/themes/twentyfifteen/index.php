@@ -152,8 +152,8 @@ get_header(); ?>
 <a class="homepage-post featured" href="{$post->permalink}">
 	<span class="post-image" style="background-image:url({$post->featured_image})"></span>
 	<div class="bottom-text">
-		<div class="category">{$post->category}</div>
 		<div class="title">{$post->title}</div>
+		<div class="category">{$post->category}</div>
 	</div>
 </a>
 HTML;
@@ -183,8 +183,8 @@ HTML;
 		<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441053815_blank-768x1152.png" data-pradux-ignore="true" style="background-image:url({$post->featured_image})">
 	</a>
 	<div class="bottom-text">
-		<div class="category">{$post->category}</div>
 		<a href="{$post->permalink}" class="title">{$post->title}</a>
+		<div class="category">{$post->category}</div>
 	</div>
 </div>
 HTML;
@@ -202,8 +202,8 @@ HTML;
 		<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441048219_blank-768x576.png" data-pradux-ignore="true" style="background-image:url({$post->featured_image})">
 	</a>
 	<div class="bottom-text">
-		<div class="category">{$post->category}</div>
 		<a href="{$post->permalink}" class="title">{$post->title}</a>
+		<div class="category">{$post->category}</div>
 	</div>
 </div>
 HTML;
@@ -236,8 +236,8 @@ HTML;
 		<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441048219_blank-768x576.png" data-pradux-ignore="true" style="background-image:url(<%=post.featured_image%>)">
 	</a>
 	<div class="bottom-text">
-		<div class="category"><%=post.category%></div>
 		<a href="<%=post.permalink%>" class="title"><%=post.title%></a>
+		<div class="category"><%=post.category%></div>
 	</div>
 </div>
 </script>
@@ -248,8 +248,8 @@ HTML;
 		<img src="https://s3.amazonaws.com/cdn.pradux.com/uploads/1441053815_blank-768x1152.png" data-pradux-ignore="true" style="background-image:url(<%=post.featured_image%>)">
 	</a>
 	<div class="bottom-text">
-		<div class="category"><%=post.category%></div>
 		<a href="<%=post.permalink%>" class="title"><%=post.title%></a>
+		<div class="category"><%=post.category%></div>
 	</div>
 </div>
 </script>

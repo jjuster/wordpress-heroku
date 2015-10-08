@@ -69,15 +69,15 @@ $column-width-recent: 33.333333%;
 			width: 100%;
 			text-transform: uppercase;
 			text-align: center;
-			padding: 10px 0;
+			padding: 10px 10px;
 
 			.category {
 				// font-size: 13px;
-				// color: $textGrey;
+				color: $textGrey;
 				// font-weight: normal;
 
 				font-family: 'Pradux Menu';
-				color: lightgrey;
+				// color: lightgrey;
 				font-size: 13px;
 				letter-spacing: 2.5px;
 				text-align: left;

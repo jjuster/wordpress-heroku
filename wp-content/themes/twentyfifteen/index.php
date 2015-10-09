@@ -162,10 +162,6 @@ HTML;
 			
 			</div>
 
-			<div class="separator-wrap">
-				<hr>
-			</div>
-
 			<!-- Recent Posts -->
 			<h4>Most Recent Posts</h4>
 

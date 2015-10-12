@@ -265,10 +265,7 @@ function load_more()
 		return;
 	}
 
-	var pct = parseInt($(window).scrollTop(), 10) / parseInt($("body").height(), 10);
-
-	if (pct < 0.5) {
-		// console.log("pct " + pct.toString());
+	if ( $(window).scrollTop() < ( $(document).height() - $(window).height() ) * 0.5 ) {
 		return;
 	}
 
